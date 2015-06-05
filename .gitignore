@@ -10,3 +10,11 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+/PBD/RandomNumber/dist/
+/Classroom/WindowMaster/dist/
+/PBD/RandomNumber/FortuneCookie/build/
+/PBD/RandomNumber/FortuneCookie/dist/
+/PBD/RandomNumber/FortuneCookie/nbproject/private/
+/Classroom/ArraysLecture/nbproject/private/
+/Classroom/ArraysLecture/build/
+/Classroom/ArraysLecture/dist/

@@ -18,12 +18,21 @@ public class NumGuessGame {
         Scanner sc = new Scanner(System.in);
         Random r = new Random();
         
+        int yourGuess;
         int guess = 1+r.nextInt(10);
-        int yourGuess = 0;
+       
         
         System.out.println("I'm thinking of a number 1 through 10");
-            System.out.println("your guess is " + yourGuess );
-            yourGuess=sc.nextInt();
+        //String yourGuess;
+          
+        yourGuess = sc.nextInt();   
+        System.out.println("your guess is " + yourGuess );
+         
    
+            
+            if (yourGuess == guess){
+                System.out.println("That's right! My secret number was " + guess);
+            }else{ System.out.println("Sorry! the number I was actually thinking on was "+ guess);
+                    }
     }
 }
