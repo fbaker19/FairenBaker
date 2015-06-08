@@ -18,27 +18,35 @@ public class InterestCalc {
 //CurrentBalance * (1 + (QuarterlyInterestRate / 100)
  //500 (1 +(.1/4)^80 ---> 500(1+ .1 percent/4 = amount of times intrest added) ^ n= number t=time
  
- double P; //Principal
- double R; //Rate
- double T; //Time
+ double principal; //Principal
+ double rate; //Rate
+ double time; //Time
  
  //double interestTotal;
     
 
 System.out.println("Please enter principal amount " );
-        P = sc.nextDouble();
+        principal = sc.nextDouble();
         
 System.out.println("Please enter the interest rate " );
-        R = sc.nextDouble();
+        rate = sc.nextDouble();
 System.out.println("Please enter the year " );
-        T = sc.nextDouble();
+        time = sc.nextDouble();
        
         
-        double interestTotal = P * Math.pow ((1+ R/100),T);
+   
+       //double interestTotal = principal * Math.pow ((1+ rate/100),time);
+        //add for loop yearly calc
         
-        
-        System.out.println("The compund interest is  " + interestTotal);
-        
+        for(  time=0; time<=20; time++)
+                     { 
+            System.out.println(time);
+            
+                     
+        double interestTotal = principal * Math.pow ((1+ rate/100),time);
+         System.out.println("The compund interest is  " + interestTotal);
+                     }
+    
     }
 
  }
