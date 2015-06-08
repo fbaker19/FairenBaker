@@ -12,7 +12,7 @@ import java.util.Scanner;
  *
  * @author apprentice
  */
-public class Lucky7 {
+public class LuckySevens {
 
      public static void main (String [] args) {
   
@@ -21,24 +21,24 @@ public class Lucky7 {
    
       int die1, die2;       
       int dollars;         // initial number of dollars (input)
-      int count;           
-      int maxDollars;       // maximum amount held user
-      int countAtMax;       // count when the max is achieved
+      int countRolls;           
+      int maxDollars;       // maximum amount held user/new number of dollars
+      int countMaxRolls;       // count when the max $$$ is achieved
 
       // user input
-      System.out.print("How many dollars do you have? ");
+      System.out.print("How much money do you have? ");
       dollars = sc.nextInt();
    
       //  variables
       maxDollars = dollars;
-      countAtMax = 0;
-      count = 0;
+      countMaxRolls = 0; 
+      countRolls = 0;
    
       //count down until player does not have any more $$$   
-      while (dollars > 0){
-         count++;
+      while (dollars > 0) //<---condition
+      {
+         countRolls++;
      
-         
          die1 = 1+r.nextInt (6); 
          die2 = 1+r.nextInt (6); 
      
@@ -47,19 +47,18 @@ public class Lucky7 {
             dollars += 4;
          else 
             dollars -= 1; 
-
       
-         // If this is a new maximum, remember it  
+         // New maxumin of  $$$  
          if (dollars > maxDollars){
             maxDollars = dollars;
-            countAtMax = count;
+            countMaxRolls = countRolls;
          }
       }
    
       // Display the results
       System.out.println 
-         ("You are broke after " + count + " rolls.\n" +
-          "You should have quit after " + countAtMax +
-          " rolls when you had $" + maxDollars + ".");
+         ("You are broke after " + countRolls + " rolls." +
+          "You should have quit after " + countMaxRolls +
+          " rolls when you had $" + maxDollars);
    }
 }
