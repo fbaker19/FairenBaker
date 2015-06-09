@@ -19,7 +19,7 @@ public class Chair {
   
     
     
-    
+    //Constructor 
     private Chair( int length, int weight, String color)
     
     {

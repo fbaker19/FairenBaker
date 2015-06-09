@@ -25,12 +25,12 @@ public class Circle {
         numberOfCircles++;
     }
 
-    private float calcDiameter(float radiusIn) 
+    private float calcDiameter(float radiusIn) //method (often shows action, verb)
     {
         return radiusIn * 2;
     }
     
-    public float calcCircumference(float radiusIn) 
+    public float calcCircumference(float radiusIn) //method (often shows action, verb)
     {
         return (float) (2 * 3.14159 * radiusIn);
     }

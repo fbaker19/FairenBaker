@@ -17,7 +17,7 @@ public class Table {
     private int weight;
     private static int numberOfTables = 0;
     
-    
+    //Constructor 
     public Table( int length, int weight, String color){
         this.color = color;
         this.length= length;

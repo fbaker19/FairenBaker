@@ -19,6 +19,8 @@ public class Triangle {
     private static float area;
     public static int numberOfTriangles = 0;
 
+    
+    //Constructor 
     public Triangle(float base, float height, String color) {//method signature/ parameters (they cannot match with other signatures)
         this.color = color;
         this.base = base;

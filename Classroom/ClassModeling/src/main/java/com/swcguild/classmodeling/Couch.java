@@ -17,6 +17,8 @@ public class Couch {
     private static int numberOfCouches = 0;
     private static boolean cushions;
 
+    
+    //Constructor 
     private Couch( int length, int weight, boolean cushions, String color)
     
     {
@@ -27,23 +29,23 @@ public class Couch {
         numberOfCouches++;
     }
     
-    public static int getNumberOfTCouches() {
+    public static int getNumberOfTCouches() { //public often needs return
         return numberOfCouches;
     }
     
-    public int getWeight() {
+    public int getWeight() { //public often needs return
         return weight;
     }
     
-    public int getLength() {
+    public int getLength() { //public often needs return
         return length;
     }
     
  
     public static void main(String[] args) {
       
-       Couch fluffy = new Couch (20,25,true,"red"); 
-      
+       Couch fluffy = new Couch (20,25,true,"red"); //method signature must match beginninig of constructor
+                                                    //4 variables in constructor ---> 4 variables in Met Sig
         System.out.println("the couch's height is " + fluffy.length);
         System.out.println("the couch's weight is " + fluffy.weight);
         System.out.println("the couch has cushions " + fluffy.cushions);
