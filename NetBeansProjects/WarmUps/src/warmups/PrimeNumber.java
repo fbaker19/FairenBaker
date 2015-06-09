@@ -23,21 +23,25 @@ public class PrimeNumber {
         int number= sc.nextInt();
 //        
       System.out.println("Your number is " + number);
+      
+       System.out.println("Your original number is " + number + " and your factors are:");
+        int numFact = 0;
+        int sum = 0;
 //    
-//      for(int i = number; i>=1; i--){
-//          if (number%i == 0);
-//          System.out.println(i);
-//          
-//          
-//          //prime number is 1 and itself
-//            String y;
-//          
-//            String n;
-//          
-//          System.out.println("Do you want to play again - y/n?");
-//            
-//          
-//          
+      for (int i = number; i >= 1; i--) {
+
+        if (number % i == 0) {
+
+            System.out.println(i);
+            sum = sum + i;
+            numFact++;
+        }
+        
+          if (numFact == 2) {
+              System.out.println("Your number is prime!!");
+          }
+    }
+        
 //            if(y){
 //                
 //                System.out.println("");

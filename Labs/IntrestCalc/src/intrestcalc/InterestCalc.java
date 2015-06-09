@@ -56,7 +56,7 @@ System.out.println("John's principal amount " + principal );
         
 System.out.println("John's quarterly interest rate is " + quarterlyRate );
         
-System.out.println("John's time period for collecting interest is" +time);
+System.out.println("John's time period for collecting interest is " +time);
        
        for(  time=0; time<=20; time++)
                      { 
@@ -75,12 +75,12 @@ System.out.println("John's time period for collecting interest is" +time);
         
         
 System.out.println("John's principal amount "+ principal );
-       
-        
+            
 System.out.println("John's monthly interest rate is " + monthlyRate );
         
-System.out.println("John's time period for collecting interest is" +time);
+System.out.println("John's time period for collecting interest is " +time);
         
+       for(  time=0; time<=20; time++)
                      { 
             System.out.println(time);
             
@@ -100,13 +100,15 @@ System.out.println("John's principal amount "+ principal );
         
 System.out.println("John's daily interest rate is " + dailyRate );
         
-System.out.println("John's time period for collecting interest is" +time);
+System.out.println("John's time period for collecting interest is " +time);
         
+
+       for(  time=0; time<=20; time++)
                      { 
             System.out.println(time);
             
                      
-        double interestTotal = principal * Math.pow ((1+ monthlyRate/100),time);
+        double interestTotal = principal * Math.pow ((1+ dailyRate/100),time);
          System.out.println("John's daily compund interest is  " + interestTotal);
                      }
     
