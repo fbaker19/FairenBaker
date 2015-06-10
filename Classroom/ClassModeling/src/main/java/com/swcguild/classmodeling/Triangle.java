@@ -12,7 +12,11 @@ import javafx.scene.paint.Color;
  * @author apprentice
  */
 public class Triangle {
-
+//1. Define properties - determine which will be read/write and which will be read-only
+//2. Implement setters and getters (as appropriate) for each property
+//3. Implement a constructor to initialize some of all of the property values
+//4. Determine what behaviors the class should have and then define (do not implement) the
+//methods associated with each behavior.
     private static float height;
     private static float base;
     public static String color;
@@ -29,16 +33,45 @@ public class Triangle {
         //this.area = calcArea(base,height);
         numberOfTriangles++;
     }
+
+    public static float getHeight() {
+        return height;
+    }
+
+    public static void setHeight(float height) {
+        Triangle.height = height;
+    }
+
+    public static float getBase() {
+        return base;
+    }
+
+    public static void setBase(float base) {
+        Triangle.base = base;
+    }
+
+    public static String getColor() {
+        return color;
+    }
+
+    public static void setColor(String color) {
+        Triangle.color = color;
+    }
+
+    public static float getArea() {
+        return area;
+    }
+
+    public static void setArea(float area) {
+        Triangle.area = area;
+    }
+
     public static int getNumberOfTriangles() {
         return numberOfTriangles;
     }
-    
-    public float getBase() {
-        return base;
-    }
-    
-    public float getHeight() {
-        return height;
+
+    public static void setNumberOfTriangles(int numberOfTriangles) {
+        Triangle.numberOfTriangles = numberOfTriangles;
     }
     
     public Triangle() { //method signature/ parameters 
