@@ -19,6 +19,7 @@ public class RetrieveKeyValueExample {
         populations.put("Canada", 34000000);
         populations.put("United Kingdom", 63000000);
         populations.put("Japan", 127000000);
+       
         
         System.out.println("Map size is: "+ populations.size());
        
