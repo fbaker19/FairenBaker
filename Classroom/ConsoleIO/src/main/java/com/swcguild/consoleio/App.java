@@ -9,9 +9,9 @@ package com.swcguild.consoleio;
  *
  * @author apprentice
  */
-public class App {
+    public class App {
     public static void main(String[] args) {
-        ConsoleIO io = new ConsoleIO();
+        ConsoleIO io = new ConsoleIO();//1. import the constructor w/ default name of the class
         
        int userInput = io.readUserInputIntRange("please put in a integer",1,5);
          System.out.println("You entered "+ userInput);  

@@ -88,13 +88,13 @@ public class ConsoleIO {
         float userInput = 0;
         boolean done = false;
         while (!done) {
-            try {
+            try {///first part of the catch/exception
                 do {
                     System.out.println(prompt + " [minimum " + min + ": maximum " + max + "]");
                     userInput = Float.parseFloat(sc.nextLine());
                 } while (userInput < min || userInput > max);
                 done = true;
-            } catch (Exception e) {
+            } catch (Exception e) {//catches exceptions outside the parameter ie"bob"
                 System.out.println("Invalid input, please try again\n");
             }
         }

@@ -81,23 +81,3 @@ public class LuckySevensRefactored {
 
 
 
-
-/**
- *
- * @author apprentice
- */
-//    
-//    private  Random r = new Random();
-//   
-//    private int die; 
-//   
-//
-////   //constructor has to match the name of class
-//public LuckySevensRefactored (int die, int dollars, int countRolls, int maxDollars, int countMaxRolls)
-//    
-//    {
-//        this.die = die;
-//        this.dollars = dollars;
-//        this.countRolls = countRolls;
-//        this.countMaxRolls = countMaxRolls;
-//        this.maxDollars = maxDollars;
