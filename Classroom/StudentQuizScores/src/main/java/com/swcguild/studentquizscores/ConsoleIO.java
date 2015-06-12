@@ -145,6 +145,10 @@ public class ConsoleIO {
      public String getString(String prompt) {
         System.out.println(prompt);
         String userAns = sc.nextLine();
+        String t=userAns.trim();
+        if(t==""){
+            System.out.println("empty String\n");
+        }
         return userAns;
     }  
       

@@ -13,10 +13,15 @@ public class App {
     
     public static void main(String[] args) {
         StudentQuizScores grades = new StudentQuizScores();
-        grades.getUi().viewStudentsAndScores();
-        grades.getUi().addStudent();
-        grades.getUi().viewStudentsAndScores();
+       grades.getUi().showMenu();
         
+      //  grades.getUi().viewStudentsAndScores();
+      //  grades.getUi().addStudent();
+    //    grades.getUi().viewStudentsAndScores();
+        //grades.getUi().removeStudent();
+       // grades.getUi().viewStudentsAndScores();
+      //  grades.getUi().viewQuizzes();
+        //grades.getUi().viewStudentAverage();
     }
     
 }
