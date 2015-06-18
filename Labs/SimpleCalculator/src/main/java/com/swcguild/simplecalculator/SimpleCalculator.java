@@ -42,7 +42,7 @@ public class SimpleCalculator {
             //if (!Switch(userInput, userInput2)) {
             System.out.println("You have entered an invalid selection, please enter a number 1-5");
             userChoice = sc.nextInt();
-                
+//                
 
         }
         if (userChoice == 5) {
