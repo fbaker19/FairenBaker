@@ -12,12 +12,12 @@ package com.swcguild.statecapitals1and2;
 public class AppStateCap {
     public static void main(String[] args) {
   
-        //StateCapitals2 sc2 = new StateCapitals2
+        StateCapitals2 sc2 = new StateCapitals2
            
-                //sc2.run();
+               sc2.getClass(Capital);
                 
-         State st = new State (int, int, String, String);
-         System.out.println(st.getClass());
+        // State st = new State (int, int, String, String);
+         //System.out.println(st.getClass());
     }
     
 }

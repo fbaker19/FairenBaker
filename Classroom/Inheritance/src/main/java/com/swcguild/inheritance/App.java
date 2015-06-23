@@ -38,7 +38,7 @@ public class App {
    summerIntern.createObjectives();
    //polymorphism
    
-   Employee employee = new Employee();
+   
     }
     
 }

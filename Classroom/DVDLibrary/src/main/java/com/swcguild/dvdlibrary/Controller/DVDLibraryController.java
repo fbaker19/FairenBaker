@@ -7,7 +7,7 @@ package com.swcguild.dvdlibrary.Controller;
 
 import com.swcguild.dvdlibrary.dao.DVDLibrary;
 import com.swcguild.dvdlibrary.dto.Library;
-import com.swcguild.dvdlibrary.ui.ConsoleIO;
+import com.swcguild.ConsoleIO;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 

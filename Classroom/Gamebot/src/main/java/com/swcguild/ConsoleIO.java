@@ -1,8 +1,10 @@
+package com.swcguild;
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.swcguild.dvdlibrary.ui;
+
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -134,6 +136,20 @@ public class ConsoleIO {
 
     public void printFloat(float rating) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void printStr(String welcome_to_Game_Bot_Please_select_a_game) {
+        this.printStr("");
+    }
+
+    public int readIntRange(String string, int i, int i0) {
+        this.readIntRange(string, i, i0);
+        return 10;
+    }
+
+    public String readSingleLetter(String guess____) {
+        this.readSingleLetter(guess____);
+        return "guess";
     }
     
 }

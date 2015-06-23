@@ -36,13 +36,13 @@ import java.util.Set;
  */
 public class DVDLibrary {
 
-    public static final String DVDLIBRARY_FILE = "DVDLibrary.txt";//1 import file & Delimiter
+    public static final String DVDLIBRARY1_FILE = "DVDLibrary1.txt";//1 import file & Delimiter
     public static final String DELIMITER = "::"; //Delimiter = ::
 
     private HashMap<String, Library> libraries = new HashMap<String, Library>();//2/ import DTO Class
 
     public void loadLibrary() throws FileNotFoundException {
-        Scanner sc = new Scanner(new BufferedReader(new FileReader(DVDLIBRARY_FILE)));//Import Scanner (BufferedReader(FileReader(FILENAME_FILE)));
+        Scanner sc = new Scanner(new BufferedReader(new FileReader(DVDLIBRARY1_FILE)));//Import Scanner (BufferedReader(FileReader(FILENAME_FILE)));
         String currentLine;
         String[] currentTokens;//ARRRAY LIST
         // work on controller after steps completed above
@@ -55,7 +55,7 @@ public class DVDLibrary {
           //imports DTO class &creates new constructor in DTO
 
             //setters - currentDTO.set
-           // currentLibrary.setTitle(currentTokens[0]);//needed?
+            currentLibrary.setTitle(currentTokens[0]);//needed?
             currentLibrary.setDirector(currentTokens[1]);
             currentLibrary.setYear(Integer.parseInt(currentTokens[2]));
             currentLibrary.setMpaa(currentTokens[3]);
@@ -73,7 +73,7 @@ public class DVDLibrary {
     }
 
     public void writeLibrary() throws IOException {
-        PrintWriter out = new PrintWriter(new FileWriter(DVDLIBRARY_FILE));
+        PrintWriter out = new PrintWriter(new FileWriter(DVDLIBRARY1_FILE));
         String[] keys = this.getAllTitles();//creates 'get' method w/in DAO(this class)
 
         for (int i = 0; i < keys.length; i++) {
