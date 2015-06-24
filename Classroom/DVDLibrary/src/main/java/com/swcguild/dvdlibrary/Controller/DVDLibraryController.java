@@ -7,7 +7,7 @@ package com.swcguild.dvdlibrary.Controller;
 
 import com.swcguild.dvdlibrary.dao.DVDLibrary;
 import com.swcguild.dvdlibrary.dto.Library;
-import com.swcguild.ConsoleIO;
+import com.swcguild.Console.ConsoleIO;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
@@ -123,6 +123,8 @@ public class DVDLibraryController {
         float userRating = con.readFloat("Please enter user rating of the movie");
 
         Library currentLibrary = new Library(title);//imports DTO
+        
+        currentLibrary.setTitle(title);
         currentLibrary.setDirector(director);
         currentLibrary.setYear(year);
         currentLibrary.setMpaa(mpaa);

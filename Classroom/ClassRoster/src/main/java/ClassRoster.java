@@ -11,14 +11,14 @@ import java.util.Set;
 
 public class ClassRoster {
 
-    public static final String ROSTER_FILE = "roster.txt";
+    public static final String ROSTER_FILE = "roster.txt"; //DTO
 
     public static final String DELIMITER = "::";
 
     private HashMap<String, Student> students = new HashMap<String, Student>();
 
     public void loadRoster() throws FileNotFoundException {
-        Scanner sc = new Scanner(new BufferedReader(new FileReader(ROSTER_FILE)));
+        Scanner sc = new Scanner(new BufferedReader(new FileReader(ROSTER_FILE)));//DTO
         String currentLine;
         String[] currentTokens;//string array----> String []
 
@@ -26,7 +26,7 @@ public class ClassRoster {
             currentLine = sc.nextLine();
             currentTokens = currentLine.split(DELIMITER);
 
-            Student currentStudent = new Student(currentTokens[0]);
+            Student currentStudent = new Student(currentTokens[0]); //DTO w/ array
 
             currentStudent.setFirstName(currentTokens[1]);
             currentStudent.setLastName(currentTokens[2]);
@@ -38,15 +38,17 @@ public class ClassRoster {
         sc.close();
     }
 
-    public void writeRoster() throws IOException {//saves to file
+    public void writeRoster() throws IOException {//saves-writes to file
         PrintWriter out = new PrintWriter(new FileWriter(ROSTER_FILE));
         
         String[] keys = this.getAllStudentIds();
         
         for (int i = 0; i < keys.length; i++) {
             Student currentStudent = this.getStudent(keys[i]);
-            out.println(currentStudent.getStudentId() + DELIMITER + currentStudent.getFirstName() + DELIMITER
-                    + currentStudent.getLastName() + DELIMITER + currentStudent.getCohort());
+            out.println(currentStudent.getStudentId() + DELIMITER 
+                    + currentStudent.getFirstName() + DELIMITER
+                    + currentStudent.getLastName() + DELIMITER 
+                    + currentStudent.getCohort());
 
             out.flush();
 

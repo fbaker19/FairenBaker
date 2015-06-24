@@ -52,10 +52,11 @@ public class DVDLibrary {
             currentTokens = currentLine.split(DELIMITER);// array
 
             Library currentLibrary = new Library(currentTokens[0]);
-          //imports DTO class &creates new constructor in DTO
+          //imports DTO class &creates new constructor in DTO -- change into constructor >> this."___" 
 
             //setters - currentDTO.set
-            currentLibrary.setTitle(currentTokens[0]);//needed?
+           // currentLibrary.setTitle(currentTokens[0]);//needed?
+           
             currentLibrary.setDirector(currentTokens[1]);
             currentLibrary.setYear(Integer.parseInt(currentTokens[2]));
             currentLibrary.setMpaa(currentTokens[3]);
@@ -67,16 +68,14 @@ public class DVDLibrary {
         sc.close();
     }
 
-    public void addTitle(String title, Library library) {
-        libraries.put(title, library);
-
-    }
+    
 
     public void writeLibrary() throws IOException {
         PrintWriter out = new PrintWriter(new FileWriter(DVDLIBRARY1_FILE));
         String[] keys = this.getAllTitles();//creates 'get' method w/in DAO(this class)
 
         for (int i = 0; i < keys.length; i++) {
+           
             Library currentLibrary = this.getLibrary(keys[i]);//creates 'get' method(see methods below)
 
             out.println(currentLibrary.getTitle() + DELIMITER
@@ -97,7 +96,10 @@ public class DVDLibrary {
         keyArray = keySet.toArray(keyArray);
         return keyArray;
     }
+public void addTitle(String title, Library library) {
+        libraries.put(title, library);
 
+    }
     public Library getLibrary(String title) {
         return libraries.get(title);
     }

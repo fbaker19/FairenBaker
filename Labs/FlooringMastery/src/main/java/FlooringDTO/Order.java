@@ -9,8 +9,9 @@ package FlooringDTO;
  *
  * @author apprentice
  */
-public class OrderVariables {
-
+public class Order {
+    
+    protected static int orderNumCount=0;
     protected int orderNum;
     protected String customerName;
     protected String state;
@@ -22,15 +23,42 @@ public class OrderVariables {
     protected double tax;
     protected double total;
     protected double area;
+    protected String materials;
+
+    
+    
+    
+    public Order(int orderNum){
+     this.orderNum=orderNum;
+     orderNumCount++;
+    }
+
+    public static int getOrderNumCount() {
+        return orderNumCount;
+    }
+
+    public static void setOrderNumCount(int orderNumCount) {
+        Order.orderNumCount = orderNumCount;
+    }
 
     public int getOrderNum() {
         return orderNum;
     }
 
+    
     public void setOrderNum(int orderNum) {
         this.orderNum = orderNum;
     }
 
+    public String getMaterials()
+    {
+        return materials;
+    }
+    
+    public void setMaterials(String materials)
+    {
+        this.materials = materials;
+    }
     public String getCustomerName() {
         return customerName;
     }
