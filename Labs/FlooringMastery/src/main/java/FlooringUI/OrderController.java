@@ -27,51 +27,42 @@ public class OrderController {
 
         boolean keepGoing = true;
         int menuSelection = 0;
-        try {
-//            oFB.loadOrder();
-            while (keepGoing) {
-                printMenu();
-                menuSelection = con.readInt("please select from the above choices.", 1, 6);
-
-                switch (menuSelection) {
-                    case 1:
-                        con.print("Displaying all orders...");
-                        displayAllOrders();
-                        break;
-                    case 2:
-                        con.print("Adding new order...");
-                        addOrder();
-                        break;
-                    case 3:
-                        con.print("Editing order...");
-                        editOrder();
-                        break;
-                    case 4:
-                        con.print("Removing order...");
-                        removeOrder();
-                        break;
-
-                    case 5:
-                        con.print("Saving current work...");
-                        //saveCurrentwork();
-                        break;
-                    case 6:
-                        con.print("Quit");
-                        keepGoing = false;
-                        break;
-
-                    default:
-                        con.print("Unknown input");
-                }
+        while (keepGoing) {
+            printMenu();
+            menuSelection = con.readInt("please select from the above choices.", 1, 6);
+            
+            switch (menuSelection) {
+                case 1:
+                    con.print("Displaying all orders...");
+                    displayAllOrders();
+                    break;
+                case 2:
+                    con.print("Adding new order...");
+                    addOrder();
+                    break;
+                case 3:
+                    con.print("Editing order...");
+                    editOrder();
+                    break;
+                case 4:
+                    con.print("Removing order...");
+                    removeOrder();
+                    break;
+                    
+                case 5:
+                    con.print("Saving current work...");
+                    //saveCurrentwork();
+                    break;
+                case 6:
+                    con.print("Quit");
+                    keepGoing = false;
+                    break;
+                    
+                default:
+                    con.print("Unknown input");
             }
-            oFB.writeOrder();
-        } catch(FileNotFoundException e)
-        {
-            System.out.println("Error loading orders");
-        } catch(IOException e)
-        {
-            System.out.println("Error writing to file");
         }
+        oFB.WriteOrders();
     }
  
 
@@ -90,11 +81,12 @@ public class OrderController {
     }
 
     public void addOrder()  {
+        String date = con.readString("Please enter today's date");
         String customerName = con.readString("Please enter customer name");
         String state = con.readString("Please enter customer State.");
         String material = con.readString("Which material would the customer like to use?");
         Double area = con.readDouble("Please enter the area of the floor to be covered");
-        Order toBeAdded = factory.createNewOrder(customerName, state, material, area);
+        Order toBeAdded = factory.createNewOrder(date,customerName, state, material, area);
        oFB.addOrder(toBeAdded);
         
 

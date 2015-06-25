@@ -13,6 +13,7 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.lang.ArrayIndexOutOfBoundsException;
 
 /**
  *
@@ -46,7 +47,9 @@ public class TaxDAO {
              sc.close();
         } catch (FileNotFoundException e ) {
             System.out.println("Not Available");
-        }
+        }catch(ArrayIndexOutOfBoundsException e){
+            System.out.println("Arrays are terrible");
+                }
 
     return arrayTax;
     }

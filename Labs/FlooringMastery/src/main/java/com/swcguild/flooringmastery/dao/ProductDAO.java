@@ -10,9 +10,10 @@ import FlooringDTO.Tax;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
-
+import java.lang.ArrayIndexOutOfBoundsException;
 
 /**
  *
@@ -31,7 +32,7 @@ public class ProductDAO {//load file only
             String currentLine;
             String[] currentTokens;
 
-            while (sc.hasNextLine()) {
+            while (sc.hasNextLine())  {
                 currentLine = sc.nextLine();
                 currentTokens = currentLine.split(DELIMETER);
                  Product currentProduct = new Product();///INSIDE THE WHILE LOOP
@@ -45,7 +46,9 @@ public class ProductDAO {//load file only
             sc.close();
         } catch (FileNotFoundException e) {
             System.out.println("Hell no!");
-        }
+        }catch(ArrayIndexOutOfBoundsException e){
+            System.out.println("Arrays suck");
+                }
 
         return arrayProduct;
     }

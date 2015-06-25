@@ -48,8 +48,8 @@ public class DAOJUnitTest {
     {
         OrderFileBook ofb = new OrderFileBook();
         OrderFactory factory = new OrderFactory();
-        Order order = factory.createNewOrder("bob", "OH","Carpet", 100);
-        ofb.addOrder(order);
+       // Order order = factory.createNewOrder("bob", "OH","Carpet", 100,"date");
+       // ofb.addOrder(order);
         
     }
 }

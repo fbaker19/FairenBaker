@@ -18,10 +18,11 @@ public class OrderFactory {
     TaxDAO taxDao = new TaxDAO();
     ProductDAO productDao = new ProductDAO();
 
-    public Order createNewOrder(String customerName, String state, String materials, double area) {
+    public Order createNewOrder( String date,String customerName, String state, String materials, double area) {
         
         Order order = new Order(1);
         order.orderNum = order.getOrderNumCount();
+        order.setDate (date);
         order.setArea(area);
         order.setState(state);
         order.setMaterials(materials);
