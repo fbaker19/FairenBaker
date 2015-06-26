@@ -10,15 +10,16 @@ import FlooringDTO.OrderFactory;
 import com.swcguild.flooringmastery.dao.OrderFileBook;
 
 import com.swcguild.flooringmastery.ConsoleIO;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import com.swcguild.flooringmastery.dao.ConfigInfoDAO;
 
 /**
  *
  * @author apprentice
  */
 public class OrderController {
-
+    ConfigInfoDAO config = new ConfigInfoDAO();
+    String configuration = config.loadConfigInfo();
+    
     ConsoleIO con = new ConsoleIO();
     OrderFileBook oFB = new OrderFileBook();
     OrderFactory factory = new OrderFactory();
@@ -68,8 +69,9 @@ public class OrderController {
                     con.print("Unknown input");
             }
         }
-
-        oFB.WriteOrder();
+            if(configuration.equalsIgnoreCase("project"))
+                oFB.WriteOrder();
+        
 
     }
 
@@ -139,8 +141,8 @@ public class OrderController {
     }
 
     public void saveCurrentWork() {
-        oFB.WriteOrder();
-
+        if(configuration.equalsIgnoreCase("project"))
+                oFB.WriteOrder();
     }
 
     public void printOrder() {
