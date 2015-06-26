@@ -12,8 +12,6 @@ import com.swcguild.flooringmastery.dao.OrderFileBook;
 import com.swcguild.flooringmastery.ConsoleIO;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -65,7 +63,7 @@ public class OrderController {
                         saveCurrentWork();
                     }
                     break;
-               
+
                 default:
                     con.print("Unknown input");
             }
@@ -76,36 +74,58 @@ public class OrderController {
     }
 
     public void printMenu() {
-        con.print("-----------------------------------------------------------");
-        con.print("Main Menu");
-        con.print("1.Display all orders");
-        con.print("2.Add an order");
-        con.print("3.Edit order");
-        con.print("4.Remove an order");
-        con.print("5.Save to file");
-        con.print("6.Quit");
-        con.print("-----------------------------------------------------------");
+        con.print("**********************************************************");
+        con.print("*                  Flooring Program");
+        con.print("*");
+        con.print("*1.Display all orders");
+        con.print("*2.Add an order");
+        con.print("*3.Edit order");
+        con.print("*4.Remove an order");
+        con.print("*5.Save to file");
+        con.print("*6.Quit");
+        con.print("*");
+        con.print("**********************************************************");
 
     }
 
     public void addOrder() {
-        String date = con.readString("Please enter today's date");
+
+        String date= "a";
+        
+        while (date.length() != 8)
+        { 
+            date = con.readString("Please enter today's date");
+        }
+        
         String customerName = con.readString("Please enter customer name");
-        String state = con.readString("Please enter customer State.");
-        String material = con.readString("Which material would the customer like to use?");
+      
+        String state  = "b";  
+        while(!state.equalsIgnoreCase("pa")&&!state.equalsIgnoreCase("in")&&!state.equalsIgnoreCase("mi")&&!state.equalsIgnoreCase("oh")) 
+        {
+        state = con.readString("Please enter customer State.(OH, MI, IN, or PA)");
+        }
+        
+        String material = "c";
+         while(!material.equalsIgnoreCase("wood")&&!material.equalsIgnoreCase("tile")&&!material.equalsIgnoreCase("carpet")&&!material.equalsIgnoreCase("laminate")) 
+        {
+        material = con.readString("Which material would the customer like to use?(Wood, Laminate, Tile, or Carpet)");
+        }
+        
+        
         Double area = con.readDouble("Please enter the area of the floor to be covered");
         Order toBeAdded = factory.createNewOrder(customerName, state, material, area, date);
+        
         oFB.addOrder(toBeAdded);
 
     }
 
     public void displayAllOrders() {
-       
+
         oFB.displayAllOrders();
     }
 
     public void editOrder() {
-        
+
         int orderVarify = con.readInt("Please enter order number that you would like to edit.");
         oFB.editOrder(orderVarify);
 

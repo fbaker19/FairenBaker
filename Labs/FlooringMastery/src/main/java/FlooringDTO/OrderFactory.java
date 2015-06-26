@@ -13,13 +13,15 @@ import java.util.ArrayList;
  *
  * @author apprentice
  */
+
+//imported  TaxDAO, ProductDAO, & Order(DTO)
 public class OrderFactory {
 
     TaxDAO taxDao = new TaxDAO();
     ProductDAO productDao = new ProductDAO();
 
     public Order createNewOrder(String customerName, String state, String materials, double area,String date) {
-        
+        //SETTERS
         Order order = new Order(1);
         order.orderNum = order.getOrderNumCount();
         order.setDate (date);
@@ -30,9 +32,9 @@ public class OrderFactory {
         Tax taxInfo = new Tax();
 
 //      Tax taxInfo = tax.loadTaxInfo(); //reads info
-        ArrayList<Product> productInfo = productDao.loadProductInfo();//reads info
+        ArrayList<Product> productInfo = productDao.loadProductInfo();//reads info from product file
         
-        Product product2 = new Product();
+        Product product2 = new Product();//imports product DTO
         
         ArrayList<Tax> stateTax = taxDao.loadTaxInfo();
 
