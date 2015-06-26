@@ -7,6 +7,9 @@ package com.swcguild.flooringmastery.dao;
 
 import FlooringDTO.Order;
 import FlooringDTO.OrderFactory;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -51,5 +54,19 @@ public class DAOJUnitTest {
        // Order order = factory.createNewOrder("bob", "OH","Carpet", 100,"date");
        // ofb.addOrder(order);
         
+    }
+    @Test
+    
+    public void writeOrder()
+    {
+     OrderFileBook ofb = new OrderFileBook();
+        OrderFactory factory = new OrderFactory();
+       Order order = factory.createNewOrder("bob", "OH","Carpet", 100, "06242015");
+        ofb.addOrder(order);
+        
+        order = factory.createNewOrder("Mike", "MI","Tile", 100, "06242015");
+        ofb.addOrder(order);
+        
+        ofb.WriteOrder();
     }
 }
