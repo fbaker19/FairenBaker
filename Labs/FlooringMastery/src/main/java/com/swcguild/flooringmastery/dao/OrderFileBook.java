@@ -113,10 +113,12 @@ public class OrderFileBook {
     }
 
     public Order removeOrder(int orderNum) {
+        File file = new File("Orders_"+ order.get(orderNum).getDate()+ ".txt");
         Set<Integer> keySet = order.keySet();
         for (Integer i : keySet) {
             if (i == orderNum) {
                 order.remove(i);
+                file.delete();
             }
 
         }
@@ -187,36 +189,71 @@ public class OrderFileBook {
                 System.out.println("If you would like to change individual fields\n enter the change to be made. If you would like filed to remain the same\nplease press enter.");
 
                 System.out.println("Customer name: " + editOrder.getCustomerName());
+                String cN="";
                 String customerName = sc2.nextLine();
                 if (customerName.length() >= 1) {
-                    editOrder.setCustomerName(customerName);
+                    cN=customerName;
+                }
+                else
+                {
+                    cN = editOrder.getCustomerName();
                 }
 
                 System.out.println("Date ordered: " + editOrder.getDate());
+                String dO="";
                 String dateOrder = sc2.nextLine();
                 if (dateOrder.length() >= 1) {
-                    editOrder.setDate(dateOrder);
+                    dO = dateOrder;
+                }
+                else
+                {
+                    dO = editOrder.getDate();
                 }
 
                 System.out.println("State: " + editOrder.getState());
+                String sO="";
                 String stateOrder = sc2.nextLine();
                 if (stateOrder.length() >= 1) {
-                    editOrder.setState(stateOrder);
+                    sO=stateOrder;
+                }
+                
+                else{
+                    editOrder.getState();
                 }
 
                 System.out.println("Materials requested: " + editOrder.getMaterials());
+                String mO="";
                 String materialsOrder = sc2.nextLine();
                 if (materialsOrder.length() >= 1) {
-                    editOrder.setMaterials(materialsOrder);
+                    mO=materialsOrder;
+                }
+                
+                else
+                {
+                    mO = editOrder.getMaterials();
                 }
 
                 System.out.println("area: " + editOrder.getArea() + " sqFt");
+                String aOString;
+                double aO=0;
                  String areaOrder = sc2.nextLine();
                 if (areaOrder.length() >= 1) {
-                    editOrder.setArea(Double.parseDouble(areaOrder));
+                    aOString = areaOrder;
+                    aO=Double.parseDouble(aOString);
                 }
+                else
+                {
+                    aO=editOrder.getArea();
+                }
+                int tempOrderNumber=editOrder.getOrderNum();
+                this.removeOrder(editOrder.getOrderNum());
+             Order nextOrder = freshOrder.createNewOrder(cN, sO, mO, aO, dO);
+             nextOrder.setOrderNum(tempOrderNumber);
+            order.put(nextOrder.getOrderNum(), nextOrder);
+            System.out.println("Your order number is "+ 2*nextOrder.getOrderNum());
 
             }
+             
 
         }
     }
@@ -228,6 +265,8 @@ public class OrderFileBook {
         for (Integer i : keySet) {
 
             seeOrder = order.get(i);
+             
+            System.out.println("___________________________________________");
 
             System.out.println("Customer name: " + seeOrder.getCustomerName());
             System.out.println("Date ordered: " + seeOrder.getDate());
@@ -235,6 +274,8 @@ public class OrderFileBook {
             System.out.println("Materials requested: " + seeOrder.getMaterials());
             System.out.println("area: " + seeOrder.getArea() + " sqFt");
             System.out.println("Total cost:" + seeOrder.getTotal());
+            
+            System.out.println("___________________________________________");
         }
 
     }
@@ -242,4 +283,8 @@ public class OrderFileBook {
 //    public void displayAllOrders() {
 //
 //    }
+
+    private void File() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

@@ -90,31 +90,27 @@ public class OrderController {
 
     public void addOrder() {
 
-        String date= "a";
-        
-        while (date.length() != 8)
-        { 
+        String date = "a";
+
+        while (date.length() != 8) {
             date = con.readString("Please enter today's date");
         }
-        
+
         String customerName = con.readString("Please enter customer name");
-      
-        String state  = "b";  
-        while(!state.equalsIgnoreCase("pa")&&!state.equalsIgnoreCase("in")&&!state.equalsIgnoreCase("mi")&&!state.equalsIgnoreCase("oh")) 
-        {
-        state = con.readString("Please enter customer State.(OH, MI, IN, or PA)");
+
+        String state = "b";
+        while (!state.equalsIgnoreCase("pa") && !state.equalsIgnoreCase("in") && !state.equalsIgnoreCase("mi") && !state.equalsIgnoreCase("oh")) {
+            state = con.readString("Please enter customer State.(OH, MI, IN, or PA)");
         }
-        
+
         String material = "c";
-         while(!material.equalsIgnoreCase("wood")&&!material.equalsIgnoreCase("tile")&&!material.equalsIgnoreCase("carpet")&&!material.equalsIgnoreCase("laminate")) 
-        {
-        material = con.readString("Which material would the customer like to use?(Wood, Laminate, Tile, or Carpet)");
+        while (!material.equalsIgnoreCase("wood") && !material.equalsIgnoreCase("tile") && !material.equalsIgnoreCase("carpet") && !material.equalsIgnoreCase("laminate")) {
+            material = con.readString("Which material would the customer like to use?(Wood, Laminate, Tile, or Carpet)");
         }
-        
-        
+
         Double area = con.readDouble("Please enter the area of the floor to be covered");
         Order toBeAdded = factory.createNewOrder(customerName, state, material, area, date);
-        
+
         oFB.addOrder(toBeAdded);
 
     }
@@ -132,11 +128,14 @@ public class OrderController {
     }
 
     public void removeOrder() {
-        if (!con.readString("Are you sure you would like to remove the order?").equalsIgnoreCase("no")) {
-            String orderNum = con.readString("Please enter order number");
-            oFB.removeOrder(Integer.parseInt(orderNum));
-        }
-
+        
+        String orderNum = con.readString("Please enter order number of order you want to remove");
+        String choice = con.readYorN("Are you sure you want to remove the order?");
+            if(choice.equalsIgnoreCase("y"))
+            {
+        oFB.removeOrder(Integer.parseInt(orderNum));
+        con.print("Your Order has now been deleted");
+            }
     }
 
     public void saveCurrentWork() {
