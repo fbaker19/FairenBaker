@@ -28,43 +28,36 @@ public class InventoryController {
     public void run() throws IOException {
         boolean keepGoing = true;
         int menuSelection = 0;
-        try {
-           
-
-            while (keepGoing = true) {
-                printMenu();
-                menuSelection = con.readInt("Please select from the above choices.", 1, 6);
-
-                Product productObj;
-
-                switch (menuSelection) {
-                    case 1:
-                        addProduct();
-                        break;
-                    case 2:
-                        deleteProduct();
-                        break;
-                  
-                    case 3:
-                        productCount();
-                        break;
-                    case 4:
-                        printAllProducts();
-                        break;
-                 
-                    case 6:
-                        con.print("Exiting...");
-                        keepGoing = false;
-                        break;
-                    default:
-                        con.print("Unknown input...");
-                }
+        while (keepGoing = true) {
+            printMenu();
+            menuSelection = con.readInt("Please select from the above choices.", 1, 6);
+            
+            Product productObj;
+            
+            switch (menuSelection) {
+                case 1:
+                    addProduct();
+                    break;
+                case 2:
+                    deleteProduct();
+                    break;
+                    
+                case 3:
+                    productCount();
+                    break;
+                case 4:
+                    printAllProducts();
+                    break;
+                    
+                case 6:
+                    con.print("Exiting...");
+                    keepGoing = false;
+                    break;
+                default:
+                    con.print("Unknown input...");
             }
-            con.print("Thank you for viewing...");
-          
-       
-
         }
+        con.print("Thank you for viewing...");
     }
 
     private void printMenu() {
@@ -103,6 +96,7 @@ public class InventoryController {
 
     private void printAllProducts() {
         con.print("Listing all Products: ");
+        Iterable<Product> currentProduct = null;
        
         for (Product productObj : currentProduct) {
 

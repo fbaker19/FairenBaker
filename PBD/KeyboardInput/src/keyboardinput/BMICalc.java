@@ -18,10 +18,10 @@ public class BMICalc {
         float height;
         float weight;
         
-        System.out.println("Enter your height");
+        System.out.println("Enter your height in inches");
         height=sc.nextFloat();
         
-        System.out.println("Enter your weight");
+        System.out.println("Enter your weight in ");
         weight=sc.nextFloat();
         
         System.out.println("Your height is: " + height);

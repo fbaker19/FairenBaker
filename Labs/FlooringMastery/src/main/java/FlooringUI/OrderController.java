@@ -11,6 +11,9 @@ import com.swcguild.flooringmastery.dao.OrderFileBook;
 
 import com.swcguild.flooringmastery.ConsoleIO;
 import com.swcguild.flooringmastery.dao.ConfigInfoDAO;
+import java.io.FileNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -25,9 +28,12 @@ public class OrderController {
     OrderFactory factory = new OrderFactory();
 
     public void run() {
-
+        //exception thrown for loadOrder
+        
         boolean keepGoing = true;
         int menuSelection = 0;
+       try {
+        oFB.loadOrder();
         while (keepGoing) {
             printMenu();
             menuSelection = con.readInt("please select from the above choices.", 1, 6);
@@ -69,8 +75,11 @@ public class OrderController {
                     con.print("Unknown input");
             }
         }
-            if(configuration.equalsIgnoreCase("project"))
-                oFB.WriteOrder();
+        if(configuration.equalsIgnoreCase("project"))
+            oFB.WriteOrder();
+        } catch (FileNotFoundException ex) {
+            System.out.println("Error");
+        }
         
 
     }
@@ -95,7 +104,7 @@ public class OrderController {
         String date = "a";
 
         while (date.length() != 8) {
-            date = con.readString("Please enter today's date");
+            date = con.readString("Please enter today's date as MMDDYYYY");
         }
 
         String customerName = con.readString("Please enter customer name");
@@ -110,7 +119,7 @@ public class OrderController {
             material = con.readString("Which material would the customer like to use?(Wood, Laminate, Tile, or Carpet)");
         }
 
-        Double area = con.readDouble("Please enter the area of the floor to be covered");
+        Double area = con.readDouble("Please enter the area of the floor to be covered in SqFt");
         Order toBeAdded = factory.createNewOrder(customerName, state, material, area, date);
 
         oFB.addOrder(toBeAdded);

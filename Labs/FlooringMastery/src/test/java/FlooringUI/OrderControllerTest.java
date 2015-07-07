@@ -5,6 +5,7 @@
  */
 package FlooringUI;
 
+import FlooringDTO.Order;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -47,7 +48,7 @@ public class OrderControllerTest {
         OrderController instance = new OrderController();
         instance.run();
         // TODO review the generated test code and remove the default call to fail.
-      Assert.assertEquals(instance, this);
+      
     }
 
     /**
@@ -70,8 +71,9 @@ public class OrderControllerTest {
         System.out.println("addOrder");
         OrderController instance = new OrderController();
         instance.addOrder();
-        // TODO review the generated test code and remove the default call to fail.
-      
+        int orderNum = 2;
+        Order expResult = null;
+         
     }
 
     /**
@@ -107,7 +109,7 @@ public class OrderControllerTest {
         OrderController instance = new OrderController();
         instance.removeOrder();
         // TODO review the generated test code and remove the default call to fail.
-       ;
+       
     }
 
     /**

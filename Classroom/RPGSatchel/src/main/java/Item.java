@@ -8,7 +8,8 @@
  *
  * @author apprentice
  */
-public interface Item {
+public interface Item { //interface can only EXTEND not implement
+    
     public String getItemName();
     public int getItemWeight();
     
