@@ -23,6 +23,10 @@ public class LibraryLambda {//stores Variables and Getters n' Setters
     private String studio;
     private String note;
 
+    LibraryLambda(Integer Id) {
+        id = Id; //To change body of generated methods, choose Tools | Templates.
+    }
+
     public String getNote() {
         return note;
     }

@@ -5,7 +5,6 @@
  */
 package com.swcguild.dvdlambda;
 
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
@@ -36,25 +35,27 @@ import java.util.List;
 public class DVDLambdaController {
 
     private ConsoleIO con = new ConsoleIO(); //1 add in refactored console IO
-    private Library library = new DVDLibraryImpl ();// add in DAO/fileholder>>Lambda use "impl"
-    
-     Integer Id;
+    private Library libraryDao = new DVDLibraryImpl();// add in DAO/fileholder>>Lambda use "impl"
+
+    Integer Id;
+
     public void run() {
 
         boolean keepGoing = true; //new variables << for while loop
         int menuSelection = 0; //new variables <<<used for switch
 
         try {
-            library.loadLibraryLambda();
-            
+            libraryDao.loadLibraryLambda();
+
             while (keepGoing) {
                 printMenu();
                 menuSelection = con.readInt("please select from the above choices.", 1, 7);
-                
+
                 switch (menuSelection) {
                     case 1:
                         con.print("Adding DVD...");
                         addDvd();
+                        libraryDao.writeLibraryLambda();
                         break;
 
                     case 2:
@@ -75,6 +76,7 @@ public class DVDLambdaController {
                     case 5:
                         con.print("editing DVD...");
                         editDvd();
+                        libraryDao.writeLibraryLambda();
                         break;
 
                     case 6:
@@ -92,9 +94,9 @@ public class DVDLambdaController {
 
                 }
             }
-        //Call Writer >>> write to file
+            //Call Writer >>> write to file
             //try catch added
-            library.writeLibraryLambda();
+            libraryDao.writeLibraryLambda();
         } catch (FileNotFoundException e) {
             System.out.println("Error loading file");
         } catch (IOException e) {
@@ -122,8 +124,8 @@ public class DVDLambdaController {
         String studio = con.readString("Please enter movie studio");
         float userRating = con.readFloat("Please enter user rating of the movie");
 
-       LibraryLambda currentLibrary = new LibraryLambda(title);//imports DTO
-        
+        LibraryLambda currentLibrary = new LibraryLambda(Id);//imports DTO
+
         currentLibrary.setTitle(title);
         currentLibrary.setDirector(director);
         currentLibrary.setYear(year);
@@ -131,36 +133,35 @@ public class DVDLambdaController {
         currentLibrary.setRating(userRating);//user rating
         currentLibrary.setStudio(studio);
 
-        
         con.readString("DVD entry successfully created. Please hit enter to continue");
-       
-        Id = library.addDvd(currentLibrary);
-        
+
+        Id = libraryDao.addDvd(currentLibrary);
+
         System.out.println("your id  number is: " + Id);
-        
-       library.writeLibraryLambda();
+
+        libraryDao.writeLibraryLambda();
     }
 
     public void displayDvd() {
-        String title = con.readString("Please enter the title of the movie you wish to view");
-         LibraryLambda currentLibrary = library.getTitle(Id);
-        if (currentLibrary != null) {
-            con.print(currentLibrary.getTitle());
-            con.print(currentLibrary.getDirector());
-            con.printInt(currentLibrary.getYear());//added to console IO
-            con.print(currentLibrary.getMpaa());
-            con.printFloat(currentLibrary.getRating());//user rating -- added to console IO
-            con.print(currentLibrary.getStudio());
+      Integer ID = con.readInt("Please enter the ID of the movie you wish to view");
+        List<LibraryLambda> currentLibrary = libraryDao.searchById(ID);
+        if (currentLibrary.size()>0) {
+            con.print(currentLibrary.get(0).getTitle());//pullint from the index section of array list(ALWAYS 0 - searching by Id)
+            con.print(currentLibrary.get(0).getDirector());
+            con.printInt(currentLibrary.get(0).getYear());//added to console IO
+            con.print(currentLibrary.get(0).getMpaa());
+            con.printFloat(currentLibrary.get(0).getRating());//user rating -- added to console IO
+            con.print(currentLibrary.get(0).getStudio());
 
         } else {
-            con.print("No DVD with this: " + title);
+            con.print("No DVD with this: " + ID);
 
         }
     }
 
     public void removeDvd() {
         String title = con.readString("Please enter the ID of the student to be removed");
-        library.removeTitle(Id);
+        libraryDao.removeTitle(Id);
         con.readString("DVD successfully removed. Please hit to continue.");
     }
 
@@ -168,7 +169,7 @@ public class DVDLambdaController {
         Id = con.readInt("Please enter the ID number of the DVD you would like to edit");
         String title = con.readString("Please enter movie title you would like to edit");
         String director = con.readString("Please enter the new director ");
-        int year = con.readInt("Please enter the  new year t");
+        int year = con.readInt("Please enter the year to be edited");
         String mpaa = con.readString("Please enter movie rating  you would like to edit");
         String studio = con.readString("Please enter movie studio you would like to edit");
         float userRating = con.readFloat("Please enter new user rating.");
@@ -179,16 +180,16 @@ public class DVDLambdaController {
         currentLibrary.setMpaa(mpaa);
         currentLibrary.setRating(userRating);//user rating
         currentLibrary.setStudio(studio);
-        
-        library.getTitle(Id);
+
+        libraryDao.getTitle(Id);
         //(currentLibrary.getId(), currentLibrary);
 
     }
 
     public void viewAll() {
-        List<LibraryLambda> title = library.getAllTitles();
-        for (LibraryLambda currentLibrary: title){
-            
+        List<LibraryLambda> title = libraryDao.getAllTitles();
+        for (LibraryLambda currentLibrary : title) {
+
             con.print(title.get(Id) + ": " + currentLibrary.getTitle() + " " + currentLibrary.getDirector() + " "
                     + currentLibrary.getYear());
         }

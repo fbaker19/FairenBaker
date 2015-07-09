@@ -10,6 +10,8 @@ import com.swcguild.dvdlibrary.dto.Library;
 import com.swcguild.Console.ConsoleIO;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /*
  1.add in refactored console IO & DAO/fileholder
@@ -31,13 +33,13 @@ import java.io.IOException;
  -ie private void addDvd(){}
 
  6.add"try catch" aroung while loop/switch case to catch FILEIO exceptions for writing/loading file
- 7. call Writer -"library.writeLibrary();" above the "catch"
+ 7. call Writer -"libraryDao.writeLibrary();" above the "catch"
 
  */
 public class DVDLibraryController {
 
     private ConsoleIO con = new ConsoleIO(); //1 add in refactored console IO
-    private DVDLibrary library = new DVDLibrary();// add in DAO/fileholder
+    private DVDLibrary libraryDao = new DVDLibrary();// add in DAO/fileholder
 
     public void run() {
 
@@ -45,7 +47,7 @@ public class DVDLibraryController {
         int menuSelection = 0; //new variables <<<used for switch
 
         try {
-            library.loadLibrary();
+            libraryDao.loadLibrary();
             
             while (keepGoing) {
                 printMenu();
@@ -55,6 +57,7 @@ public class DVDLibraryController {
                     case 1:
                         con.print("Adding DVD...");
                         addDvd();
+                          libraryDao.writeLibrary();
                         break;
 
                     case 2:
@@ -75,6 +78,7 @@ public class DVDLibraryController {
                     case 5:
                         con.print("editing DVD...");
                         editDvd();
+                        libraryDao.writeLibrary();
                         break;
 
                     case 6:
@@ -85,6 +89,7 @@ public class DVDLibraryController {
                     case 7:
                         con.print("Goodbye!!");
                         keepGoing = false;// breaks the loop by making the condition false
+                        libraryDao.writeLibrary();
                         break;
 
                     default:
@@ -94,7 +99,6 @@ public class DVDLibraryController {
             }
         //Call Writer >>> write to file
             //try catch added
-            library.writeLibrary();
         } catch (FileNotFoundException e) {
             System.out.println("Error loading file");
         } catch (IOException e) {
@@ -131,14 +135,19 @@ public class DVDLibraryController {
         currentLibrary.setRating(userRating);//user rating
         currentLibrary.setStudio(studio);
 
-        library.addTitle(title, currentLibrary);
+        libraryDao.addTitle(title, currentLibrary);
+        try {
+            libraryDao.writeLibrary();
+        } catch (IOException ex) {
+            System.out.println("Error");
+        }
         con.readString("DVD entry successfully created. Please hit enter to continue");
 
     }
 
     public void displayDvd() {
         String title = con.readString("Please enter the title of the movie you wish to view");
-        Library currentLibrary = library.getLibrary(title);
+        Library currentLibrary = libraryDao.getLibrary(title);
         if (currentLibrary != null) {
             con.print(currentLibrary.getDirector());
             con.printInt(currentLibrary.getYear());//added to console IO
@@ -154,7 +163,7 @@ public class DVDLibraryController {
 
     public void removeDvd() {
         String title = con.readString("Please enter the ID of the student to be removed");
-        library.removeTitle(title);
+        libraryDao.removeTitle(title);
         con.readString("DVD successfully removed. Please hit to continue.");
     }
 
@@ -172,14 +181,14 @@ public class DVDLibraryController {
         currentLibrary.setMpaa(mpaa);
         currentLibrary.setRating(userRating);//user rating
         currentLibrary.setStudio(studio);
-        library.addTitle(currentLibrary.getTitle(), currentLibrary);
+        libraryDao.addTitle(currentLibrary.getTitle(), currentLibrary);
 
     }
 
     public void viewAll() {
-        String[] title = library.getAllTitles();
+        String[] title = libraryDao.getAllTitles();
         for (int i = 0; i < title.length; i++) {
-            Library currentLibrary = library.getLibrary(title[i]);
+            Library currentLibrary = libraryDao.getLibrary(title[i]);
             con.print(title[i] + ": " + currentLibrary.getTitle() + " " + currentLibrary.getDirector() + " "
                     + currentLibrary.getYear());
         }

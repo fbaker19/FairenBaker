@@ -9,7 +9,7 @@ package com.swcguild.javaexperiment;
  *
  * @author apprentice
  */
-public class  {
+public class ObjectExperiment {
     public static void main(String[] args) {
         
     }

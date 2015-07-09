@@ -5,8 +5,6 @@
  */
 package com.swcguild.dvdlambda;
 
-import com.swcguild.dvdlibrary.Controller.DVDLibraryController;
-
 /**
  *
  * @author apprentice1
@@ -16,7 +14,7 @@ public class DVDLambdaRun {
 
     public static void main(String[] args) {
 
-        DVDLibraryController controller = new DVDLibraryController();
+        DVDLambdaController controller = new DVDLambdaController();
         controller.run();
     }
 }

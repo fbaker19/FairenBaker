@@ -13,8 +13,9 @@ import static sun.font.GlyphLayout.done;
  * @author apprentice
  */
 public class WhileExample {
+    private static boolean done;
     
-    static public void main(String[] args,){
+    static public void main(String[] args){
     
        Scanner sc = new Scanner(System.in);
 

@@ -19,10 +19,13 @@ public class App {
         SkiJumper sj = ctx.getBean("superSkiJumper", SkiJumper.class);// calls Spring "superSkiJumper" &  SkiJumper class
         sj.competeInEvent();
 
-        Event skiJumpEvent = new SkiJumpEvent();
-        Olympian olympianSkiJumper = new Olympian(skiJumpEvent);
-        olympianSkiJumper.competeInEvent();
+        
+        // NOT CREATED WITH SPRING
+//        Event skiJumpEvent = new SkiJumpEvent();
+//        Olympian olympianSkiJumper = new Olympian(skiJumpEvent);
+//        olympianSkiJumper.competeInEvent();
 
+ //CREATED WITH SPRING CREATED WITH SPRING CREATED WITH SPRING CREATED WITH SPRING CREATED WITH SPRING CREATED WITH SPRING CREATED WITH SPRING
         System.out.println("--------------===============================-----------");
         Olympian usaSkiJumper = ctx.getBean("usaSkiJumper", Olympian.class);//calls file(appContext) & (Olympian)class
         usaSkiJumper.competeInEvent();

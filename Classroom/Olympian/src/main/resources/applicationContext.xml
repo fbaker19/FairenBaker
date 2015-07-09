@@ -21,7 +21,7 @@
     <bean id = "skiJumping"   class="com.swcguild.olympian.SkiJumpEvent"/>
     <bean id = "crossCountry" class="com.swcguild.olympian.CrossCountrySkiEvent"/>
    
-    <!--creating new constructors in the Olypian class--> 
+    <!--creating new constructors in the Olympian class--> 
     <bean id = "usaSkiJumper" class="com.swcguild.olympian.Olympian">
         <constructor-arg ref ="skiJumping"/>
     </bean>
@@ -35,7 +35,25 @@
         <constructor-arg ref = "speedSkating"/>
         <property name = "country" value = "Canada"/>
     </bean>
+  <!--//////////////////////////////////////////////////////////////////////////////////////-->  
+    <bean id = "olympicOfficial" class="com.swcguild.olympian.OlympicOfficial"/>
     
+    <bean id  = "simpleTimerAspect" class = "com.swcguild.olympian.SimpleTimerAspect"/>
+    
+    <aop:config>
+        <aop:aspect ref = "olympicOfficial"> <!--what's being executed-->
+            <aop:before method= "inspectEquipment"
+                    pointcut  = "execution(* com.swcguild.olympian.Event.compete(..))"/><!--How it is executed-->
+            <aop:after method = "testForPED"
+                   pointcut = "execution(* com.swcguild.olympian.SkiJumpEvent.compete(..))"/>
+        </aop:aspect>
+   
+        <aop:aspect ref = "simpleTimerAspect">
+            <aop:around method = "timeMethod"
+                    pointcut = "execution(* com.swcguild.olympian.SkiJumpEvent.compete(..))"/>
+        </aop:aspect>
+
+    </aop:config>
     
     
 </beans>

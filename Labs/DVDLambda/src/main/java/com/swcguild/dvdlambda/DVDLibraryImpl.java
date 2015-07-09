@@ -25,12 +25,12 @@ import java.util.stream.Collectors;
  */
 public class DVDLibraryImpl implements Library {
 
-    public static final String DVDLIBRARY1_FILE = "DVDLibrary1.txt";//1 import file & Delimiter
+    public static final String DVDLIBRARY_FILE = "DvdLibrary.txt";//1 import file & Delimiter
     public static final String DELIMITER = "::"; //Delimiter = ::
 
     private Map<Integer, LibraryLambda> libraryMap = new HashMap<>();//2/ import DTO Class
 
-    List<LibraryLambda> libraries = new ArrayList<>();// creates a list from DTO
+    List<LibraryLambda> librariesList = new ArrayList<>();// creates a list from DTO
 
     public List<LibraryLambda> getAllTitles() {
         //Set<Integer> keySet = libraryMap.keySet();//sets array size
@@ -74,10 +74,10 @@ public class DVDLibraryImpl implements Library {
     }
 
     @Override
-    public List<LibraryLambda> searchByRating(float rating){
+    public List<LibraryLambda> searchByRating(float rating) {
         return libraryMap.values()
                 .stream()
-                .filter((LibraryLambda d) -> d.getRating()==rating)
+                .filter((LibraryLambda d) -> d.getRating() == rating)
                 .collect(Collectors.toList());
     }
 
@@ -97,35 +97,34 @@ public class DVDLibraryImpl implements Library {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * Comparator for Lambda
+     */
     private Integer nextID() {
         if (libraryMap == null || libraryMap.isEmpty()) {
             return 0;
         }
         Integer id = libraryMap.keySet()
                 .stream()
-                /**
-                 * Comparator for Lambda
-                 */
                 .max((Integer val1, Integer val2) -> {
                     return val1.compareTo(val2);
                 })
-                .get();//optional to get integer/int 
+                .get();    //optional to get integer/int 
 
         return id + 1;
 
     }
-
-    @Override
+ @Override
     public LibraryLambda getTitle(int Id) {
-     
-        return (LibraryLambda) libraryMap;
+
+        return (LibraryLambda)  libraryMap;
     }
 
 //    @Override
-//    public Integer addDvd(LibraryLambda libraries) {
-//        libraries.setId(nextID()); 
-//       libraryMap.put(libraries.getId(),libraries);
-//       return libraries.getId();
+//    public Integer addDvd(LibraryLambda librariesList) {
+//        librariesList.setId(nextID()); 
+//       libraryMap.put(librariesList.getId(),librariesList);
+//       return librariesList.getId();
 //    }
     @Override
     public void removeTitle(int Id) {
@@ -133,54 +132,66 @@ public class DVDLibraryImpl implements Library {
     }
 
     @Override
-    public Integer addDvd(LibraryLambda libraries) throws IOException {
-        libraries.setId(nextID());
-        libraryMap.put(libraries.getId(), libraries);
-        return libraries.getId();
+    public Integer addDvd(LibraryLambda librariesList) throws IOException {
+        librariesList.setId(nextID());
+        libraryMap.put(librariesList.getId(), librariesList);
+        return librariesList.getId();
     }
 
+    /**
+     *
+     * @throws FileNotFoundException
+     */
+    @Override
     public void loadLibraryLambda() throws FileNotFoundException {
-        Scanner sc = new Scanner(new BufferedReader(new FileReader(DVDLIBRARY1_FILE)));//Import Scanner (BufferedReader(FileReader(FILENAME_FILE)));
+        Scanner sc = new Scanner(new BufferedReader(new FileReader(DVDLIBRARY_FILE)));//Import Scanner (BufferedReader(FileReader(FILENAME_FILE)));
         String currentLine;
-        String[] currentTokens;//ARRRAY LIST
+        String[] currentTokens;//ARRAY LIST
         // work on controller after steps completed above
 
         while (sc.hasNextLine()) {
             currentLine = sc.nextLine();
+
             currentTokens = currentLine.split(DELIMITER);// array
+if(currentTokens.length>1)
+{
+    
 
-            LibraryLambda currentLibrary = new LibraryLambda(currentTokens[0]);
-          //imports DTO class &creates new constructor in DTO -- change into constructor >> this."___" 
+            LibraryLambda currentLibrary = new LibraryLambda(Integer.parseInt(currentTokens[0]));//ID
 
-            //setters - currentDTO.set
-            // currentLibrary.setTitle(currentTokens[0]);//needed?
-            currentLibrary.setDirector(currentTokens[1]);
-            currentLibrary.setYear(Integer.parseInt(currentTokens[2]));
-            currentLibrary.setMpaa(currentTokens[3]);
-            currentLibrary.setRating(Float.parseFloat(currentTokens[4]));//user rating
-            currentLibrary.setStudio(currentTokens[5]);
+            currentLibrary.setTitle(currentTokens[1]);
+            currentLibrary.setDirector(currentTokens[2]);
+            currentLibrary.setYear(Integer.parseInt(currentTokens[3]));
+            currentLibrary.setMpaa(currentTokens[4]);
+            currentLibrary.setRating(Float.parseFloat(currentTokens[5]));//user rating
+            currentLibrary.setStudio(currentTokens[6]);
 
             libraryMap.put(currentLibrary.getId(), currentLibrary);//what to search by
+            }
+            
         }
         sc.close();
     }
 
     public void writeLibraryLambda() throws IOException {
-        PrintWriter out = new PrintWriter(new FileWriter(DVDLIBRARY1_FILE));
+        PrintWriter out = new PrintWriter(new FileWriter(DVDLIBRARY_FILE));
         List<LibraryLambda> libraries = this.getAllTitles();//creates 'get' method w/in DAO(this class)
 
         for (LibraryLambda currentLibrary : libraries) {//what is is returning(String, Integer, List, ect) element(current__): arrayName
 
-            out.println(currentLibrary.getTitle() + DELIMITER
+          out.println(currentLibrary.getId() + DELIMITER// ADDED ID
+                    + currentLibrary.getTitle() + DELIMITER
                     + currentLibrary.getDirector() + DELIMITER
                     + currentLibrary.getYear() + DELIMITER
                     + currentLibrary.getMpaa() + DELIMITER
                     + currentLibrary.getRating() + DELIMITER
+                  
                     + currentLibrary.getStudio());
 
             out.flush();
         }
         out.close();
     }
+
 
 }

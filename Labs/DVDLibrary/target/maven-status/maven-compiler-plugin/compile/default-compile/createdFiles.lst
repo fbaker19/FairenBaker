@@ -1,0 +1,5 @@
+com/swcguild/dvdlibrary/Controller/DVDLibraryController.class
+com/swcguild/dvdlibrary/ui/DVDLibraryRun.class
+com/swcguild/dvdlibrary/dto/Library.class
+com/swcguild/Console/ConsoleIO.class
+com/swcguild/dvdlibrary/dao/DVDLibrary.class

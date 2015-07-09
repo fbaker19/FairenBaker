@@ -39,7 +39,7 @@ public class DVDLibrary {
     public static final String DVDLIBRARY1_FILE = "DVDLibrary1.txt";//1 import file & Delimiter
     public static final String DELIMITER = "::"; //Delimiter = ::
 
-    private HashMap<String, Library> libraries = new HashMap<String, Library>();//2/ import DTO Class
+    private HashMap<String, Library> librariesMap = new HashMap<String, Library>();//2/ import DTO Class
 
     public void loadLibrary() throws FileNotFoundException {
         Scanner sc = new Scanner(new BufferedReader(new FileReader(DVDLIBRARY1_FILE)));//Import Scanner (BufferedReader(FileReader(FILENAME_FILE)));
@@ -52,18 +52,14 @@ public class DVDLibrary {
             currentTokens = currentLine.split(DELIMITER);// array
 
             Library currentLibrary = new Library(currentTokens[0]);
-          //imports DTO class &creates new constructor in DTO -- change into constructor >> this."___" 
-
-            //setters - currentDTO.set
-           // currentLibrary.setTitle(currentTokens[0]);//needed?
-           
+          
             currentLibrary.setDirector(currentTokens[1]);
             currentLibrary.setYear(Integer.parseInt(currentTokens[2]));
             currentLibrary.setMpaa(currentTokens[3]);
             currentLibrary.setRating(Float.parseFloat(currentTokens[4]));//user rating
             currentLibrary.setStudio(currentTokens[5]);
 
-            libraries.put(currentLibrary.getTitle(), currentLibrary);//what to search by
+            librariesMap.put(currentLibrary.getTitle() , currentLibrary);//what to search by
         }
         sc.close();
     }
@@ -91,22 +87,22 @@ public class DVDLibrary {
     }
 
     public String[] getAllTitles() {
-        Set<String> keySet = libraries.keySet();//sets array size
+        Set<String> keySet = librariesMap.keySet();//sets array size
         String[] keyArray = new String[keySet.size()];
         keyArray = keySet.toArray(keyArray);
         return keyArray;
     }
 public void addTitle(String title, Library library) {
-        libraries.put(title, library);
+        librariesMap.put(title, library);
 
     }
     public Library getLibrary(String title) {
-        return libraries.get(title);
+        return librariesMap.get(title);
     }
 
     public Library removeTitle(String title) {
 
-        return libraries.remove(title);
+        return librariesMap.remove(title);
 
     }
 }

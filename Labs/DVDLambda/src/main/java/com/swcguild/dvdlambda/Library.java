@@ -8,6 +8,7 @@ package com.swcguild.dvdlambda;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -40,7 +41,7 @@ public interface Library {
     
    // public Integer addDvd(LibraryLambda libraries);
 
-    public LibraryLambda getTitle(int Id);
+  public LibraryLambda getTitle(int Id);
 
     public void removeTitle(int Id);
 
