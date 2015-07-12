@@ -28,13 +28,14 @@
     </bean>
     
     <bean id="thisComesFromAppContext" class="com.swcguild.olympian.Olympian"> <!--Constructing Olympian class-->
-        <constructor-arg ref = "speedSkating"/>
+        <constructor-arg ref = "speedSkating"/><!--Olym constructor takes a parameter of type Event/Interface-->
+        <property name="sandwich" value="cornbeef"/><!--get these names from varibles in class(Olympian)-->
     </bean>
     
     
     <bean id="canadianSpeedSkater" class="com.swcguild.olympian.Olympian"> <!--Constructing Olympian class-->
         <constructor-arg ref = "speedSkating"/>
-        <property name = "country" value = "Canada"/>
+        <property name = "country" value = "Canada"/><!---->
     </bean>
   <!--//////////////////////////////////////////////////////////////////////////////////////-->  
     <bean id = "olympicOfficial" class="com.swcguild.olympian.OlympicOfficial"/>

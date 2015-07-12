@@ -11,15 +11,25 @@ package com.swcguild.olympian;
  */
 public class Olympian {//DTO
     private Event event;
+                   //property & name (app context)
     private String country = "'Murica";
+    private String sandwich = "turkey";
+
+    public String getSandwich() {
+        return sandwich;
+    }
+
+    public void setSandwich(String sandwich) {
+        this.sandwich = sandwich;
+    }
     
     public Olympian(Event event)//interface injected into olympian
     {
-        this.event = event;
+        this.event = event;//constructor takes  parameter(Event)
     }
     public String competeInEvent()
     {
-        System.out.println("now competeing for "+country+ " :");
+        System.out.println("now competeing for "+country+ " eating sandwich  :" + sandwich);
         return event.compete();
     }
 
