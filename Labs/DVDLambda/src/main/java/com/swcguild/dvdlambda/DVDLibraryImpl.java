@@ -34,8 +34,9 @@ public class DVDLibraryImpl implements Library {
 
     public List<LibraryLambda> getAllTitles() {
         //Set<Integer> keySet = libraryMap.keySet();//sets array size
-        List<LibraryLambda> libraries = new ArrayList<>(libraryMap.values());///constuctor of Array List<>()
-        return libraries;
+        
+        List<LibraryLambda> librariesList = new ArrayList<>(libraryMap.values());///constuctor of Array List<>()
+        return librariesList;
 
     }
 

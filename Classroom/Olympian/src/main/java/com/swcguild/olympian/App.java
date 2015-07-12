@@ -30,7 +30,7 @@ public class App {
         Olympian usaSkiJumper = ctx.getBean("usaSkiJumper", Olympian.class);//calls file(appContext) & (Olympian)class
         usaSkiJumper.competeInEvent();
 
-        Olympian usaSpeedSkater = ctx.getBean("usaSpeedSkater", Olympian.class);
+        Olympian usaSpeedSkater = ctx.getBean("thisComesFromAppContext", Olympian.class);
         usaSpeedSkater.competeInEvent();
 
         Olympian canadianSpeedSkater = ctx.getBean("canadianSpeedSkater", Olympian.class);

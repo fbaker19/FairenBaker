@@ -16,7 +16,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class App {
     public static void main(String[] args) {
    ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
-       Controller controller = ctx.getBean( "controller", Controller.class); //jar may have benn added to POM
+       Controller controller = ctx.getBean( "controller", Controller.class); //jar may have been added to POM
                controller.run();
     }
     

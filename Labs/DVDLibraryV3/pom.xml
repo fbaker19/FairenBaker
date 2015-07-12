@@ -12,7 +12,7 @@
             <groupId>com.swcguild</groupId>
             <artifactId>DVDLibraryDao</artifactId>
             <version>1.0-SNAPSHOT</version>
-            <type>jar</type>
+            
         </dependency>
         
         <dependency>
@@ -25,9 +25,9 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
             <version>4.1.6.RELEASE</version>
-            <type>jar</type>
+            
         </dependency>
-      
+        
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
