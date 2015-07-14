@@ -15,7 +15,7 @@
         <h1>Response</h1>
         <a href ="RSVPServlet">Home</a>
         
-        Your answer was ${param.myAnswer}<br /> <!--EL - JAVA IN HTML-->
+        Your answer was ${param.myAnswer}<br /> <!--EL /JAVA IN HTML-->
         ${message}
         
         

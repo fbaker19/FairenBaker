@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author apprentice
  */
-@WebServlet(name = "ContactListServlet", urlPatterns = {"/ContactListServlet"})
+@WebServlet(name = "ContactListServlet", urlPatterns = {"/ContactListServletz"})
 public class ContactListServlet extends HttpServlet {
 
     /**
@@ -37,7 +37,7 @@ public class ContactListServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        //CONTROLLER CONTROLLER CONTROLLER CONTROLLER CONTROLLER CONTROLLER CONTROLLER CONTROLLER 
+       //CONTROLLER CONTROLLER CONTROLLER CONTROLLER CONTROLLER CONTROLLER CONTROLLER CONTROLLER 
         
         ContactsDAO conDao = new ContactsDAOMockImple();
         List<Contact> conList = new ArrayList<>();//array list of the DTO

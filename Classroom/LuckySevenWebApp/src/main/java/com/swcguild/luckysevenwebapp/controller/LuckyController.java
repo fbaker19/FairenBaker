@@ -3,49 +3,40 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.swcguild.refactoredlabs;
+package com.swcguild.luckysevenwebapp.controller;
 
+import com.swcguild.luckysevenwebapp.model.Luck;
 import java.util.Random;
-import java.util.Scanner;
-
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 /**
  *
  * @author apprentice
  */
-public class LuckySevensRefactored {
-
-    private Scanner sc = new Scanner(System.in);
+@Controller // sterotype controller??
+public class LuckyController {
     private Random die = new Random();
-
     private int die1Num; //nouns
     private int die2Num;
     private int dollars;         // initial number of dollars (input)
     private int countRolls;
     private int maxDollars;       // maximum amount held user/new number of dollars
     private int countMaxRolls;
-
-    //count down until player does not have any more $$$   
-    private int readUserInputIntRange(String prompt, int min) {
-        int userInput = 0;
-        boolean done = false;
-        while (!done) {
-            try {
-                do {
-                    System.out.println(prompt + " [minimum $" + min + "]");
-                    System.out.print("$");
-                    userInput = Integer.parseInt(sc.nextLine());
-                } while (userInput < min);
-                done = true;
-            } catch (Exception e) {
-                System.out.println("Invalid input, please try again\n");
-            }
-        }
-        return userInput; //userInput pushed int "PlayLuckySevens"
+    
+    
+      @RequestMapping(value = {"/","/lucky"}, method=RequestMethod.GET)//spring framework, that uses a GET method
+    public String doGet()
+    {
+        return "lucky";
     }
-
-
-    public void playLuckySevens() {//Servlet/Controller
-        dollars = readUserInputIntRange("How much money do you have?",1); //prompt
+    //POST  METHODS  ARE USED FOR USER INPUT
+     @RequestMapping(value = {"/","/lucky"}, method=RequestMethod.POST)//spring framework, that uses a POST method
+    public String doPost(@ModelAttribute Luck lucksVariable, Model model)//imports DTO /model Luck
+    {
+      dollars = lucksVariable.dollars;
         maxDollars = dollars;
         while (dollars > 0) //<---condition
         {
@@ -67,14 +58,10 @@ public class LuckySevensRefactored {
         }
 
         // Display the results
-        System.out.println("You are broke after " + countRolls + " rolls. "
+        lucksVariable.result = "You are broke after " + countRolls + " rolls. "
                 + "You should have quit after " + countMaxRolls
-                + " rolls when you had $" + maxDollars);
+                + " rolls when you had $" + maxDollars;
+        model.addAttribute("lucks", lucksVariable);
+        return "result";
     }
-    
-
-  
 }
-
-
-

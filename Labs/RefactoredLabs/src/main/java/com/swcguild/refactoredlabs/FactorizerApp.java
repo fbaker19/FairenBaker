@@ -5,17 +5,13 @@
  */
 package com.swcguild.refactoredlabs;
 
-import java.util.Random;
-
 /**
  *
  * @author apprentice
  */
-public class AppLuckySevens {
-
+public class FactorizerApp {
     public static void main(String[] args) {
-        LuckySevensRefactored simplified = new LuckySevensRefactored();
-        simplified.playLuckySevens();
-                
+    FactorizerRefactored factor = new FactorizerRefactored ();
+       factor. runFactorizer();
     }
 }
