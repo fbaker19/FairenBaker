@@ -27,14 +27,14 @@ public class LuckyController {
     private int countMaxRolls;
     
     //URL
-      @RequestMapping(value = {"/","/lucky"}, method=RequestMethod.GET)//spring framework, that uses a GET method
+      @RequestMapping(value = {"/lucky"}, method=RequestMethod.GET)//spring framework, that uses a GET method
     public String doGet()
     {
         return "lucky";
     }
     //URL
     //POST  METHODS  ARE USED FOR USER INPUT
-     @RequestMapping(value = {"/","/lucky"}, method=RequestMethod.POST)//spring framework, that uses a POST method
+     @RequestMapping(value = {"/lucky"}, method=RequestMethod.POST)//spring framework, that uses a POST method
     public String doPost(@ModelAttribute Luck lucksVariable, Model model)//imports DTO /model Luck
     {                                     //incoming DTO   - Out-going: feeds DTO into model>> jsp >>to user
       dollars = lucksVariable.dollars;
@@ -63,6 +63,6 @@ public class LuckyController {
                 + "You should have quit after " + countMaxRolls
                 + " rolls when you had $" + maxDollars;
         model.addAttribute("lucks", lucksVariable);
-        return "result";
+        return "result";//JSP result pg 
     }
 }

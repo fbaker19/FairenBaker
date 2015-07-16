@@ -1,4 +1,5 @@
-package com.swcguild.combolab.controller;
+package com.swcguild.combolab;
+
 
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
@@ -8,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "InterestCalc", urlPatterns = {"/InterestCalcServlet"})
-public class InterestCalcServlet extends HttpServlet {
+@WebServlet(name = "FactorizorServlet", urlPatterns = {"/FactorizorServlet","/"})
+public class FactorizorServlet extends HttpServlet {//SERVLET IS A POJO- Plain Old Java
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,7 +33,7 @@ public class InterestCalcServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher rd = request.getRequestDispatcher("interest.jsp");//place in ROOT (WEB)
+        RequestDispatcher rd = request.getRequestDispatcher("factor.jsp");
         rd.forward(request, response);
 
     }
@@ -48,41 +49,39 @@ public class InterestCalcServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//Initial amount of principal:
-        float originalBalance = Float.parseFloat(request.getParameter("originalBalance"));//user input
-        float currentBalance;
+        
+        int inputNum = Integer.parseInt(request.getParameter("inputNum"));
+        int sumOfFactors =0 ;
+        String message ="";//intialize variable
+        
+        message += "Please enter the number you want to factor:" ;
+        
+        message += (Integer.parseInt("You entered " + inputNum));
+       
+        message += ("The factors of " + inputNum + " are: ");
+      
+         for (int i = 1; i < inputNum; i++) {
+            if (inputNum % i == 0) {
+                System.out.println(i);
+                sumOfFactors = sumOfFactors + i;
+            }
+        }
+        //message = (Integer.parseInt(inputNum));
 
-        //The number of years the money is to stay in the fund:
-        float numYears = Float.parseFloat(request.getParameter("numYears")); //user input
+        if (sumOfFactors == inputNum) {
+             message +=(inputNum + " is a perfect number");
+        } else {
+             message += (inputNum + " is not a perfect number");
+        }
 
-        float numPeriods=Float.parseFloat(request.getParameter("numPeriods")); //user input
-        //Annual interest rate:
-        float intRate = Float.parseFloat(request.getParameter("intRate")); //user input
+        if (sumOfFactors == 1) {
+            message += (inputNum + " is a prime number");
+        } else {
+             message += (inputNum + " is not a prime number");
+        }
 
-        float annualInterest;
 
-        //Year end new balance:
-        float newBalance;
-        String message = "";
-      //message.append("Your cost without labor is: $<b>" + cost.format(totalCostWithoutLabor) + "</b><br/>");
-
-        int yearCount = 0;
-
-        do {
-
-            newBalance = (float) (originalBalance * (Math.pow(1 + ((intRate * .01) / numPeriods), (numPeriods))));
-            annualInterest = (newBalance - originalBalance);
-            yearCount++;
-            message += "Year " + yearCount;
-            message += " - Principal at start of year: "+ originalBalance;
-            message += "  Interest earned this year:" + annualInterest;
-            message +=  "Principal at end of year:" + newBalance;
-           
-
-            originalBalance = newBalance;
-        } while (yearCount <= (numYears - 1));
-
-            request.setAttribute("message", message);//"how it's written in the HTML RESPONSE file ${}"
+        request.setAttribute("message", message);
         RequestDispatcher rd = request.getRequestDispatcher("response.jsp"); // Pulling the Java method ${}
         rd.forward(request, response);
     }
@@ -95,5 +94,5 @@ public class InterestCalcServlet extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }
+    }// </editor-fold>
 }

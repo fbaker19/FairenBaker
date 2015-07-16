@@ -1,6 +1,5 @@
-/home/apprentice/Documents/JavaJune2015/FairenBaker/Labs/ComboLab/src/main/java/com/swcguild/combolab/controller/FactorizorServlet.java
-/home/apprentice/Documents/JavaJune2015/FairenBaker/Labs/ComboLab/src/main/java/com/swcguild/combolab/controller/InterestCalcServlet.java
-/home/apprentice/Documents/JavaJune2015/FairenBaker/Labs/ComboLab/src/main/java/com/swcguild/combolab/controller/LuckyController.java
-/home/apprentice/Documents/JavaJune2015/FairenBaker/Labs/ComboLab/src/main/java/com/swcguild/combolab/controller/FloorCalc.java
+/home/apprentice/Documents/JavaJune2015/FairenBaker/Labs/ComboLab/src/main/java/com/swcguild/combolab/FloorCalcServlet.java
+/home/apprentice/Documents/JavaJune2015/FairenBaker/Labs/ComboLab/src/main/java/com/swcguild/combolab/InterestCalcServlet.java
 /home/apprentice/Documents/JavaJune2015/FairenBaker/Labs/ComboLab/src/main/java/com/swcguild/combolab/model/Luck.java
-/home/apprentice/Documents/JavaJune2015/FairenBaker/Labs/ComboLab/src/main/java/com/swcguild/combolab/model/FactorizerDto.java
+/home/apprentice/Documents/JavaJune2015/FairenBaker/Labs/ComboLab/src/main/java/com/swcguild/combolab/FactorizorServlet.java
+/home/apprentice/Documents/JavaJune2015/FairenBaker/Labs/ComboLab/src/main/java/com/swcguild/combolab/LuckySevensServlet.java

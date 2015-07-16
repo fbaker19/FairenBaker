@@ -16,24 +16,22 @@
 
     </head>
     <body>
-
         <div class="container">
-            <div class="navbar">
-                <ul class="nav nav-tabs">
-                    <!--active = tabs active/highlighted-->
-                    <li role="presentation"><a href="${pageContext.request.contextPath}/interest">Interest Calculator</a></li>
-                    <li role="presentation"><a href="${pageContext.request.contextPath}/factor">Factorizor</a></li>
-                    <li role="presentation"class="active"><a href="${pageContext.request.contextPath}/lucky">Lucky Sevens</a></li>
-                    <li role="presentation"><a href="${pageContext.request.contextPath}/floor">Floor Calculator</a></li>
-
-                </ul>    
-            </div>
-            <h1>Lucky 7's </h1>
+            <h1>Lucky 7 </h1>
             <form action="lucky" th:action="@{/lucky}" th:object="${lucksVariable}" method="post"><!--Variable of the controller-->
-                <p>Dollars: <input type="text" name="Dollars" id="dollars" /></p>
-                <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+            <p>Dollars: <input type="text" name="Dollars" id="dollars" /></p>
+            <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
             </form>
         </div>
+               <div class="navbar">
+                 <ul class="nav nav-tabs">
+                     <!--active = tabs active/highlighted-->
+                <li role="presentation" class="active"><a href="${pageContext.request.contextPath}/InterestCalcServlet">Interest Calculator</a></li>
+                <li role="presentation"><a href="${pageContext.request.contextPath}/search">Search</a></li>
+                <li role="presentation"><a href="${pageContext.request.contextPath}/stats">Stats</a></li>
+                <li role="presentation"><a href="${pageContext.request.contextPath}/displayContactListNoAjax">Contact List(No Ajax)</a></li>
+                 </ul>    
+            </div>
         <!-- Placed at the end of the document so the pages load faster -->
         <script src="${pageContext.request.contextPath}/js/jquery-1.11.1.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
