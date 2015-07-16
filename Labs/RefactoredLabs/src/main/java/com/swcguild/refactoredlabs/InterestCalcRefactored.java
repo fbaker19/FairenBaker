@@ -12,7 +12,10 @@ import java.util.Scanner;
  * @author apprentice
  */
 public class InterestCalcRefactored {
-    {
+    
+    
+    
+    public void runICR() {
         Scanner sc = new Scanner(System.in);
 
         //Initial amount of principal:

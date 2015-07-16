@@ -19,8 +19,11 @@ public class Luck {//DTO/Model for every DTO there Needs to be a jsp file (each 
     public void setDollars(int choice) {
         this.dollars = choice;
     }
+   
+    
     public String result;
-       public String getResult() {
+      
+    public String getResult() {
         return result;
     }
 

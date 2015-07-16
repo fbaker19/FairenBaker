@@ -11,9 +11,9 @@ package FlooringDTO;
  * @author Clay McMullen
  */
 public class Product {
-    String productName;
-    double costPerSqFt;
-    double laborCostPerSqFt;
+    private String productName;
+    private double costPerSqFt;
+    private double laborCostPerSqFt;
 
     public String getProductName() {
         return productName;

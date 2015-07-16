@@ -18,9 +18,9 @@
     <body>
         <div class="container">
             <h1>Lucky 7 </h1>
-            <form action="#" th:action="@{/lucky}" th:object="${lucksVariable}" method="post"><!--Variable of the controller-->
-           <p>Dollars: <input type="text" name="Dollars" id="dollars" /></p>
-        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+            <form action="lucky" th:action="@{/lucky}" th:object="${lucksVariable}" method="post"><!--Variable of the controller-->
+            <p>Dollars: <input type="text" name="Dollars" id="dollars" /></p>
+            <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
             </form>
         </div>
         <!-- Placed at the end of the document so the pages load faster -->
