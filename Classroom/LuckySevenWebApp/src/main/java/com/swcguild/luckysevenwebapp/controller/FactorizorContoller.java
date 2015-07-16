@@ -38,7 +38,7 @@ public class FactorizorContoller {
         
         message += "You entered " + inputNum;
        
-        message += "The factors of " + inputNum + " are: ";
+        message += " The factors of " + inputNum + " are: ";
       
          for (int i = 1; i < inputNum; i++) {
             if (inputNum % i == 0) {

@@ -28,7 +28,7 @@
             <h1> Welcome to Interest Calculator </h1>
             <hr/>
             
-                    ${message}
+            ${message}<br />
            
         </div>
         <!-- Placed at the end of the document so the pages load faster -->

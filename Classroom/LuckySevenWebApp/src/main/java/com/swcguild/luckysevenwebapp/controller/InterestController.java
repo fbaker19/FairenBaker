@@ -53,10 +53,10 @@ public class InterestController {
             newBalance = (float) (originalBalance * (Math.pow(1 + ((intRate * .01) / numPeriods), (numPeriods))));
             annualInterest = (newBalance - originalBalance);
             yearCount++;
-            message += "Year " + yearCount;
-            message += " - Principal at start of year: "+ originalBalance;
-            message += "  Interest earned this year:" + annualInterest;
-            message +=  "Principal at end of year:" + newBalance;
+            message += " YEAR:  " + yearCount;
+            message += "    ...Principal at start of year:  "+ originalBalance;
+            message += "    ...Interest earned this year:   " + annualInterest;
+            message +=  "   ...Principal at end of year:    " + newBalance;
            
 
             originalBalance = newBalance;
