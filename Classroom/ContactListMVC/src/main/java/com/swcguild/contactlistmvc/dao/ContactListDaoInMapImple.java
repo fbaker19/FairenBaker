@@ -21,16 +21,15 @@ import java.util.stream.Collectors;
  */
 public class ContactListDaoInMapImple implements ContactListDAO {
 
-    private Map<Integer, Contact> contactMap = new HashMap<>();//helps search by Id with Interger(id)  assigned by 'Contact' DTO ( getters & setters)
+    private Map<Integer, Contact> contactMap = new HashMap<>();
     private static int contactIdCounter = 0;
-
+    
     @Override
-    public Contact addContact(Contact contactVar) {
-        contactVar.setContactId(contactIdCounter);//contactVar sets Id to variable of contactId
+    public Contact addContact(Contact contact) {
+        contact.setContactId(contactIdCounter);
         contactIdCounter++;
-        contactMap.put(contactVar.getContactId(), contactVar);//places counter in local class hashmap
-        return contactVar;//returns the id set to contactVar
-
+        contactMap.put(contact.getContactId(),contact);
+        return contact;
     }
 
     @Override
@@ -39,14 +38,34 @@ public class ContactListDaoInMapImple implements ContactListDAO {
     }
 
     @Override
-    public void updateContact(Contact contactVar) {
-        contactMap.put(contactVar.getContactId(), contactVar);
+    public void updateContact(Contact contact) {
+        contactMap.put(contact.getContactId(), contact);
     }
 
     @Override
     public List<Contact> getAllContacts() {
+        
+//        Contact contact1 = new Contact();
+//        contact1.setFirstName("Bill");
+//        contact1.setCompany("Microsoft");
+//        contact1.setEmail("bill@microsoft.com");
+//        contact1.setPhone("444-3939");
+//              
+//        
+//        Contact contact2 = new Contact();
+//        contact2.setFirstName("Justin");
+//        contact2.setCompany("Oracle");
+//        contact2.setEmail("bill@oracle.com");
+//        contact2.setPhone("222-3939");
+//        
+//        
+//        List<Contact> list = new ArrayList<>();
+//        list.add(contact1);
+//        list.add(contact2);
+//        return list;
+        
         Collection<Contact> c = contactMap.values();
-        return new ArrayList<>(c);
+        return new ArrayList(c);
     }
 
     @Override
@@ -55,57 +74,51 @@ public class ContactListDaoInMapImple implements ContactListDAO {
     }
 
     @Override
-    public List<Contact> searchContacts(Map<SearchTerm, String> criteriaMap) {
-
-        String firstNameCriteria = criteriaMap.get(SearchTerm.FIRST_NAME);//criteriaMap gets the enum
-        String lastNameCriteria = criteriaMap.get(SearchTerm.LAST_NAME);
-        String companyCriteria = criteriaMap.get(SearchTerm.COMPANY);
-        String phoneCriteria = criteriaMap.get(SearchTerm.PHONE);
-        String emailCriteria = criteriaMap.get(SearchTerm.EMAIL);
-
+    public List<Contact> searchContacts(Map<SearchTerm, String> criteria) {
+        
+        String firstNameCriteria = criteria.get(SearchTerm.FIRST_NAME);
+        String lastNameCriteria = criteria.get(SearchTerm.LAST_NAME);
+        String companyCriteria = criteria.get(SearchTerm.COMPANY);
+        String phoneCriteria = criteria.get(SearchTerm.PHONE);
+        String emailCriteria = criteria.get(SearchTerm.EMAIL);
+        
         Predicate<Contact> firstNameMatches;
         Predicate<Contact> lastNameMatches;
         Predicate<Contact> companyMatches;
         Predicate<Contact> phoneMatches;
         Predicate<Contact> emailMatches;
         
-
-        Predicate<Contact> truePredicate = (c) -> {
-            return true;
-        }; 
+        Predicate<Contact> truePredicate = (c) -> {return true;};
         
-            //if statement(null || 'isEmpty Criteria/var') ': else statement(Lambda)
-
+        firstNameMatches = (firstNameCriteria == null || firstNameCriteria.isEmpty())?
+                            truePredicate
+                : (c) -> c.getFirstName().equalsIgnoreCase(firstNameCriteria);
         
-        firstNameMatches = (firstNameCriteria == null || firstNameCriteria.isEmpty()) ?// ternary operator 
-                truePredicate//if (search by everything)
-                : (c) -> c.getFirstName().equalsIgnoreCase(firstNameCriteria);//else (search by specified....ie 'firstName')
-
-        lastNameMatches = (lastNameCriteria == null || lastNameCriteria.isEmpty())
-                ? truePredicate
+        lastNameMatches = (lastNameCriteria == null || lastNameCriteria.isEmpty())?
+                            truePredicate
                 : (c) -> c.getLastName().equalsIgnoreCase(lastNameCriteria);
-
-        companyMatches = (companyCriteria == null || companyCriteria.isEmpty())
-                ? truePredicate
+        
+        companyMatches = (companyCriteria == null || companyCriteria.isEmpty())?
+                            truePredicate
                 : (c) -> c.getCompany().equalsIgnoreCase(companyCriteria);
-
-        phoneMatches = (phoneCriteria == null || phoneCriteria.isEmpty())
-                ? truePredicate
+        
+        phoneMatches = (phoneCriteria == null || phoneCriteria.isEmpty())?
+                            truePredicate
                 : (c) -> c.getPhone().equalsIgnoreCase(phoneCriteria);
-
-        emailMatches = (emailCriteria == null || emailCriteria.isEmpty())
-                ? truePredicate
+        
+        emailMatches = (emailCriteria == null || emailCriteria.isEmpty())?
+                            truePredicate
                 : (c) -> c.getEmail().equalsIgnoreCase(emailCriteria);
-
-        return contactMap.values()
-                .stream()
-                .filter(firstNameMatches
-                    .and(lastNameMatches)
-                    .and(companyMatches)
-                    .and(phoneMatches)
-                    .and(emailMatches))
-                .collect(Collectors.toList());
-
+        
+        return contactMap.values().stream()
+                    .filter(firstNameMatches
+                                .and(lastNameMatches)
+                                .and(companyMatches)
+                                .and(phoneMatches)
+                                .and(emailMatches)
+                    )
+                    .collect(Collectors.toList());
+        
     }
-
+    
 }

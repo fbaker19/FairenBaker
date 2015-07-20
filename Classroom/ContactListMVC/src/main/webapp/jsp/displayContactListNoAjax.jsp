@@ -24,7 +24,7 @@
         </div>
         <div class="container">
             <h1>Company Contacts</h1>
-            <a href="displayNewContactFormNoAjax">Add a contact</a>
+            <a href="displayNewContactForm">Add a contact</a><!--linked to another JSP-->
             <hr/>
             
             <c:forEach var="contact" items="${contactList}">

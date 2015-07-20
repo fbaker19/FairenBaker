@@ -36,6 +36,7 @@ public class HomeControllerNoAjax {
     
     @RequestMapping(value="/addNewContactNoAjax", method=RequestMethod.POST)
     public String addNewContactNoAjax(HttpServletRequest request) {
+       
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
         String company = request.getParameter("company");
