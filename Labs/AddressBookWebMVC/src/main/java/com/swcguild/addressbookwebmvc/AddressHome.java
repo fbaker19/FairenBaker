@@ -15,10 +15,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 public class AddressHome {
-  
-    @RequestMapping(value = {"/","/addressHome"}, method=RequestMethod.GET)//spring framework, that uses a GET method
-    public String homePage()
-    {
-        return "addressHome";
-    }  
+
+    @RequestMapping(value = {"/", "/addressHome"}, method = RequestMethod.GET)
+    public String getToHome() {
+        return "addressHome";//Home page method
+    }
 }

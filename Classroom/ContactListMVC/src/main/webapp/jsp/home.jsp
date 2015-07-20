@@ -154,8 +154,8 @@
              </div>
               <!-- end Details modal -->
               
+              
               <!-- Edit modal -->
-             
               <div class = "modal fade" id ="editModal" table-index ="-1" aria-labelledby="detailsModelLabel" aria-hidden ="true">
                   <div class="modal-dialog">
                       <div class="modal-content">
@@ -169,10 +169,8 @@
                               <h4 class="modal-title" id="detailsModalLabel">Edit Contact</h4>
                           </div>
                           
-                          
-                          
                           <div class="modal-body">
-                              <h3 id="contact-id"></h3>
+                              <h3 id="contact-id"></h3><!--.text in js/Ajax-->
                               <form class="form-horizontal" role ="form">
                                   <div class="form-group">
                                       <label for ="edit-first-name" class="col-md-4 control-label">First Name:</label>

@@ -32,7 +32,7 @@
             <a href="displayNewAddressForm">Add a Address</a><!--linked to another JSP-->
             <hr/>
             
-            <c:forEach var="address" items="${aList}"><!--import array list-->
+            <c:forEach var="addressVar" items="${addressList}"><!--import array list & sets variable ex var=addressVar-->
                 <s:url value="deleteAddress" var="deleteAddress_url">
                     <s:param name="addressId" value="${addressVar.addressId}" />
                 </s:url>

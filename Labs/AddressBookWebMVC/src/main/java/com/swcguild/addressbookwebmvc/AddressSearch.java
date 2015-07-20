@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @author apprentice
  */
 
-@Controller
 public class AddressSearch {
  @RequestMapping(value ="/addressSearch",method=RequestMethod.GET)
  public String displaySearch()
