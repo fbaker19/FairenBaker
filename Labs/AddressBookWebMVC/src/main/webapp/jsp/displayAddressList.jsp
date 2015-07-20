@@ -20,7 +20,7 @@
             <div class="navbar">
                 <ul class="nav nav-tabs">
                     <li role="presentation"><a href="${pageContext.request.contextPath}/addressHome">Home</a></li>
-                    < <li role="presentation" ><a href="${pageContext.request.contextPath}/addressSearch">Search</a></li>
+                    <li role="presentation" ><a href="${pageContext.request.contextPath}/addressSearch">Search</a></li>
                     <li role="presentation" ><a href="${pageContext.request.contextPath}/addressStats">Stats</a></li>
                     <li role ="presentation"class="active"><a href ="${pageContext.request.contextPath}/displayAddressList">Address List</a></li>
                 </ul>    
@@ -32,12 +32,12 @@
             <a href="displayNewAddressForm">Add a Address</a><!--linked to another JSP-->
             <hr/>
             
-            <c:forEach var="address" items="${addressList}">
+            <c:forEach var="address" items="${aList}"><!--import array list-->
                 <s:url value="deleteAddress" var="deleteAddress_url">
-                    <s:param name="addressId" value="${addressVar.contactId}" />
+                    <s:param name="addressId" value="${addressVar.addressId}" />
                 </s:url>
-                <s:url value="editAddressForm" var="editContact_url">
-                    <s:param name="addressId" value="${addressVar.contactId}" />
+                <s:url value="displayEditAddressForm" var="editContact_url">
+                    <s:param name="addressId" value="${addressVar.addressId}" />
                 </s:url>
                 
                 <c:if test="${addressVar.lastName == 'Doe'}">
@@ -47,10 +47,10 @@
                 Name: ${addressVar.firstName} ${addressVar.lastName} | 
                 <a href="${deleteAddress_url}">Delete</a> |
                 <a href="${editAddress_url}">Edit</a><br/>
-                Address and Street: ${addressVar.phone} <br/>
+                Address: ${addressVar.numberAndStreet} <br/>
                 City: ${addressVar.city} <br/>
                 State: ${addressVar.state} <br/>
-                Zip::${addressVar.zip}<br />
+                Zip:${addressVar.zip}<br/>
                 <hr/>
                 
             </c:forEach>

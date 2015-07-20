@@ -5,6 +5,7 @@
  */
 package com.swcguild.dvdlambda;
 
+import com.swcguild.dvdlambda.LibraryLambda;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;

@@ -11,8 +11,7 @@ package com.swcguild.contactlistmvc.model;
  */
 public enum SearchTerm {//changed "class" to "enum"
     
-    FIRST_NAME, LAST_NAME,COMPANY, PHONE, EMAIL
-    
+    FIRST_NAME, LAST_NAME,COMPANY, PHONE, EMAIL   
 }
 
 

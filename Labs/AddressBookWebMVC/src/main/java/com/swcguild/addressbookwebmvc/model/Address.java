@@ -23,6 +23,8 @@ public class Address {
     private String numberAndStreet;
 
    
+    private int addressId;
+    
     public Address(String lastName) {
         this.lastName = lastName;
     }
@@ -90,6 +92,7 @@ public class Address {
     @Override
     public int hashCode() {
         int hash = 5;
+        hash = 79 * hash + this.addressId;
         hash = 79 * hash + Objects.hashCode(this.id);
         hash = 79 * hash + Objects.hashCode(this.city);
         hash = 79 * hash + Objects.hashCode(this.state);

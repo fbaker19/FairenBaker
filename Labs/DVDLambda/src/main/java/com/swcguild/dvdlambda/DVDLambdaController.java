@@ -5,6 +5,9 @@
  */
 package com.swcguild.dvdlambda;
 
+//import com.swcguild.dvdlibraryweb.model.LibraryLambda;
+/*import swcguild.dvdlibraryweb.dao.DVDLibraryImpl;
+import swcguild.dvdlibraryweb.dao.Library;*/
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
@@ -35,7 +38,7 @@ import java.util.List;
 public class DVDLambdaController {
 
     private ConsoleIO con = new ConsoleIO(); //1 add in refactored console IO
-    private Library libraryDao = new DVDLibraryImpl();// add in DAO/fileholder>>Lambda use "impl"
+    private Library libraryDao = (Library) new DVDLibraryImpl();// add in DAO/fileholder>>Lambda use "impl"
 
     Integer Id;
 

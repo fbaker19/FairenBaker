@@ -60,8 +60,8 @@
                         <label for="add-state" class="col-md-4 control-label">State: </label>
                         <div class="col-md-8">
                         <sf:input type="text" class="form-control" id="add-state" path="state" placeholder="State" />
-                        <sf:hidden path="contactId" /> <!-- the sf:hidden field is used to retain the contact id number for the contact when it goes back to the controller -->
                         <sf:errors path="state" cssclass="error"></sf:errors>
+                        <sf:hidden path="addressId" /> <!-- the sf:hidden field is used to retain the contact id number for the contact when it goes back to the controller -->
                         </div>
                     </div>
 
