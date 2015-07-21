@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package swcguild.dvdlibraryweb.dao;
+package com.swcguild.dvdlibraryweb.dao;
 
+import com.swcguild.dvdlibraryweb.model.DvdSearchTerms;
 import com.swcguild.dvdlibraryweb.model.LibraryLambda;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -36,7 +37,7 @@ public interface Library {
 //
 //    public void writeLibraryLambda() throws IOException;
     
-    public Integer addDvd(LibraryLambda libraries) throws IOException;
+    public Integer addDvd(LibraryLambda libraries);
 
     public List<LibraryLambda> getAllTitles();
     
@@ -49,6 +50,7 @@ public interface Library {
     public void removeTitle(int Id);
 
     //public void addDvd(Integer id, LibraryLambda currentLibrary);
-
+   public List<LibraryLambda> searchAddress(Map<DvdSearchTerms, String> criteriaMap);//enum
+    //searching by map
 
 }

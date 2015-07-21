@@ -3,11 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package swcguild.dvdlibraryweb.dao;
+package com.swcguild.dvdlibraryweb.dao;
 
 //import com.swcguild.dvdlambda.LibraryLambda;
+import com.swcguild.dvdlibraryweb.model.DvdSearchTerms;
 import com.swcguild.dvdlibraryweb.model.LibraryLambda;
-import swcguild.dvdlibraryweb.dao.Library;
+import com.swcguild.dvdlibraryweb.dao.Library;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -20,6 +21,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 /**
@@ -31,15 +33,16 @@ public class DVDLibraryImpl implements Library {
 //    public static final String DVDLIBRARY_FILE = "DvdLibrary.txt";//1 import file & Delimiter
 //    public static final String DELIMITER = "::"; //Delimiter = ::
 
-    private Map<Integer, LibraryLambda> libraryMap = new HashMap<>();//2/ import DTO Class
+    private final Map<Integer, LibraryLambda> libraryMap = new HashMap<>();//2/ import DTO Class
 
     List<LibraryLambda> librariesList = new ArrayList<>();// creates a list from DTO
 
+    @Override
     public List<LibraryLambda> getAllTitles() {
         //Set<Integer> keySet = libraryMap.keySet();//sets array size
         
-        List<LibraryLambda> librariesList = new ArrayList<>(libraryMap.values());///constuctor of Array List<>()
-        return librariesList;
+        List<LibraryLambda> lList = new ArrayList<>(libraryMap.values());///constuctor of Array List<>()
+        return lList;
 
     }
 
@@ -81,7 +84,7 @@ public class DVDLibraryImpl implements Library {
     public List<LibraryLambda> searchByRating(String rating) {
         return libraryMap.values()
                 .stream()
-                .filter((LibraryLambda d) -> d.getRating() == rating)
+                .filter((LibraryLambda d) -> d.getRating().equals(rating))
                 .collect(Collectors.toList());
     }
 
@@ -119,9 +122,9 @@ public class DVDLibraryImpl implements Library {
 
     }
  @Override
-    public LibraryLambda getTitle(int Id) {
+    public LibraryLambda getTitle(int Id) {///remember to pass in the paramater (Via get.)
 
-        return (LibraryLambda)  libraryMap;
+        return libraryMap.get(Id);
     }
 
 //    @Override
@@ -136,7 +139,7 @@ public class DVDLibraryImpl implements Library {
     }
 
     @Override
-    public Integer addDvd(LibraryLambda librariesList) throws IOException {
+    public Integer addDvd(LibraryLambda librariesList) {
         librariesList.setId(nextID());
         libraryMap.put(librariesList.getId(), librariesList);
         return librariesList.getId();
@@ -197,11 +200,70 @@ public class DVDLibraryImpl implements Library {
 //        out.close();
 //    }
 
-    
-
+    /**
+     *
+     * @param libraries
+     * @throws FileNotFoundException
+     */
     @Override
     public void updateLibrary(LibraryLambda libraries) {
         libraryMap.put(libraries.getId(), libraries);
+    }
+
+   
+
+    @Override
+    public List<LibraryLambda> searchAddress(Map<DvdSearchTerms, String> criteriaMap) {
+       
+        String titleCriteria = criteriaMap.get(DvdSearchTerms.TITLE);
+        String directorCriteria = criteriaMap.get(DvdSearchTerms.DIRECTOR);
+        String releaseDateCriteria = criteriaMap.get(DvdSearchTerms.RELEASE_DATE);
+        String mpaaCriteria = criteriaMap.get(DvdSearchTerms.MPAA);
+        String ratingCriteria = criteriaMap.get(DvdSearchTerms.RATING);
+        String studioCriteria = criteriaMap.get(DvdSearchTerms.STUDIO);
+        
+        Predicate<LibraryLambda> titleMatches;
+        Predicate<LibraryLambda> directorMatches;
+        Predicate<LibraryLambda> releaseDateMatches;
+        Predicate<LibraryLambda> mpaaMatches;
+        Predicate<LibraryLambda> ratingMatches;
+        Predicate<LibraryLambda> studioMatches;
+        
+        Predicate<LibraryLambda> truePredicate = (c) -> {return true;};
+        
+        titleMatches = (titleCriteria == null || titleCriteria.isEmpty())?
+                            truePredicate
+                : (c) -> c.getTitle().equalsIgnoreCase(titleCriteria);
+        
+        directorMatches = (directorCriteria == null || directorCriteria.isEmpty())?
+                            truePredicate
+                : (c) -> c.getDirector().equalsIgnoreCase(directorCriteria);
+        
+        releaseDateMatches = (releaseDateCriteria == null || releaseDateCriteria.isEmpty())?
+                            truePredicate
+                : (c) -> c.getReleaseDate().equalsIgnoreCase(releaseDateCriteria);
+        
+       mpaaMatches = ( mpaaCriteria == null ||  mpaaCriteria.isEmpty())?
+                            truePredicate
+                : (c) -> c.getMpaa().equalsIgnoreCase( mpaaCriteria);
+        
+        ratingMatches = (ratingCriteria == null || ratingCriteria.isEmpty())?
+                            truePredicate
+                : (c) -> c.getRating().equalsIgnoreCase(ratingCriteria);
+        
+        studioMatches = (studioCriteria == null || studioCriteria.isEmpty())?
+                            truePredicate
+                : (c) -> c.getStudio().equalsIgnoreCase(studioCriteria);
+        
+        return libraryMap.values().stream()
+                    .filter(titleMatches 
+                                .and(directorMatches)
+                                .and(releaseDateMatches)
+                                .and(mpaaMatches)
+                                .and(ratingMatches)
+                                .and(studioMatches)
+                    )
+                    .collect(Collectors.toList());
     }
 
  

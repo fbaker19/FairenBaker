@@ -5,20 +5,20 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Dvd Library</title>
+        <title>DVDLibrary</title>
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet"> <!-- Bootstrap core CSS -->
         <link rel="shortcut icon" href="http://www.thesoftwareguild.com/favicons/favicon-32x32.png"> <!-- SWC Icon -->
     </head>
     <body>
         <div class="container">
-            <h1>Dvd Library</h1>
+            <h1>DVD Library</h1>
             <hr/>
             <div class="navbar">
                 <ul class="nav nav-tabs">
-                 <li role="presentation"><a href="${pageContext.request.contextPath}/dvdHome">Home</a></li>
-                 <li role="presentation"><a href="${pageContext.request.contextPath}/dvdSearch">Search</a></li>
-                 <li role="presentation"><a href="${pageContext.request.contextPath}/dvdStats">Stats</a></li>
-                 <li role="presentation" class="active"><a href="${pageContext.request.contextPath}/displayDvdList">DVD List </a></li>
+                    <li role="presentation"><a href="${pageContext.request.contextPath}/dvdHome">Home</a></li>
+                    <li role="presentation"><a href="${pageContext.request.contextPath}/dvdSearch">Search</a></li>
+                    <li role="presentation"><a href="${pageContext.request.contextPath}/dvdStats">Stats</a></li>
+                    <li role="presentation" class="active"><a href="${pageContext.request.contextPath}/displayDvdList">DVD List</a></li>
                 </ul>    
             </div>
         </div>
@@ -26,29 +26,29 @@
             <h1>DVD Library</h1>
             <a href="displayNewDvdForm">Add a DVD</a><!--linked to another JSP-->
             <hr/>
-            
+
             <c:forEach var="ll" items="${dvdList}">
                 <s:url value="deleteDvd" var="deleteDvd_url">
-                    <s:param name="dvdId" value="${ll.dvdId}" />
+                    <s:param name="dvdId" value="${ll.id}" />
                 </s:url>
                 <s:url value="displayEditDvdForm" var="editDvd_url">
-                    <s:param name="dvdId" value="${ll.dvdId}" />
+                    <s:param name="dvdId" value="${ll.id}" /><!--DTO/Model-->
                 </s:url>
-                
+
                 <c:if test="${ll.title == 'Fast&Furious'}">
                     CEO<br/>
                 </c:if>
-                
+
                 Name: ${ll.title}|
-                Director:${ll.director} | 
                 <a href="${deleteDvd_url}">Delete</a> |
                 <a href="${editDvd_url}">Edit</a><br/>
+                Director:${ll.director}  
                 Release Date: ${ll.releaseDate} <br/>
                 MPAA Rating: ${ll.mpaa} <br/>
                 Viewer Rating: ${ll.rating} <br/>
-                Studio: ${ll.studio}
+                Studio: ${ll.studio}<br/>
                 <hr/>
-                
+
             </c:forEach>
         </div>
         <!-- Placed at the end of the document so the pages load faster -->

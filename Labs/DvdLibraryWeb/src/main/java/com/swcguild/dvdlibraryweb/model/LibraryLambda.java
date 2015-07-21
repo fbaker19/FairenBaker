@@ -39,7 +39,6 @@ public class LibraryLambda {//stores Variables and Getters n' Setters
         this.note = note;
     }
     
-    
 
     public String getReleaseDate() {
         return releaseDate;

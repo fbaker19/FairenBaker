@@ -6,6 +6,7 @@
 package com.swcguild.contactlistmvc.model;
 
 import java.util.Objects;
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -16,6 +17,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class Contact {//MODEL  HOLDS DTO's
 
     /*
+     //fyi - manual entry: copy dependency into POM file, maven handles the rest
      manual entry for hibernate - POM file
     
      <groupId>javax.validation</groupId>
@@ -24,7 +26,8 @@ public class Contact {//MODEL  HOLDS DTO's
      */
     private int contactId;
 
-    @NotEmpty(message = "You must supply a value for first name")//hibernate validaion -- can't leave entry blank 
+    //hibernate validaion -- can't leave entry blank
+    @NotEmpty(message = "You must supply a value for first name") 
     @Length(max = 50, message = "Name cannot exceed 50 characters in length")  //fyi - manual entry: copy dependency into POM file, maven handles the rest
     private String firstName;
 
@@ -40,7 +43,7 @@ public class Contact {//MODEL  HOLDS DTO's
     @Length(max = 10, message = "Number cannot exceed 10 characters in length\nno dashes")
     private String phone;
 
-    @NotEmpty(message = "Please supply a value for lemail")
+    @Email(message = "Please supply a proper value for email")
     @Length(max = 50, message = "Name cannot exceed 50 characters in length")
     private String email;
 

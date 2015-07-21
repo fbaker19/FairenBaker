@@ -33,9 +33,18 @@ $(document).ready(function () {
             $('#add-company').val('');
             $('#add-phone').val('');
             $('#add-email').val('');
+            
+            $('#validationErrors').empty(); //WHY?  when to insert this ? - clears out the form
 
             loadContacts();
 
+        }).error(function(data,status){//data = jso package, status = number
+            var errors = data.responseJSON.fieldErrors;
+            $.each(errors, function(index,validaionError){
+                var errorDiv = $('#validaiontErrors ');
+                errorDiv.append(validationError.message)
+                        .append($('<br>'));
+            });
         });
     });
 });
@@ -44,7 +53,7 @@ function fillContactTable(contactList, status)
 {
     clearContactTable();
     var cTable = $('#contentRows');
-    $.each(data, function (index, contact)
+    $.each(contactList, function (index, contact)
     {
         cTable.append($('<tr>')
                 .append($('<td>').append($('<a>')

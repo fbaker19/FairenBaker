@@ -1,4 +1,4 @@
-package com.swcguild.dvdlibraryweb;
+package com.swcguild.dvdlibraryweb.controller;
 
 import com.swcguild.dvdlibraryweb.model.LibraryLambda;
 import java.io.IOException;
@@ -15,11 +15,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import swcguild.dvdlibraryweb.dao.Library;
+import com.swcguild.dvdlibraryweb.dao.Library;
 
 @Controller
 public class DvdMainController {
-    private Library dao;
+    private Library dao;//interface
     
     @Inject //Spring goes thru and finds the bean that implements the interface that matches the interface below
     public DvdMainController(Library dao) {
@@ -61,27 +61,24 @@ public class DvdMainController {
         ll.setRating(rating);
         ll.setStudio(studio);
        
-        
-        try {
-            dao.addDvd(ll);
-        } catch (IOException ex) {
-            Logger.getLogger(DvdMainController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            dao.addDvd(ll);//lookat impl
+       
         
         return "redirect:displayDvdList";
     }
     
     @RequestMapping(value="/deleteDvd", method=RequestMethod.GET)
     public String deleteDvd(HttpServletRequest request) {
-        int DvdId = Integer.parseInt(request.getParameter("DvdId"));
-        dao.removeTitle(DvdId);
+       
+        int  id = Integer.parseInt(request.getParameter("dvdId"));
+        dao.removeTitle(id);///variable name should comfrom DTO
         return "redirect:displayDvdList";
     }
     
     @RequestMapping(value="/displayEditDvdForm", method=RequestMethod.GET)
     public String displayEditDvdForm(HttpServletRequest request, Model model) {
-        int DvdId = Integer.parseInt(request.getParameter("DvdId"));
-        LibraryLambda ll = dao.getTitle(DvdId);
+        int id =Integer.parseInt(request.getParameter("dvdId"));//sets the <s:para name>
+        LibraryLambda ll = dao.getTitle(id);///variable name should comfrom DTO
         model.addAttribute("ll", ll);
         return "editDvdForm";
     }

@@ -15,7 +15,7 @@
     </head>
     <body>
         <div class="container">
-            <h1>Dvd Library</h1>
+            <h1>DVD Library</h1>
             <hr/>
             <div class="navbar">
                 <ul class="nav nav-tabs">
@@ -29,10 +29,10 @@
 
             <div class="row">
                 <div class="col-md-6">
-                    <h2>My Contacts</h2>
+                    <h2>DVD's</h2>
                     <table id="contactTable" class="table table-hover">
                         <tr>
-                            <th width="40%">Dvd Title</th>
+                            <th width="40%">DVD Title</th>
                             <th width="30%">Release Date</th>
                             <th width="15%"></th>
                             <th width="15%"></th>
@@ -41,7 +41,7 @@
                     </table>
                 </div>
                 <div class="col-md-6">
-                    <h2> Add New Dvd</h2>
+                    <h2> Add New DVD</h2>
                     <form class="form-horizontal" role="form">
                         <div class="form-group">
                             <label for="add-title" class="col-md-4 control-label">

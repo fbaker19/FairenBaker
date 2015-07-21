@@ -10,5 +10,6 @@ package com.swcguild.dvdlibraryweb.model;
  * @author apprentice
  */
 public enum DvdSearchTerms {
-    TITLE, DIRECTOR, RELEASE_DATE, MPAA, RATING, STUDIO, YEAR   
+    TITLE, DIRECTOR, RELEASE_DATE, MPAA, RATING, STUDIO
+    
 }

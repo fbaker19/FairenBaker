@@ -96,6 +96,8 @@
                        
                         </form>
                         
+                        <div id="validationErrors" style ="color:red"/></div>
+                        
                     </div> <!-- end of add form div -->
                 </div>
             </div>

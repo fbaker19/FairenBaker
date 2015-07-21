@@ -36,7 +36,7 @@
                 <s:url value="deleteAddress" var="deleteAddress_url">
                     <s:param name="addressId" value="${addressVar.addressId}" />
                 </s:url>
-                <s:url value="displayEditAddressForm" var="editContact_url">
+                <s:url value="displayEditAddressForm" var="editAddress_url">
                     <s:param name="addressId" value="${addressVar.addressId}" />
                 </s:url>
                 

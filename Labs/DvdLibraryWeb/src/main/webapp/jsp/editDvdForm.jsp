@@ -57,8 +57,8 @@
                     <label for="add-rating" class="col-md-4 control-label">Viewer Rating:</label>
                     <div class="col-md-8">
                         <sf:input type="text" class="form-control" id="add-rating" path="rating" placeholder="Viewer Rating" />
-                        <sf:errors path="phone" cssclass="error"></sf:errors>
-                        <sf:hidden path="addressId" />
+                        <sf:errors path="rating" cssclass="error"></sf:errors>
+                        <sf:hidden path="id" /><!--PATHS SHOULD MATCH DTO VARIABLE NAMES-->
                     </div>
                 </div>
                      <div class="form-group">

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.swcguild.dvdlibraryweb;
+package com.swcguild.dvdlibraryweb.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @author apprentice
  */
 @Controller
-public class DvdStats {
-      @RequestMapping(value = "/dvdStats", method=RequestMethod.GET)//refers to spring framework
-    public String displayStatsPage()
+public class DvdHome {
+     @RequestMapping(value={"/","/dvdHome"}, method=RequestMethod.GET)
+    public String displayHomePage()
     {
-        return "dvdStats";
+        return "dvdHome";
     }
     
 }
