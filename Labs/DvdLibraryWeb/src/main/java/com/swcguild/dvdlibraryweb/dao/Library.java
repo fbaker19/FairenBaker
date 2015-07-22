@@ -6,7 +6,7 @@
 package com.swcguild.dvdlibraryweb.dao;
 
 import com.swcguild.dvdlibraryweb.model.DvdSearchTerms;
-import com.swcguild.dvdlibraryweb.model.LibraryLambda;
+import com.swcguild.dvdlibraryweb.model.DVD;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
@@ -18,39 +18,39 @@ import java.util.Map;
  */
 public interface Library {
 
-    public List<LibraryLambda> searchByTitle(String title);
+    public List<DVD> searchByTitle(String title);
 
-    public List<LibraryLambda> searchByYear(String year);
+    public List<DVD> searchByYear(String year);
 
-    public List<LibraryLambda> searchByDirector(String director);
+    public List<DVD> searchByDirector(String director);
 
-    public List<LibraryLambda> searchByMpaa(String mpaa);
+    public List<DVD> searchByMpaa(String mpaa);
 
-    public List<LibraryLambda> searchByRating(String rating);
+    public List<DVD> searchByRating(String rating);
 
-    public List<LibraryLambda> searchByStudio(String studio);
+    public List<DVD> searchByStudio(String studio);
 
-    public List<LibraryLambda> searchById(Integer Id);
+    public List<DVD> searchById(Integer Id);
 
     
 //    public void loadLibraryLambda() throws FileNotFoundException;
 //
 //    public void writeLibraryLambda() throws IOException;
     
-    public Integer addDvd(LibraryLambda libraries);
+    public Integer addDvd(DVD libraries);
 
-    public List<LibraryLambda> getAllTitles();
+    public List<DVD> getAllTitles();
     
-   // public Integer addDvd(LibraryLambda libraries);
+   // public Integer addDvd(DVD libraries);
 
-    public void updateLibrary(LibraryLambda libraries);
+    public void updateLibrary(DVD libraries);
   
-    public LibraryLambda getTitle(int Id);
+    public DVD getTitle(int Id);
 
     public void removeTitle(int Id);
 
-    //public void addDvd(Integer id, LibraryLambda currentLibrary);
-   public List<LibraryLambda> searchAddress(Map<DvdSearchTerms, String> criteriaMap);//enum
+    //public void addDvd(Integer id, DVD currentLibrary);
+   public List<DVD> searchAddress(Map<DvdSearchTerms, String> criteriaMap);//enum
     //searching by map
 
 }

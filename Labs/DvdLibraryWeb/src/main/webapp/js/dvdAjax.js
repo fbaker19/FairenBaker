@@ -37,7 +37,7 @@ $(document).ready(function () {
             $('#add-studio').val('');
 
 
-            $('#validationErrors').empty(); //WHY?  when to insert this ? - clears out the form
+            $('#validationErrors').empty(); //flush for the div that displays errors
 
             loadDvd();
 
@@ -56,13 +56,13 @@ function fillDvdTable(dvdList, status)
 {
     clearDvdTable();
     var dvdTable = $('#contentRows');
-    $.each(dvdList, function (index, dvd)
+    $.each(dvdList, function (index, dvd)//donkey lobsters
     {
         //IMPORTANT = Creation of the table
         dvdTable.append($('<tr>')
                 .append($('<td>').append($('<a>')
                         .attr({
-                            'data-dvd-id': dvd.id, //element.data('contact-id');
+                            'data-dvd-id': dvd.id, //element.data('dvd-id' this makes HTML and shows up in the created methods as new attributes);
                             'data-toggle': 'modal',
                             'data-target': '#detailsModal'
                         })
@@ -88,8 +88,8 @@ function fillDvdTable(dvdList, status)
 function loadDvd() {
 
     $.ajax({
-        url: "dvds"
-    }).success(function (data, status) {
+        url: "dvds"//maksee request from server/ endpoint  on controller
+    }).success(function (data, status) {//data:carries List<DVD>
         fillDvdTable(data, status); //called function/method
     });
 }
@@ -107,14 +107,14 @@ $('#detailsModal').on('show.bs.modal', function (event) {//bs.modal=bootstrap->c
     var modal = $(this);
     $.ajax({
         type: 'GET',
-        url: 'dvdLibrary' + id///!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        url: 'dvdLibrary/' + id///!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 //commands inside of funtion - use ;
     }).success(function (dvd) {//(contact) ===donkeylobster/monkeyfish
         modal.find('#dvd-id').text(dvd.id); //( in the ().DTO)
         modal.find('#dvd-title').text(dvd.title);
         modal.find('#dvd-director').text(dvd.director);
-        modal.find('#dvd-releas-date').text(dvd.releaseDate);
+        modal.find('#dvd-release-date').text(dvd.releaseDate);
         modal.find('#dvd-mpaa').text(dvd.mpaa);
         modal.find('#dvd-rating').text(dvd.rating);
         modal.find('#dvd-studio').text(dvd.studio);

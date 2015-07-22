@@ -5,9 +5,9 @@
  */
 package com.swcguild.dvdlibraryweb.dao;
 
-//import com.swcguild.dvdlambda.LibraryLambda;
+//import com.swcguild.dvdlambda.DVD;
 import com.swcguild.dvdlibraryweb.model.DvdSearchTerms;
-import com.swcguild.dvdlibraryweb.model.LibraryLambda;
+import com.swcguild.dvdlibraryweb.model.DVD;
 import com.swcguild.dvdlibraryweb.dao.Library;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -33,22 +33,22 @@ public class DVDLibraryImpl implements Library {
 //    public static final String DVDLIBRARY_FILE = "DvdLibrary.txt";//1 import file & Delimiter
 //    public static final String DELIMITER = "::"; //Delimiter = ::
 
-    private final Map<Integer, LibraryLambda> libraryMap = new HashMap<>();//2/ import DTO Class
+    private final Map<Integer, DVD> libraryMap = new HashMap<>();//2/ import DTO Class
 
-    List<LibraryLambda> librariesList = new ArrayList<>();// creates a list from DTO
+    List<DVD> librariesList = new ArrayList<>();// creates a list from DTO
 
     @Override
-    public List<LibraryLambda> getAllTitles() {
+    public List<DVD> getAllTitles() {
         //Set<Integer> keySet = libraryMap.keySet();//sets array size
         
-        List<LibraryLambda> lList = new ArrayList<>(libraryMap.values());///constuctor of Array List<>()
+        List<DVD> lList = new ArrayList<>(libraryMap.values());///constuctor of Array List<>()
         return lList;
 
     }
 
     @Override
-    public List<LibraryLambda> searchByTitle(String title) {
-        return (List<LibraryLambda>) libraryMap.values()
+    public List<DVD> searchByTitle(String title) {
+        return (List<DVD>) libraryMap.values()
                 .stream()
                 .filter(d -> d.getTitle().equalsIgnoreCase(title))
                 .collect(Collectors.toList());
@@ -56,16 +56,16 @@ public class DVDLibraryImpl implements Library {
     }
 
     @Override
-    public List<LibraryLambda> searchByYear(String year) {
-        return (List<LibraryLambda>) libraryMap.values()
+    public List<DVD> searchByYear(String year) {
+        return (List<DVD>) libraryMap.values()
                 .stream()
-                .filter((LibraryLambda d) -> year.equals(d.getYear()))
+                .filter((DVD d) -> year.equals(d.getYear()))
                 .collect(Collectors.toList());
 
     }
 
     @Override
-    public List<LibraryLambda> searchByDirector(String director) {
+    public List<DVD> searchByDirector(String director) {
         return libraryMap.values()
                 .stream()
                 .filter(d -> d.getDirector().equalsIgnoreCase(director))
@@ -73,7 +73,7 @@ public class DVDLibraryImpl implements Library {
     }
 
     @Override
-    public List<LibraryLambda> searchByMpaa(String mpaa) {
+    public List<DVD> searchByMpaa(String mpaa) {
         return libraryMap.values()
                 .stream()
                 .filter(d -> d.getMpaa().equalsIgnoreCase(mpaa))
@@ -81,15 +81,15 @@ public class DVDLibraryImpl implements Library {
     }
 
     @Override
-    public List<LibraryLambda> searchByRating(String rating) {
+    public List<DVD> searchByRating(String rating) {
         return libraryMap.values()
                 .stream()
-                .filter((LibraryLambda d) -> d.getRating().equals(rating))
+                .filter((DVD d) -> d.getRating().equals(rating))
                 .collect(Collectors.toList());
     }
 
     @Override
-    public List<LibraryLambda> searchByStudio(String studio) {
+    public List<DVD> searchByStudio(String studio) {
         return libraryMap.values()
                 .stream()
                 .filter(d -> d.getStudio().equalsIgnoreCase(studio))
@@ -97,7 +97,7 @@ public class DVDLibraryImpl implements Library {
     }
 
     @Override
-    public List<LibraryLambda> searchById(Integer Id) {
+    public List<DVD> searchById(Integer Id) {
         return libraryMap.values()
                 .stream()
                 .filter(d -> d.getId().equals(Id))
@@ -122,13 +122,13 @@ public class DVDLibraryImpl implements Library {
 
     }
  @Override
-    public LibraryLambda getTitle(int Id) {///remember to pass in the paramater (Via get.)
+    public DVD getTitle(int Id) {///remember to pass in the paramater (Via get.)
 
         return libraryMap.get(Id);
     }
 
 //    @Override
-//    public Integer addDvd(LibraryLambda librariesList) {
+//    public Integer addDvd(DVD librariesList) {
 //        librariesList.setId(nextID()); 
 //       libraryMap.put(librariesList.getId(),librariesList);
 //       return librariesList.getId();
@@ -139,7 +139,7 @@ public class DVDLibraryImpl implements Library {
     }
 
     @Override
-    public Integer addDvd(LibraryLambda librariesList) {
+    public Integer addDvd(DVD librariesList) {
         librariesList.setId(nextID());
         libraryMap.put(librariesList.getId(), librariesList);
         return librariesList.getId();
@@ -164,7 +164,7 @@ public class DVDLibraryImpl implements Library {
 //{
 //    
 //
-//            LibraryLambda currentLibrary = new LibraryLambda(Integer.parseInt(currentTokens[0]));//ID
+//            DVD currentLibrary = new DVD(Integer.parseInt(currentTokens[0]));//ID
 //
 //            currentLibrary.setTitle(currentTokens[1]);
 //            currentLibrary.setDirector(currentTokens[2]);
@@ -184,7 +184,7 @@ public class DVDLibraryImpl implements Library {
 //        PrintWriter out = new PrintWriter(new FileWriter(DVDLIBRARY_FILE));
 //        List<LibraryLambda> libraries = this.getAllTitles();//creates 'get' method w/in DAO(this class)
 //
-//        for (LibraryLambda currentLibrary : libraries) {//what is is returning(String, Integer, List, ect) element(current__): arrayName
+//        for (DVD currentLibrary : libraries) {//what is is returning(String, Integer, List, ect) element(current__): arrayName
 //
 //          out.println(currentLibrary.getId() + DELIMITER// ADDED ID
 //                    + currentLibrary.getTitle() + DELIMITER
@@ -206,14 +206,14 @@ public class DVDLibraryImpl implements Library {
      * @throws FileNotFoundException
      */
     @Override
-    public void updateLibrary(LibraryLambda libraries) {
+    public void updateLibrary(DVD libraries) {
         libraryMap.put(libraries.getId(), libraries);
     }
 
    
 
     @Override
-    public List<LibraryLambda> searchAddress(Map<DvdSearchTerms, String> criteriaMap) {
+    public List<DVD> searchAddress(Map<DvdSearchTerms, String> criteriaMap) {
        
         String titleCriteria = criteriaMap.get(DvdSearchTerms.TITLE);
         String directorCriteria = criteriaMap.get(DvdSearchTerms.DIRECTOR);
@@ -222,14 +222,14 @@ public class DVDLibraryImpl implements Library {
         String ratingCriteria = criteriaMap.get(DvdSearchTerms.RATING);
         String studioCriteria = criteriaMap.get(DvdSearchTerms.STUDIO);
         
-        Predicate<LibraryLambda> titleMatches;
-        Predicate<LibraryLambda> directorMatches;
-        Predicate<LibraryLambda> releaseDateMatches;
-        Predicate<LibraryLambda> mpaaMatches;
-        Predicate<LibraryLambda> ratingMatches;
-        Predicate<LibraryLambda> studioMatches;
+        Predicate<DVD> titleMatches;
+        Predicate<DVD> directorMatches;
+        Predicate<DVD> releaseDateMatches;
+        Predicate<DVD> mpaaMatches;
+        Predicate<DVD> ratingMatches;
+        Predicate<DVD> studioMatches;
         
-        Predicate<LibraryLambda> truePredicate = (c) -> {return true;};
+        Predicate<DVD> truePredicate = (c) -> {return true;};
         
         titleMatches = (titleCriteria == null || titleCriteria.isEmpty())?
                             truePredicate

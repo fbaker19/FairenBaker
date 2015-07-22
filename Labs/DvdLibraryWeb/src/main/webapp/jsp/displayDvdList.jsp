@@ -17,7 +17,6 @@
                 <ul class="nav nav-tabs">
                     <li role="presentation"><a href="${pageContext.request.contextPath}/dvdHome">Home</a></li>
                     <li role="presentation"><a href="${pageContext.request.contextPath}/dvdSearch">Search</a></li>
-                    <li role="presentation"><a href="${pageContext.request.contextPath}/dvdStats">Stats</a></li>
                     <li role="presentation" class="active"><a href="${pageContext.request.contextPath}/displayDvdList">DVD List</a></li>
                 </ul>    
             </div>

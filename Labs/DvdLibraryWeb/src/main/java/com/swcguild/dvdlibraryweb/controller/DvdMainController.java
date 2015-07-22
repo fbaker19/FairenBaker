@@ -1,6 +1,6 @@
 package com.swcguild.dvdlibraryweb.controller;
 
-import com.swcguild.dvdlibraryweb.model.LibraryLambda;
+import com.swcguild.dvdlibraryweb.model.DVD;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
@@ -29,7 +29,7 @@ public class DvdMainController {
     
     @RequestMapping(value="/displayDvdList", method=RequestMethod.GET)
     public String displayDvdList(Model model) {
-        List<LibraryLambda> dvdList = dao.getAllTitles();
+        List<DVD> dvdList = dao.getAllTitles();
         model.addAttribute("dvdList", dvdList); //this is how we return input values back to the View
         return "displayDvdList";
     }
@@ -50,7 +50,7 @@ public class DvdMainController {
         String studio =request.getParameter("studio");
       
         
-        LibraryLambda  ll = new LibraryLambda();    
+        DVD  ll = new DVD();    
         ll.setTitle(title);
         ll.setDirector(director);
         ll.setReleaseDate(releaseDate);
@@ -75,13 +75,13 @@ public class DvdMainController {
     @RequestMapping(value="/displayEditDvdForm", method=RequestMethod.GET)
     public String displayEditDvdForm(HttpServletRequest request, Model model) {
         int id =Integer.parseInt(request.getParameter("dvdId"));//sets the <s:para name>
-        LibraryLambda ll = dao.getTitle(id);///variable name should comfrom DTO
+        DVD ll = dao.getTitle(id);///variable name should comfrom DTO
         model.addAttribute("ll", ll);
         return "editDvdForm";
     }
     
     @RequestMapping(value="/editDvd", method=RequestMethod.POST)
-    public String editDvd(@Valid @ModelAttribute("ll") LibraryLambda ll,
+    public String editDvd(@Valid @ModelAttribute("ll") DVD ll,
                                         BindingResult result)
     {
         if(result.hasErrors())

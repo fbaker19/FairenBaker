@@ -12,7 +12,7 @@ import java.util.Objects;
  *
  * @author apprentice
  */
-public class LibraryLambda {//stores Variables and Getters n' Setters
+public class DVD {//stores Variables and Getters n' Setters
     
     private int id; //= 0;//initilized
     private String title;
@@ -25,7 +25,7 @@ public class LibraryLambda {//stores Variables and Getters n' Setters
     private String note;
 
     
-    public LibraryLambda() {
+    public DVD() {
        int Id = 0;
         id = Id;
     }
@@ -48,7 +48,7 @@ public class LibraryLambda {//stores Variables and Getters n' Setters
         this.releaseDate = releaseDate;
     }
     
-    public LibraryLambda(String title) {
+    public DVD(String title) {
         this.title = title;
     }
 
@@ -108,7 +108,7 @@ public class LibraryLambda {//stores Variables and Getters n' Setters
         this.id = id;
     }
 
-//    LibraryLambda(String Id) {
+//    DVD(String Id) {
 //        id = Id; //To change body of generated methods, choose Tools | Templates.
 //    }
 
@@ -135,7 +135,7 @@ public class LibraryLambda {//stores Variables and Getters n' Setters
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final LibraryLambda other = (LibraryLambda) obj;
+        final DVD other = (DVD) obj;
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }

@@ -16,5 +16,5 @@
 
     <!-- Bean definitions go here -->
     <bean id="dvdLibraryDao" class="com.swcguild.dvdlibraryweb.dao.DVDLibraryImpl" />
-     <bean id="dvdLibraryController" class="com.swcguild.dvdlibraryweb.controller.DvdAjaxController" />
+     
 </beans>

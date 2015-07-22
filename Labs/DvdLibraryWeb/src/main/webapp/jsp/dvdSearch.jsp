@@ -21,7 +21,6 @@
                  <ul class="nav nav-tabs">
                      <li role="presentation"><a href="${pageContext.request.contextPath}/dvdHome">Home</a></li>
                      <li role="presentation"class="active"><a href="${pageContext.request.contextPath}/dvdSearch">Search</a></li>
-                     <li role="presentation"><a href="${pageContext.request.contextPath}/dvdStats">Stats</a></li>
                      <li role="presentation"><a href="${pageContext.request.contextPath}/displayDvdList">DVD List </a></li>
                  </ul>    
             </div>
@@ -31,7 +30,7 @@
                         <table id="dvdTable" class="table table-hover">
                             <tr>
                                 <th width="40%">DVD Name</th>
-                                <th width="30%">Release Date</th>
+                                <th width="30%">Director</th>
                                 <th width="15%"></th>
                                 <th width="15%"></th>
                             </tr>
@@ -125,7 +124,7 @@
 
                     <!-- Modal Body -->
                     <div class="modal-body">
-                        <h3 id = "dvd-id"></h3><!--.text in js/Ajax--> <!--!!!!!!!!!!!!!!!DONKEYLOBSTER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+                        <h3 id = "dvd-id"></h3><!--.text in js/Ajax--> <!--!!!DONKEYLOBSTER!!!!-->
                         <table class="table table-bordered">
                             <tr>
                                 <th>Title:</th><td id ="dvd-title"></td>
