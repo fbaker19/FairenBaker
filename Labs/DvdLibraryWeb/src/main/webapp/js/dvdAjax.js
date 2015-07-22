@@ -52,7 +52,7 @@ $(document).ready(function () {
     });
 });
 
-function fillDvdTable(dvdList, status)
+function fillDvdTable(dvdList, status)// creates HTML & pulls from dto ex(.id)
 {
     clearDvdTable();
     var dvdTable = $('#contentRows');
@@ -79,7 +79,7 @@ function fillDvdTable(dvdList, status)
                         ))
                 .append($('<td>')
                         .append($('<a>')
-                                .attr({'onClick': 'deleteDvd(' + dvd.id + ')'})
+                                .attr({'onClick': 'deleteDvd(' + dvd.id + ')'}) //creates <a onClick = 'deleteDvd(3)/any id num' > Delete< /a>
                                 .text('Delete')))
                 );
     });
@@ -102,7 +102,7 @@ function clearDvdTable()
 $('#detailsModal').on('show.bs.modal', function (event) {//bs.modal=bootstrap->click button/show
     //event is part of bootstrap
     var element = $(event.relatedTarget);
-    var id = element.data('dvd-id'); //!!!!!!!!!!!!!!!!!!! var anything or match DTO?
+    var id = element.data('dvd-id'); //!!!!!!!!!!!!!!!!!!! var anything or match DTO 
 
     var modal = $(this);
     $.ajax({
@@ -130,15 +130,15 @@ $('#editModal').on('show.bs.modal', function (event) {
     $.ajax({
         type: 'GET',
         url: 'dvdLibrary/' + id
-    }).success(function (dvd) {//contact can be any variable does not have to match DTO -->>donkeylobster
+    }).success(function (dvd) {//contact/dvd/ -function(donkeyLobster) can be any variable does not have to match DTO -->>donkeylobster
 //commands inside of function - use ;
-       // modal.find('#dvd-id').text(dvd.id); //contactId is label==text
+        modal.find('#dvd-id').text(dvd.id); //contactId is label==text
         
 //INPUTS ==.val & labels==.text(see <h3> element on home.jsp)
-        modal.find('#dvd-id').text(dvd.id); //( in the ().DTO)
+        modal.find('#edit-dvd-id').val(dvd.id); //( in the ().DTO) ex - .text(donkeyLobster.id)// HIDDEN FILED  within HTML (ATTIBUTE) within Input element - see button by form tag
         modal.find('#edit-dvd-title').val(dvd.title);
         modal.find('#edit-dvd-director').val(dvd.director);
-        modal.find('#edit-dvd-releas-date').val(dvd.releaseDate);
+        modal.find('#edit-dvd-release-date').val(dvd.releaseDate);
         modal.find('#edit-dvd-mpaa').val(dvd.mpaa);
         modal.find('#edit-dvd-rating').val(dvd.rating);
         modal.find('#edit-dvd-studio').val(dvd.studio);
@@ -167,10 +167,10 @@ $('#edit-button').click(function (event) {
         },
         'data-Type': 'json'
     }).success(function () {//commands inside of funtion - use ;
-        loadDvd();
+        loadDvd();//call the load dvd function(see above)
     });
 });
-function deleteDvd(id)
+function deleteDvd(id)//pulls from DVD table method, which pulls from DTO
 {
     var answer = confirm("Do you really want to delete this DVD?"); //client side verification
     if (answer === true)

@@ -145,7 +145,9 @@ $('#editModal').on('show.bs.modal', function (event) {
 });
 
 $('#edit-button').click(function (event) {
+   
     event.preventDefault();
+   
     $.ajax({
         type: 'PUT',
         url: 'contact/' + $('#edit-contact-id').val(),

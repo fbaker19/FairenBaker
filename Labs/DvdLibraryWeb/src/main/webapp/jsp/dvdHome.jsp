@@ -108,7 +108,7 @@
         </div>
 
         <!-- MODAL = POP-UP Window -->
-        <!-- Details Modal--> 
+        <!-- Details Modal/see AJAX--> 
         <div class = "modal fade" id ="detailsModal" tabindex="-1" role="dialog" 
              aria-labelledby =" detailsModalLabel" aria-hidden =" true">
             <div class = "modal-dialog">
@@ -146,7 +146,7 @@
                             <tr>
                                 <th>Studio:</th><td id ="dvd-studio"></td>
                             </tr>
-                            </tr>
+                           
                         </table>
                     </div>
                     <!-- Modal Body End -->
