@@ -14,6 +14,7 @@ $(document).ready(function () {
             type: 'POST',
             url: 'contact',
             data: JSON.stringify({
+               
                 firstName: $('#add-first-name').val(),
                 lastName: $('#add-last-name').val(),
                 company: $('#add-company').val(),
@@ -58,7 +59,7 @@ function fillContactTable(contactList, status)
         cTable.append($('<tr>')
                 .append($('<td>').append($('<a>')
                         .attr({
-                            'data-contact-id': contact.contactId,
+                            'data-contact-id': contact.contactId,//element.data('contact-id');
                             'data-toggle': 'modal',
                             'data-target': '#detailsModal'
                         })
@@ -67,7 +68,7 @@ function fillContactTable(contactList, status)
                 .append($('<td>').append(
                         $('<a>')
                         .attr({
-                            'data-contact-id': contact.contactId,
+                            'data-contact-id': contact.contactId, //element.data('contact-id');
                             'data-toggle': 'modal',
                             'data-target': '#editModal'
                         })
@@ -86,7 +87,7 @@ function loadContacts() {
     $.ajax({
         url: "contacts"
     }).success(function (data, status) {
-        fillContactTable(data, status);//called funtion/method
+        fillContactTable(data, status);//called function/method
     });
 }
 
@@ -107,8 +108,8 @@ $('#detailsModal').on('show.bs.modal', function (event) {//bs.modal=bootstrap->c
         type: 'GET',
         url: 'contact/' + contactId
 
-    }).success(function (contact) {
-        modal.find('#contact-id').text(contact.contactId);
+    }).success(function (contact) {//(contact) ===donkeylobster/monkeyfish
+        modal.find('#contact-id').text(contact.contactId);//( in the ().DTO)
         modal.find('#contact-firstName').text(contact.firstName);
         modal.find('#contact-lastName').text(contact.lastName);
         modal.find('#contact-company').text(contact.company);
@@ -122,7 +123,7 @@ $('#editModal').on('show.bs.modal', function (event) {
 
     var element = $(event.relatedTarget);
 
-    var contactId = element.data('contact-id');
+    var contactId = element.data('contact-id');//
 
     var modal = $(this);
     $.ajax({

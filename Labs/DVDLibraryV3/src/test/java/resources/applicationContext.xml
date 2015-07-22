@@ -17,5 +17,5 @@
     <!-- Bean definitions go here -->
     
     <bean id = "controller" class="com.swcguild.dvdlibraryv3.controller.Controller"/>
-    <bean id="dvdLibraryDao" class="com.swcguild.dvdlibraryv3.dao.DvdLibraryV3ImplFB"/>
+     <bean id="dvdLibraryDao" class="com.swcguild.dvdlibraryv3.dao.DvdLibraryV3ImplFB"/>
 </beans>

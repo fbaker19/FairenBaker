@@ -45,7 +45,7 @@ public class HomeController {
     /////AJAX AJAX AJAX AJAX AJAX AJAX AJAX AJAX AJAX AJAX AJAX AJAX AJAX AJAX //////
     @RequestMapping(value="/contact/{contactId}", method=RequestMethod.GET)
     @ResponseBody public Contact getContact(@PathVariable("contactId") int contactId) {
-        return dao.getContactById(contactId);
+        return dao.getContactById(contactId);///pull this from DTO 
     }
     
     
@@ -54,7 +54,7 @@ public class HomeController {
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody 
     public Contact createContact(@Valid @RequestBody Contact contact) {
-        dao.addContact(contact);
+        dao.addContact(contact);///Pull from dto
         return contact;
     }
     
@@ -62,14 +62,14 @@ public class HomeController {
     @RequestMapping(value="/contact/{id}", method=RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteContact(@PathVariable("id") int id) {
-        dao.removeContact(id);
+        dao.removeContact(id);//pull from dto
     }
     
     
     
     @RequestMapping(value="/contact/{id}", method=RequestMethod.PUT)
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void putContact(@PathVariable("id") int id, @RequestBody Contact contact) {
+    public void putContact(@PathVariable("id") int id, @RequestBody Contact contact) {///imports 
         contact.setContactId(id);
         dao.updateContact(contact);
     }
@@ -80,6 +80,4 @@ public class HomeController {
         return dao.getAllContacts();
     }
     
-    
-    
-}
+ }

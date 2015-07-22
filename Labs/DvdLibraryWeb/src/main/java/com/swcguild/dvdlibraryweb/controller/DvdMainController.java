@@ -25,10 +25,7 @@ public class DvdMainController {
     public DvdMainController(Library dao) {
         this.dao = dao;
     }
-//      @RequestMapping(value={"/","/dvdHome"}, method=RequestMethod.GET)
-//    public String displayHomePage() {
-//        return "dvdHome";
-//    }
+
     
     @RequestMapping(value="/displayDvdList", method=RequestMethod.GET)
     public String displayDvdList(Model model) {
