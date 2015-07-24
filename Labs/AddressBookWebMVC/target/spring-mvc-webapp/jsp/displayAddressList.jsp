@@ -15,13 +15,13 @@
     </head>
     <body>
         <div class="container">
-            <h1>Spring MVC Application from Archetype</h1>
+            <h1>Address Book - No Ajax (This time I say 'NO')</h1>
             <hr/>
             <div class="navbar">
                 <ul class="nav nav-tabs">
                     <li role="presentation"><a href="${pageContext.request.contextPath}/addressHome">Home</a></li>
                     <li role="presentation" ><a href="${pageContext.request.contextPath}/addressSearch">Search</a></li>
-                    <li role="presentation" ><a href="${pageContext.request.contextPath}/addressStats">Stats</a></li>
+
                     <li role ="presentation"class="active"><a href ="${pageContext.request.contextPath}/displayAddressList">Address List</a></li>
                 </ul>    
             </div>
@@ -29,25 +29,26 @@
         </div>
                <div class="container">
             <h1>Address Book</h1>
-            <a href="displayNewAddressForm">Add a Address</a><!--linked to another JSP-->
+            <a href="displayNewAddressForm">Add an Address</a><!--linked to another JSP-->
             <hr/>
             
             <c:forEach var="addressVar" items="${addressList}"><!--import array list & sets variable ex var=addressVar-->
                 <s:url value="deleteAddress" var="deleteAddress_url">
-                    <s:param name="addressId" value="${addressVar.addressId}" />
+                    <s:param name="addressId" value="${addressVar.id}" /><!--.id is pulling from DTO-->
                 </s:url>
                 <s:url value="displayEditAddressForm" var="editAddress_url">
-                    <s:param name="addressId" value="${addressVar.addressId}" />
+                    <s:param name="addressId" value="${addressVar.id}" />
                 </s:url>
                 
                 <c:if test="${addressVar.lastName == 'Doe'}">
                     CEO<br/>
                 </c:if>
                 
+                    <!--Display-->
                 Name: ${addressVar.firstName} ${addressVar.lastName} | 
                 <a href="${deleteAddress_url}">Delete</a> |
                 <a href="${editAddress_url}">Edit</a><br/>
-                Address: ${addressVar.numberAndStreet} <br/>
+                Street: ${addressVar.numberAndStreet} <br/>
                 City: ${addressVar.city} <br/>
                 State: ${addressVar.state} <br/>
                 Zip:${addressVar.zip}<br/>

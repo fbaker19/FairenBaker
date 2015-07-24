@@ -249,8 +249,8 @@ public class AddressBookImplDao implements AddressInterface {//after interface (
     }
 
     @Override
-    public Address getAddressId(int addressId) {
-        return (Address) addressMap;
+    public Address getAddressId(int id) {
+        return addressMap.get(id);//get to map - impacts id
     }
 
     @Override

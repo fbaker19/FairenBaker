@@ -45,7 +45,7 @@ public interface AddressInterface {//interface  = todo lists - cover the bases
     
     public List<Address> getAllAddresses();
     
-    public Address getAddressId(int addressId);//
+    public Address getAddressId(int id);//
      
     public void updateAddress(Address addressVar);
     

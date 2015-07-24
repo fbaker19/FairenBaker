@@ -55,13 +55,13 @@
                 </div>
                
                 <div class="form-group">
-                    <label for="add-number-and-street" class="col-md-4 control-label">Address and Street Name:</label>
+                    <label for="add-number-and-street" class="col-md-4 control-label">Street</label>
                     <div class="col-md-8">
                         <input type="text"
                                class="form-control"
                                id="add-number-and-street"
-                               name="number-and-street"
-                               placeholder="Address and Street Name" />
+                               name="numberAndStreet"
+                               placeholder="Street" />
                     </div>
                 </div>
 

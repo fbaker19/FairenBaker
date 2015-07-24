@@ -6,21 +6,20 @@
 package com.swcguild.contactlistmvc.controller;
 
 import org.springframework.stereotype.Controller;
-
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  *
- * @author apprentice
+ * @author ilyagotfryd
  */
-
 @Controller
 public class StatsController {
     
-    @RequestMapping(value = "/stats", method=RequestMethod.GET)//refers to spring framework
-    public String displayStatsPage()
+    @RequestMapping(value="/stats", method=RequestMethod.GET)
+    public String dispayStatsPage()
     {
         return "stats";
     }
+    
 }

@@ -41,9 +41,9 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="add-number-and-street"class="col-md-4 control-label">Address and Street: </label>
+                        <label for="add-number-and-street"class="col-md-4 control-label">Street: </label>
                         <div class="col-md-8">
-                        <sf:input type="text" class="form-control" id="add-number-and-street" path="numberAndStreet" placeholder="Address and Street" />
+                        <sf:input type="text" class="form-control" id="add-number-and-street" path="numberAndStreet" placeholder="Street" />
                         <sf:errors path="numberAndStreet" cssclass="error"></sf:errors>
                         </div>
                     </div>
@@ -61,14 +61,14 @@
                         <div class="col-md-8">
                         <sf:input type="text" class="form-control" id="add-state" path="state" placeholder="State" />
                         <sf:errors path="state" cssclass="error"></sf:errors>
-                        <sf:hidden path="addressId" /> <!-- the sf:hidden field is used to retain the contact id number for the contact when it goes back to the controller -->
+                        <sf:hidden path="id" /> <!-- the sf:hidden field is used to retain the contact id number for the contact when it goes back to the controller -->
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="add-zip" class="col-md-4 control-label">Zip: </label>
                         <div class="col-md-8">
-                        <sf:input type="text" class="form-control" id="add-zip" path="phone" placeholder="Zip" />
+                        <sf:input type="text" class="form-control" id="add-zip" path="zip" placeholder="Zip" />
                         <sf:errors path="zip" cssclass="error"></sf:errors>
                         </div>
                     </div>

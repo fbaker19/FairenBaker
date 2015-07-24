@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.swcguild.contactlistmvc.valildation;
+package com.swcguild.addressbookwebmvc.valildation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +23,7 @@ public class ValidationErrorContainer {
         valError.add(error);
     }
 
-    public List<ValidationError> getfieldErrors() {
+    public List<ValidationError> getFieldErrors() {
         return valError;
     }
 }

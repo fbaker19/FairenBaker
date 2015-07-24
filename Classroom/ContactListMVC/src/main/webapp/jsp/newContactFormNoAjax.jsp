@@ -19,64 +19,62 @@
             <hr/>            
         </div>
         <div class="container">
-            <h1>New Contact Form</h1><!--LINKS TO "displayContactListNoAjax" JSP -->
+            <h1>New Contact Form</h1>
             <a href="displayContactListNoAjax">Contact List (No Ajax)</a> <br />
             <hr />
-
-            <!--METHOD ON CONTROLLER/ must be created on controller-->
+            
             <form class="form-horizontal"
                   role="form"
-                  action="addNewContactNoAjax" 
+                  action="addNewContactNoAjax"
                   method="POST">
-
-                  <div class="form-group">
+                <div class="form-group">
                     <label for="add-first-name" class="col-md-4 control-label">First Name:</label>
                     <div class="col-md-8">
                         <input type="text"
-                               class="form-control"
-                               id="add-first-name"
-                               name="firstName"
-                               placeholder="First Name" />
+                                class="form-control"
+                                id="add-first-name"
+                                name="firstName"
+                                placeholder="First Name" />
                     </div>
                 </div>
-                <div class="form-group">
+                 <div class="form-group">
                     <label for="add-last-name" class="col-md-4 control-label">Last Name:</label>
                     <div class="col-md-8">
                         <input type="text"
-                               class="form-control"
-                               id="add-last-name"
-                               name="lastName"
-                               placeholder="Last Name" />
+                                class="form-control"
+                                id="add-last-name"
+                                name="lastName"
+                                placeholder="Last Name" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="add-company" class="col-md-4 control-label">Company:</label>
                     <div class="col-md-8">
                         <input type="text"
-                               class="form-control"
-                               id="add-company"
-                               name="company"
-                               placeholder="Company" />
+                                class="form-control"
+                                id="add-company"
+                                name="company"
+                                placeholder="Company" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="add-email" class="col-md-4 control-label">Email:</label>
                     <div class="col-md-8">
                         <input type="text"
-                               class="form-control"
-                               id="add-email"
-                               name="email"
-                               placeholder="Email" />
+                                class="form-control"
+                                id="add-email"
+                                name="email"
+                                placeholder="Email" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="add-phone" class="col-md-4 control-label">Phone:</label>
                     <div class="col-md-8">
                         <input type="text"
-                               class="form-control"
-                               id="add-phone"
-                               name="phone"
-                               placeholder="Phone" />
+                                class="form-control"
+                                id="add-phone"
+                                name="phone"
+                                placeholder="Phone" />
                     </div>
                 </div>
                 <div class="form-group">
@@ -87,7 +85,7 @@
                     </div>
                 </div>
             </form>
-
+            
         </div>
         <!-- Placed at the end of the document so the pages load faster -->
         <script src="${pageContext.request.contextPath}/js/jquery-1.11.1.min.js"></script>
@@ -95,4 +93,5 @@
 
     </body>
 </html>
+
 

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.swcguild.contactlistmvc.valildation;
+package com.swcguild.contactlistmvc.validation;
 
 import java.util.List;
 import org.springframework.http.HttpStatus;
@@ -17,20 +17,21 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
  *
- * @author apprentice
+ * @author ilyagotfryd
  */
-@ControllerAdvice //backup controller
+@ControllerAdvice
 public class RestValidationHandler {
+    
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
-        public ValidationErrorContainer processValidationErrors(MethodArgumentNotValidException e)
-                
+    public ValidationErrorContainer processValidationErrors(MethodArgumentNotValidException e)
     {
         BindingResult result = e.getBindingResult();
         List<FieldError> fieldErrors = result.getFieldErrors();
+        
         ValidationErrorContainer errors = new ValidationErrorContainer();
-        for(FieldError currentError:fieldErrors)
+        for(FieldError currentError: fieldErrors)
         {
             errors.addValidationError(currentError.getField(), currentError.getDefaultMessage());
         }

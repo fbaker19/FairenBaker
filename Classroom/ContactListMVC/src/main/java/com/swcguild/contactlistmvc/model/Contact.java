@@ -12,50 +12,36 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  *
- * @author apprentice
+ * @author ilyagotfryd
  */
-public class Contact {//MODEL  HOLDS DTO's
-
-    /*
-     //fyi - manual entry: copy dependency into POM file, maven handles the rest
-     manual entry for hibernate - POM file
+public class Contact {
     
-     <groupId>javax.validation</groupId>
-     <artifactId>validation-api</artifactId>
-     <version>1.1.0.Final</version>
-     */
     private int contactId;
-
-    //hibernate validaion -- can't leave entry blank
-    @NotEmpty(message = "You must supply a value for first name") 
-    @Length(max = 50, message = "Name cannot exceed 50 characters in length")  //fyi - manual entry: copy dependency into POM file, maven handles the rest
+    @NotEmpty(message="You must supply a value for First Name.")
+    @Length(max=50, message="First Name must be no more than 50 characters in length.")
     private String firstName;
-
-    @NotEmpty(message = "Please supply a value for last name")
-    @Length(max = 50, message = "Name cannot exceed 50 characters in length")
+    @NotEmpty(message="You must supply a value for Last Name.")
+    @Length(max=50, message="Last Name must be no more than 50 characters in length.")
     private String lastName;
-
-    @NotEmpty(message = "Please supply the name of your company")
-    @Length(max = 50, message = "Company name cannot exceed 50 characters in length")
-    private String Company;
-
-    @NotEmpty(message = "Please supply a phone number")
-    @Length(max = 10, message = "Number cannot exceed 10 characters in length\nno dashes")
+    @NotEmpty(message="You must supply a value for Company.")
+    @Length(max=50, message="Company must be no more than 50 characters in length.")
+    private String company;
+    @NotEmpty(message="You must supply a value for Phone.")
+    @Length(max=10, message="Phone must be no more than 10 characters in length.")
     private String phone;
-
-    @Email(message = "Please supply a proper value for email")
-    @Length(max = 50, message = "Name cannot exceed 50 characters in length")
+    @Email(message="You must supply a value for Email.")
+    @Length(max=50, message="Email must be no more than 50 characters in length.")
     private String email;
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 37 * hash + this.contactId;
-        hash = 37 * hash + Objects.hashCode(this.firstName);
-        hash = 37 * hash + Objects.hashCode(this.lastName);
-        hash = 37 * hash + Objects.hashCode(this.Company);
-        hash = 37 * hash + Objects.hashCode(this.phone);
-        hash = 37 * hash + Objects.hashCode(this.email);
+        int hash = 7;
+        hash = 47 * hash + this.contactId;
+        hash = 47 * hash + Objects.hashCode(this.firstName);
+        hash = 47 * hash + Objects.hashCode(this.lastName);
+        hash = 47 * hash + Objects.hashCode(this.company);
+        hash = 47 * hash + Objects.hashCode(this.phone);
+        hash = 47 * hash + Objects.hashCode(this.email);
         return hash;
     }
 
@@ -77,7 +63,7 @@ public class Contact {//MODEL  HOLDS DTO's
         if (!Objects.equals(this.lastName, other.lastName)) {
             return false;
         }
-        if (!Objects.equals(this.Company, other.Company)) {
+        if (!Objects.equals(this.company, other.company)) {
             return false;
         }
         if (!Objects.equals(this.phone, other.phone)) {
@@ -93,8 +79,8 @@ public class Contact {//MODEL  HOLDS DTO's
         return contactId;
     }
 
-    public void setContactId(int contactId) {
-        this.contactId = contactId;
+    public void setContactId(int conatactId) {
+        this.contactId = conatactId;
     }
 
     public String getFirstName() {
@@ -114,11 +100,11 @@ public class Contact {//MODEL  HOLDS DTO's
     }
 
     public String getCompany() {
-        return Company;
+        return company;
     }
 
-    public void setCompany(String Company) {
-        this.Company = Company;
+    public void setCompany(String company) {
+        this.company = company;
     }
 
     public String getPhone() {
@@ -136,5 +122,5 @@ public class Contact {//MODEL  HOLDS DTO's
     public void setEmail(String email) {
         this.email = email;
     }
-
+    
 }

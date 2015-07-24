@@ -15,16 +15,15 @@
     </head>
     <body>
         <div class="container">
-            <h1>Company Contacts</h1> <!--Spring MVC Application from Archetype-->
+            <h1>Company Contacts</h1>
             <hr/>
             <div class="navbar">
                  <ul class="nav nav-tabs">
-                     <li role="presentation" ><a href="${pageContext.request.contextPath}/home">Home</a></li>
-                <li role="presentation"><a href="${pageContext.request.contextPath}/search">Search</a></li>
-                <!--active = tabs active/highlighted-->
-                <li role="presentation" class="active"><a href="${pageContext.request.contextPath}/stats">Stats</a></li>
-                <li role="presentation"><a href="${pageContext.request.contextPath}/displayContactListNoAjax">Contact List(No Ajax)</a></li>
-                 </ul>    
+                    <li role="presentation" ><a href="${pageContext.request.contextPath}/home">Home</a></li>
+                    <li role="presentation" ><a href="${pageContext.request.contextPath}/search">Search</a></li>
+                    <li role="presentation" class="active"><a href="${pageContext.request.contextPath}/stats">Stats</a></li>
+                    <li role="presentation" ><a href="${pageContext.request.contextPath}/displayContactListNoAjax">Contact List (No Ajax)</a></li>
+                </ul>    
             </div>
         </div>
         <!-- Placed at the end of the document so the pages load faster -->
@@ -33,6 +32,5 @@
 
     </body>
 </html>
-
 
 

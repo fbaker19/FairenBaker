@@ -41,7 +41,7 @@ $(document).ready(function () {
 
             loadDvd();
 
-        }).error(function (data, status) {//data = jso package, status = number
+        }).error(function (data, status) {//data = jsp package, status = number
             var errors = data.responseJSON.fieldErrors;
             $.each(errors, function (index, validaionError) {
                 var errorDiv = $('#validaiontErrors ');
@@ -54,7 +54,7 @@ $(document).ready(function () {
 
 function fillDvdTable(dvdList, status)// creates HTML & pulls from dto ex(.id)
 {
-    clearDvdTable();
+    clearDvdTable();///Where DVD's are displayed (left side of page)
     var dvdTable = $('#contentRows');
     $.each(dvdList, function (index, dvd)//donkey lobsters
     {
@@ -66,7 +66,7 @@ function fillDvdTable(dvdList, status)// creates HTML & pulls from dto ex(.id)
                             'data-toggle': 'modal',
                             'data-target': '#detailsModal'
                         })
-                        .text(dvd.title + ' ' + dvd.releaseDate)))
+                        .text(dvd.title)))//shows title as hyperlink
                 .append($('<td>').text(dvd.director))
                 .append($('<td>').append(
                         $('<a>')
@@ -107,8 +107,7 @@ $('#detailsModal').on('show.bs.modal', function (event) {//bs.modal=bootstrap->c
     var modal = $(this);
     $.ajax({
         type: 'GET',
-        url: 'dvdLibrary/' + id///!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
+        url: 'dvdLibrary/' + id///!!var set above, can be donkeyLobster
 //commands inside of funtion - use ;
     }).success(function (dvd) {//(contact) ===donkeylobster/monkeyfish
         modal.find('#dvd-id').text(dvd.id); //( in the ().DTO)
@@ -165,7 +164,7 @@ $('#edit-button').click(function (event) {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        'data-Type': 'json'
+        'dataType': 'json'//removed slash between data-Type
     }).success(function () {//commands inside of funtion - use ;
         loadDvd();//call the load dvd function(see above)
     });

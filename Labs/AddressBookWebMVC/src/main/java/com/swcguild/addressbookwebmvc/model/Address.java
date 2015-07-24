@@ -7,23 +7,43 @@ package com.swcguild.addressbookwebmvc.model;
 
 import java.util.Objects;
 
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
+
 /**
  *
  * @author apprentice
  */
 //Hibernate validators =@Length(max,message), @NotEmpty(message)
-
 public class Address {
+
     private Integer id;
+    
+    @NotEmpty(message = "You must supply a value for City.")
+    @Length(max = 30, message = "City name must not be more than 30 characters in length")
     private String city;
+    
+    @NotEmpty(message = "You must  supply a value for State.")
+    @Length(max = 13, message = "State name must not be more than 13 characters in length")
     private String state;
+    
+    @NotEmpty(message = "You must  supply a value for First Name.")
+    @Length(max = 30, message = "First name must not be more than 30 characters in length")
     private String firstName;
+    
+    @NotEmpty(message = "You must supply a value for Last Name.")
+    @Length(max = 30, message = "Last name must not be more than 30 characters in length")
     private String lastName;
+    
+    @NotEmpty(message = "You must supply a value for the Zip.")
+    @Length(max = 10, message = "Zip code must not be more than 10 characters in length")
     private String zip;
+    
+    @NotEmpty(message = "You must supply a value for the Street Address.")
+    @Length(max = 30, message = "Street Address must not be more than 30 characters in length")
     private String numberAndStreet;
 
    
-    private int addressId;
     
     public Address(String lastName) {
         this.lastName = lastName;
@@ -92,7 +112,7 @@ public class Address {
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 79 * hash + this.addressId;
+
         hash = 79 * hash + Objects.hashCode(this.id);
         hash = 79 * hash + Objects.hashCode(this.city);
         hash = 79 * hash + Objects.hashCode(this.state);
@@ -136,5 +156,4 @@ public class Address {
         return true;
     }
 
-   
 }

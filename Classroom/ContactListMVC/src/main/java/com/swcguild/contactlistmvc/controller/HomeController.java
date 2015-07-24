@@ -5,7 +5,7 @@
  */
 package com.swcguild.contactlistmvc.controller;
 
-import com.swcguild.contactlistmvc.dao.ContactListDAO;
+import com.swcguild.contactlistmvc.dao.ContactListDao;
 import com.swcguild.contactlistmvc.model.Contact;
 import java.util.List;
 import javax.inject.Inject;
@@ -24,37 +24,35 @@ import org.springframework.web.bind.annotation.ResponseStatus;
  * @author ilyagotfryd
  */
 @Controller
-//@RequestMapping(value="/")
 public class HomeController {
     
     
-    private ContactListDAO dao;
+    private ContactListDao dao;
     
     @Inject
-    public HomeController(ContactListDAO dao) {
+    public HomeController(ContactListDao dao) {
         this.dao = dao;
     }
     
-    //ORIGINAL(Pre_AJAX) ORIGINAL(Pre_AJAX) ORIGINAL(Pre_AJAX) ORIGINAL(Pre_AJAX) ORIGINAL(Pre_AJAX) ORIGINAL(Pre_AJAX)
+    
     @RequestMapping(value={"/","/home"}, method=RequestMethod.GET)
     public String displayHomePage()
     {
         return "home";
     }
     
-    /////AJAX AJAX AJAX AJAX AJAX AJAX AJAX AJAX AJAX AJAX AJAX AJAX AJAX AJAX //////
+    
     @RequestMapping(value="/contact/{contactId}", method=RequestMethod.GET)
     @ResponseBody public Contact getContact(@PathVariable("contactId") int contactId) {
-        return dao.getContactById(contactId);///pull this from DTO 
+        return dao.getContactById(contactId);
     }
     
     
     
     @RequestMapping(value="/contact", method=RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    @ResponseBody 
-    public Contact createContact(@Valid @RequestBody Contact contact) {
-        dao.addContact(contact);///Pull from dto
+    @ResponseBody public Contact createContact(@Valid @RequestBody Contact contact) {
+        dao.addContact(contact);
         return contact;
     }
     
@@ -62,14 +60,14 @@ public class HomeController {
     @RequestMapping(value="/contact/{id}", method=RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteContact(@PathVariable("id") int id) {
-        dao.removeContact(id);//pull from dto
+        dao.removeContact(id);
     }
     
     
     
     @RequestMapping(value="/contact/{id}", method=RequestMethod.PUT)
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void putContact(@PathVariable("id") int id, @RequestBody Contact contact) {///imports 
+    public void putContact(@PathVariable("id") int id, @RequestBody Contact contact) {
         contact.setContactId(id);
         dao.updateContact(contact);
     }
@@ -80,4 +78,6 @@ public class HomeController {
         return dao.getAllContacts();
     }
     
- }
+    
+    
+}

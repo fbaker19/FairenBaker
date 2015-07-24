@@ -38,10 +38,10 @@
                     CEO<br/>
                 </c:if>
 
-                Name: ${ll.title}|
+                Name: ${ll.title} |
                 <a href="${deleteDvd_url}">Delete</a> |
                 <a href="${editDvd_url}">Edit</a><br/>
-                Director:${ll.director}  
+                Director:${ll.director} <br/> 
                 Release Date: ${ll.releaseDate} <br/>
                 MPAA Rating: ${ll.mpaa} <br/>
                 Viewer Rating: ${ll.rating} <br/>

@@ -3,24 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.swcguild.contactlistmvc.valildation;
+package com.swcguild.contactlistmvc.validation;
 
 /**
  *
- * @author apprentice
+ * @author ilyagotfryd
  */
 public class ValidationError {
     private String fieldName;
     private String message;
-    
-    
+
     public ValidationError(String fieldName, String message)
     {
         this.fieldName = fieldName;
         this.message = message;
-    
     }
-
+    
     public String getFieldName() {
         return fieldName;
     }
@@ -28,5 +26,4 @@ public class ValidationError {
     public String getMessage() {
         return message;
     }
-    
 }

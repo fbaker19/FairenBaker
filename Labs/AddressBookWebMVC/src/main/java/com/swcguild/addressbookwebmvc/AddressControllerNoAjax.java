@@ -61,17 +61,23 @@ public class AddressControllerNoAjax {//NO AJAX
     
     @RequestMapping(value="/deleteAddress", method=RequestMethod.GET)
     public String deleteAddress(HttpServletRequest request) {
-        int addressId= Integer.parseInt(request.getParameter("addressId"));
-        dao.removeAddress(addressId);
+        int id= Integer.parseInt(request.getParameter("addressId"));
+        dao.removeAddress(id);
         return "redirect:displayAddressList";
     }
     
-        @RequestMapping(value="/searchAddress", method=RequestMethod.POST)
-    public String searchAddress(HttpServletRequest request) {
-        int addressId= Integer.parseInt(request.getParameter("addressId"));
-        dao.getAddressId(addressId);
-        return "addressSearch"; //"redirect:displayAddressList"
-    }
+//        @RequestMapping(value="/addressSearch", method=RequestMethod.GET)
+//    public String searchAddress(HttpServletRequest request) {
+////        int id= Integer.parseInt(request.getParameter("addressId"));///seen on displayAddress
+////        dao.getAddressId(id);
+//        return"addressSearch"; //"redirect:displayAddressList"
+//    }
+//     @RequestMapping(value="/addressSearch", method=RequestMethod.POST)
+//    public String searchPostAddress(HttpServletRequest request) {
+//        int id= Integer.parseInt(request.getParameter("addressId"));///seen on displayAddress
+//        dao.getAllAddresses();
+//        return"addressSearch"; //"redirect:displayAddressList"
+//    }
       @RequestMapping(value="/displayEditAddressForm", method=RequestMethod.GET)
     public String displayEditAddressForm(HttpServletRequest request, Model model) {
         int addressId = Integer.parseInt(request.getParameter("addressId"));

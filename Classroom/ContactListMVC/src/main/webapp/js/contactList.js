@@ -3,137 +3,150 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-$(document).ready(function () {
+$(document).ready(function(){
     loadContacts();
-
-    $('#add-button').on('click', function (e) {
-
-        e.preventDefault();
-
-        $.ajax({
-            type: 'POST',
-            url: 'contact',
-            data: JSON.stringify({
-               
-                firstName: $('#add-first-name').val(),
-                lastName: $('#add-last-name').val(),
-                company: $('#add-company').val(),
-                phone: $('#add-phone').val(),
-                email: $('#add-email').val()
+    
+    
+    
+    $('#add-button').on('click', function(e) {
+      
+        e.preventDefault(); // prevent default action of the events
+        
+        $.ajax( {
+           type: 'POST',
+           url: 'contact',
+           data: JSON.stringify({ ///linked to Request body of controller
+                //JSON.stringify turns everything into a string...objects -> string
+                   firstName : $('#add-first-name').val(),
+                   lastName : $('#add-last-name').val(),
+                   company: $('#add-company').val(),
+                   phone: $('#add-phone').val(),
+                   email: $('#add-email').val()
+                    
             }),
+            
             headers: {
-                'accept': 'application/json',
-                'Content-Type': 'application/json'
+                'accept': 'application/json',  //for Spring parses object into a Java object--what I want back
+                'Content-Type': 'application/json' // sends to the server -  VERY IMPORTANT
             },
+            
             dataType: 'json'
-
-        }).success(function (data, status) {
-
+            
+        }).success(function(data, status) {
+            
             $('#add-first-name').val('');
             $('#add-last-name').val('');
             $('#add-company').val('');
             $('#add-phone').val('');
             $('#add-email').val('');
             
-            $('#validationErrors').empty(); //WHY?  when to insert this ? - clears out the form
-
             loadContacts();
-
-        }).error(function(data,status){//data = jso package, status = number
-            var errors = data.responseJSON.fieldErrors;
-            $.each(errors, function(index,validaionError){
-                var errorDiv = $('#validaiontErrors ');
-                errorDiv.append(validationError.message)
-                        .append($('<br>'));
+            
+        }).error(function(data,status){
+            $.each(data.responseJSON.fieldErrors, function(index, validationError){
+                var errorDiv = $('#validationErrors');
+                errorDiv.append(validationError.message).append('<br>');
             });
-        });
-    });
+        
+        
+    });    
+});
 });
 
 function fillContactTable(contactList, status)
 {
     clearContactTable();
-    var cTable = $('#contentRows');
-    $.each(contactList, function (index, contact)
-    {
-        cTable.append($('<tr>')
-                .append($('<td>').append($('<a>')
+    
+    var cTable = $('#contentRows');///home.jsp ---</tbody>
+    
+     $.each(contactList, function(index, contact) //contact = donkeylobser
+        {
+            //append is html not written in the jsp, its direcctly written here/(Ajax)
+            cTable.append($('<tr>')
+                    .append($('<td>').append($('<a>')
                         .attr({
-                            'data-contact-id': contact.contactId,//element.data('contact-id');
+                            'data-contact-id': contact.contactId, //element.data('contact-id', must match in html<h3>);
+                            //data- -(toggele/target)...are requirement of bootstrap/jquery
                             'data-toggle': 'modal',
                             'data-target': '#detailsModal'
                         })
-                        .text(contact.firstName + ' ' + contact.lastName)))
-                .append($('<td>').text(contact.company))
-                .append($('<td>').append(
-                        $('<a>')
-                        .attr({
-                            'data-contact-id': contact.contactId, //element.data('contact-id');
-                            'data-toggle': 'modal',
-                            'data-target': '#editModal'
-                        })
-                        .text('Edit')
-                        ))
-                .append($('<td>')
-                        .append($('<a>')
-                                .attr({'onClick': 'deleteContact(' + contact.contactId + ')'})
-                                .text('Delete')))
-                );
-    });
+                        .text(contact.firstName+ ' ' + contact.lastName))) ///turns to hyperlink/contact name(s) and triggers the modal
+                    .append($('<td>').text(contact.company))
+                    .append($('<td>').append( ///sandwich/ending appends
+                            $('<a>')
+                            .attr({
+                                'data-contact-id': contact.contactId, //element.data('contact-id', must match in html<h3>);
+                                'data-toggle': 'modal',
+                                'data-target': '#editModal'
+                            })
+                            .text('Edit')
+                            ))
+                    .append($('<td>')
+                            .append($('<a>')
+                            .attr({'onClick': 'deleteContact(' + contact.contactId + ')'})
+                            .text('Delete')
+                            )   //end of <a> tag for delete link
+                            )   // end of <td> tag for delete link
+                    );
+        }); 
 }
 
-function loadContacts() {
-
+function loadContacts(){
+    
     $.ajax({
-        url: "contacts"
-    }).success(function (data, status) {
-        fillContactTable(data, status);//called function/method
+        url: "contacts" //see home controller(Ajax)
+    }).success(function(data, status) {
+          
+        fillContactTable(data,status);  
+    
     });
 }
 
 function clearContactTable()
 {
-    $('#contentRows').empty();
+    $('#contentRows').empty();  ///home.jsp ---</tbody>
+
 }
 
-$('#detailsModal').on('show.bs.modal', function (event) {//bs.modal=bootstrap->click button/show
-    //event is part of bootstrap
+$('#detailsModal').on('show.bs.modal', function(event){
+    
     var element = $(event.relatedTarget);
-
+    
     var contactId = element.data('contact-id');
-
+    
     var modal = $(this);
-
+    
     $.ajax({
         type: 'GET',
         url: 'contact/' + contactId
-
-    }).success(function (contact) {//(contact) ===donkeylobster/monkeyfish
-        modal.find('#contact-id').text(contact.contactId);//( in the ().DTO)
+    }).success(function(contact)
+    {
+        modal.find('#contact-id').text(contact.contactId);
         modal.find('#contact-firstName').text(contact.firstName);
         modal.find('#contact-lastName').text(contact.lastName);
         modal.find('#contact-company').text(contact.company);
         modal.find('#contact-phone').text(contact.phone);
-        modal.find('#contact-email').text(contact.email);
-
+        modal.find('#contact-email').text(contact.email);  
     });
+    
 });
-//EDIT EDIT EDIT EDIT EDIT EDIT EDIT EDIT EDIT EDIT EDIT EDIT EDIT EDIT EDIT
-$('#editModal').on('show.bs.modal', function (event) {
 
+$('#editModal').on('show.bs.modal', function(event){
+    
     var element = $(event.relatedTarget);
-
-    var contactId = element.data('contact-id');//
-
+    
+    var contactId = element.data('contact-id');
+    
     var modal = $(this);
+    
     $.ajax({
         type: 'GET',
         url: 'contact/' + contactId
-    }).success(function (contact) {//contact can be any variable does not have to match DTO -->>donkeylobster
-
+    }).success(function(contact){
+        
         modal.find('#contact-id').text(contact.contactId);//contactId is label==text
-        //INPUTS ==.val & labels==.text(see <h3> element on home.jsp)
-
+        //INPUTS ==.val & <labels>==.text(see <h3> element on home.jsp)
+        
         modal.find('#edit-contact-id').val(contact.contactId);
         modal.find('#edit-first-name').val(contact.firstName);
         modal.find('#edit-last-name').val(contact.lastName);
@@ -141,16 +154,16 @@ $('#editModal').on('show.bs.modal', function (event) {
         modal.find('#edit-phone').val(contact.phone);
         modal.find('#edit-email').val(contact.email);
     });
-
+    
 });
 
-$('#edit-button').click(function (event) {
-   
+$('#edit-button').click(function(event){
+    
     event.preventDefault();
-   
+    
     $.ajax({
         type: 'PUT',
-        url: 'contact/' + $('#edit-contact-id').val(),
+        url: 'contact/'+ $('#edit-contact-id').val(),
         data: JSON.stringify(
                 {
                     contactId: $('#edit-contact-id').val(),
@@ -160,69 +173,61 @@ $('#edit-button').click(function (event) {
                     phone: $('#edit-phone').val(),
                     email: $('#edit-email').val()
                 }),
-        headers: {//Server
+        headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
-        },
-        'data-Type': 'json'
-    }).success(function () {
+            },
+        'dataType': 'json'
+    }).success(function(){
         loadContacts();
     });
 });
 
 function deleteContact(id)
 {
-    var answer = confirm("Do you really want to delete this contact?");//client side verification
-    if (answer === true)
+    var answer = confirm("Do you really want to delete this contact?");
+    
+    if(answer === true)
     {
         $.ajax({
             type: 'DELETE',
-            url: 'contact/' + id//url = url path + parameter of function/method
-
-        }).success(function () {
+            url: 'contact/' + id //url = url path('contact/') + parameter of function/method (id)
+        }).success(function(){
             loadContacts();
         });
     }
-
 }
-$('#search-button').click(function (event) {
+
+$('#search-button').click(function(event){
     
     event.preventDefault();
-   
+    
     $.ajax({
         type:'POST',
         url: 'search/contacts',
-        data:JSON.stringify({ //objects - variables seperated by commas
-            firstName:$('#search-first-name').val(),
-            lastName:$('#search-last-name').val(),
-            company:$('#search-company').val(),
-            phone:$('#search-phone').val(),
-            email:$('#search-email').val()
-         
+        data: JSON.stringify({
+            firstName: $('#search-first-name').val(),
+            lastName: $('#search-last-name').val(),
+            company: $('#search-company').val(),
+            phone: $('#search-phone').val(),
+            email: $('#search-email').val()
         }),
-        headers:{//commands inside of funtion - use ;
-                    'Accept':'application/json',
-                    'Content-Type':'application/json'
-                    
-                },
-                'dataType':'json'
-            }).success(function(data,status){
-                
-            $('#search-first-name').val('');
-            $('#search-last-name').val('');
-            $('#search-company').val('');
-            $('#search-phone').val('');
-            $('#search-email').val('');
-       
-            fillContactTable(data,status);   
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        'dataType': 'json'
+    }).success(function(data,status){
+        $('#search-first-name').val('');
+        $('#search-last-name').val('');
+        $('#search-company').val('');
+        $('#search-phone').val('');
+        $('#search-email').val('');
         
-        });
-            
-     });
-    
+        fillContactTable(data, status);
+    });
 
-
-
+});
 
 ////  TEST DATA
 //

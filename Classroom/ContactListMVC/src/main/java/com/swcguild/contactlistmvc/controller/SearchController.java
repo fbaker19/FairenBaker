@@ -5,7 +5,7 @@
  */
 package com.swcguild.contactlistmvc.controller;
 
-import com.swcguild.contactlistmvc.dao.ContactListDAO;
+import com.swcguild.contactlistmvc.dao.ContactListDao;
 import com.swcguild.contactlistmvc.model.Contact;
 import com.swcguild.contactlistmvc.model.SearchTerm;
 import java.util.HashMap;
@@ -20,58 +20,61 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  *
- * @author apprentice
+ * @author ilyagotfryd
  */
-
-@Controller 
-public class SearchController { //POJO
+@Controller
+public class SearchController {
     
-    private ContactListDAO  dao;
+    private ContactListDao dao;
+    
     @Inject
-    public SearchController(ContactListDAO dao)
+    public SearchController(ContactListDao dao)
     {
         this.dao = dao;
     }
     
-    
-    @RequestMapping(value ="/search",method=RequestMethod.GET)//refers to spring framework
+    @RequestMapping(value="/search", method=RequestMethod.GET)
     public String displaySearchPage()
-    
     {
         return "search";
     }
-    //AJAX AJAX AJAX AJAX AJAX AJAX AJAX AJAX   AJAX AJAX AJAX  AJAX AJAX  AJAX
-    @RequestMapping(value = "search/contacts", method= RequestMethod.POST)
-    @ResponseBody public List<Contact> searchCintacts(@RequestBody Map<String,String> searchMap)
+    
+    @RequestMapping(value="search/contacts", method=RequestMethod.POST)
+    @ResponseBody public List<Contact> searchContacts(@RequestBody Map<String, String> searchMap)
     {
-        Map<SearchTerm,String> criteriaMap = new HashMap();
-      
+        Map<SearchTerm, String> criteriaMap = new HashMap();
+        
         String currentTerm = searchMap.get("firstName");
         if(!currentTerm.isEmpty())
         {
             criteriaMap.put(SearchTerm.FIRST_NAME, currentTerm);
         }
-    
-         currentTerm = searchMap.get("lastName");
+        
+        currentTerm = searchMap.get("lastName");
         if(!currentTerm.isEmpty())
         {
             criteriaMap.put(SearchTerm.LAST_NAME, currentTerm);
         }
-         currentTerm = searchMap.get("company");
+        
+        currentTerm = searchMap.get("company");
         if(!currentTerm.isEmpty())
         {
             criteriaMap.put(SearchTerm.COMPANY, currentTerm);
         }
-          currentTerm = searchMap.get("phone");
-        if(!currentTerm.isEmpty())
-        {
-            criteriaMap.put(SearchTerm.PHONE, currentTerm);
-        }
-         currentTerm = searchMap.get("email");
+        
+        currentTerm = searchMap.get("email");
         if(!currentTerm.isEmpty())
         {
             criteriaMap.put(SearchTerm.EMAIL, currentTerm);
         }
+        
+        currentTerm = searchMap.get("phone");
+        if(!currentTerm.isEmpty())
+        {
+            criteriaMap.put(SearchTerm.PHONE, currentTerm);
+        }
+        
         return dao.searchContacts(criteriaMap);
     }
+    
 }
