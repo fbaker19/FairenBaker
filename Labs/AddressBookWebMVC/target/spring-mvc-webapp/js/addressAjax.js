@@ -128,6 +128,7 @@ $('#detailsModal').on('show.bs.modal', function (event) {//bs.modal=bootstrap->c
         modal.find('#address-zip').text(address.zip);
     });
 });
+
 //EDIT EDIT EDIT EDIT EDIT EDIT EDIT EDIT EDIT EDIT EDIT EDIT EDIT EDIT EDIT
 $('#editModal').on('show.bs.modal', function (event) {
 
