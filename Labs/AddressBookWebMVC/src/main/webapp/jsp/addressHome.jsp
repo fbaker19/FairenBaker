@@ -103,7 +103,7 @@
                         </div>
 
                     </form>
-                    <div id="validationErrors" style="color: red" ></div>
+                        <div id="validationErrors" style="color: red" ></div>
                 </div> <!-- end of add form div -->
             </div>
         </div>
@@ -235,12 +235,10 @@
               </div>
               <!-- end Edit modal -->
               
-
-
-
         <!-- Placed at the end of the document so the pages load faster -->
         <script src="${pageContext.request.contextPath}/js/jquery-1.11.1.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+       
         <script src="${pageContext.request.contextPath}/js/addressAjax.js"></script>
     </body>
 </html>

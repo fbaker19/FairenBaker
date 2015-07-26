@@ -50,7 +50,7 @@ public class DvdMainController {
         String studio =request.getParameter("studio");
       
         
-        DVD  ll = new DVD();    
+        DVD ll = new DVD();  
         ll.setTitle(title);
         ll.setDirector(director);
         ll.setReleaseDate(releaseDate);

@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 $(document).ready(function () {
+   
     loadDvd();
+    
     $('#add-button').on('click', function (e) {
 
         e.preventDefault();
@@ -23,7 +25,7 @@ $(document).ready(function () {
                 studio: $('#add-studio').val()
             }),
             headers: {
-                'accept': 'application/json',
+                'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
             dataType: 'json'
@@ -43,8 +45,8 @@ $(document).ready(function () {
 
         }).error(function (data, status) {//data = jsp package, status = number
             var errors = data.responseJSON.fieldErrors;
-            $.each(errors, function (index, validaionError) {
-                var errorDiv = $('#validaiontErrors ');
+            $.each(errors, function (index, validationError) {
+                var errorDiv = $('#validationErrors ');
                 errorDiv.append(validationError.message)
                         .append($('<br>'));
             });
@@ -123,6 +125,7 @@ $('#detailsModal').on('show.bs.modal', function (event) {//bs.modal=bootstrap->c
 $('#editModal').on('show.bs.modal', function (event) {
 
     var element = $(event.relatedTarget);
+    
     var id = element.data('dvd-id'); //
 
     var modal = $(this);
@@ -161,11 +164,15 @@ $('#edit-button').click(function (event) {
                     studio: $('#edit-studio').val()
                 }),
         headers: {//Server
+           
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
+        
         'dataType': 'json'//removed slash between data-Type
+    
     }).success(function () {//commands inside of funtion - use ;
+        
         loadDvd();//call the load dvd function(see above)
     });
 });
@@ -190,14 +197,14 @@ $('#search-button').click(function (event) {
     
     $.ajax({
         type: 'POST',
-        url: 'search/dvds',
+        url: 'dvds',
         data: JSON.stringify({//objects - variables seperated by commas
             title: $('#search-title').val(),
             director: $('#search-director').val(),
             releaseDate: $('#search-release-date').val(),
             mpaa: $('#search-mpaa').val(),
             rating: $('#search-rating').val(),
-            studio: $('#search-studio')
+            studio: $('#search-studio').val()
         }),
         headers: {
             'Accept': 'application/json',
@@ -206,12 +213,14 @@ $('#search-button').click(function (event) {
         'dataType': 'json'
     }).success(function (data, status) {//commands inside of function - use ;
 
-        $('#search-title').val();
-        $('#search-director').val();
-        $('#search-release-date').val();
-        $('#search-mpaa').val();
-        $('#search-rating').val();
-        $('#search-studio');
-        fillDvdTable(data, status);
-    });
+        $('#search-title').val('');
+        $('#search-director').val('');
+        $('#search-release-date').val('');
+        $('#search-mpaa').val('');
+        $('#search-rating').val('');
+        $('#search-studio').val('');
+        
+    fillDvdTable(data, status);
+    
+});
 });

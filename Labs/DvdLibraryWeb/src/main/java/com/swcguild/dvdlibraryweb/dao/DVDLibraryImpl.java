@@ -213,7 +213,7 @@ public class DVDLibraryImpl implements Library {
    
 
     @Override
-    public List<DVD> searchAddress(Map<DvdSearchTerms, String> criteriaMap) {
+    public List<DVD> searchDvd(Map<DvdSearchTerms, String> criteriaMap) {
        
         String titleCriteria = criteriaMap.get(DvdSearchTerms.TITLE);
         String directorCriteria = criteriaMap.get(DvdSearchTerms.DIRECTOR);

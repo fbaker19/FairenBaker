@@ -29,7 +29,7 @@
                         <h2>DVD Search</h2>
                         <table id="dvdTable" class="table table-hover">
                             <tr>
-                                <th width="40%">DVD Name</th>
+                                <th width="40%">DVD Title</th>
                                 <th width="30%">Director</th>
                                 <th width="15%"></th>
                                 <th width="15%"></th>
@@ -100,7 +100,7 @@
                             </div>
                        
                         </form>
-                        
+                       
                     </div> <!-- end of add form div -->
                 </div>
              </div>
@@ -126,6 +126,7 @@
                     <div class="modal-body">
                         <h3 id = "dvd-id"></h3><!--.text in js/Ajax--> <!--!!!DONKEYLOBSTER!!!!-->
                         <table class="table table-bordered">
+                            
                             <tr>
                                 <th>Title:</th><td id ="dvd-title"></td>
                             </tr>
@@ -143,7 +144,6 @@
                             </tr>
                             <tr>
                                 <th>Studio:</th><td id ="dvd-studio"></td>
-                            </tr>
                             </tr>
                         </table>
                     </div>

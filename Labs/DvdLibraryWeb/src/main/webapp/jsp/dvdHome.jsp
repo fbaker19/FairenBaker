@@ -102,7 +102,7 @@
                         </div>
 
                     </form>
-
+                            <div id="validationErrors" style="color: red" ></div><!--USER VISIBLE ERROR MESSAGE-->
                 </div> <!-- end of add form div -->
             </div>
         </div>
@@ -146,7 +146,6 @@
                             <tr>
                                 <th>Studio:</th><td id ="dvd-studio"></td>
                             </tr>
-                           
                         </table>
                     </div>
                     <!-- Modal Body End -->
@@ -170,7 +169,6 @@
             <div class="modal-dialog">
                 <div class="modal-content">
 
-
                     <div class="modal-header">
                         <button type ="button" class="close" data-dismiss="modal">
                             <span aria-hidden="true">&times;</span>
@@ -182,36 +180,42 @@
                     <div class="modal-body">
                         <h3 id="dvd-id"></h3><!--.text in js/Ajax-->
                         <form class="form-horizontal" role ="form">
+                           
                             <div class="form-group">
                                 <label for ="edit-title" class="col-md-4 control-label">Title:</label>
                                 <div class="col-md-8">
                                     <input type ="text" class="form-control" id="edit-title" placeholder="Title"/>
                                 </div>
                             </div>
+                           
                             <div class="form-group">
                                 <label for ="edit-director" class="col-md-4 control-label">Director:</label>
                                 <div class="col-md-8">
                                     <input type ="text" class="form-control" id="edit-director" placeholder="Director"/>
                                 </div>
                             </div>
+                            
                             <div class="form-group">
                                 <label for ="edit-released-date" class="col-md-4 control-label">Release Date:</label>
                                 <div class="col-md-8">
                                     <input type ="text" class="form-control" id="edit-release-date" placeholder="Release Date"/>
                                 </div>
                             </div>
+                            
                             <div class="form-group">
                                 <label for ="edit-mpaa" class="col-md-4 control-label">MPAA:</label>
                                 <div class="col-md-8">
                                     <input type ="text" class="form-control" id="edit-mpaa" placeholder="MPAA"/>
                                 </div>
                             </div>
+                          
                             <div class="form-group">
                                 <label for ="edit-rating" class="col-md-4 control-label">Viewer Rating:</label>
                                 <div class="col-md-8">
                                     <input type ="text" class="form-control" id="edit-rating" placeholder="Viewer Rating"/>
                                 </div>
                             </div>
+                           
                             <div class="form-group">
                                 <label for ="edit-studio" class="col-md-4 control-label">Studio:</label>
                                 <div class="col-md-8">
@@ -234,6 +238,7 @@
             </div>
         </div>
         <!-- end Edit modal -->
+       
         <!-- Placed at the end of the document so the pages load faster -->
         <script src="${pageContext.request.contextPath}/js/jquery-1.11.1.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>

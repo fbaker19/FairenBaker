@@ -50,7 +50,7 @@ public interface Library {
     public void removeTitle(int Id);
 
     //public void addDvd(Integer id, DVD currentLibrary);
-   public List<DVD> searchAddress(Map<DvdSearchTerms, String> criteriaMap);//enum
+   public List<DVD> searchDvd(Map<DvdSearchTerms, String> criteriaMap);//enum
     //searching by map
 
 }

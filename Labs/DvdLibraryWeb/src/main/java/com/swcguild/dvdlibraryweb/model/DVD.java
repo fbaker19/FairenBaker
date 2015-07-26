@@ -24,12 +24,18 @@ public class DVD {//stores Variables and Getters n' Setters
     private String studio;
     private String note;
 
-    
-    public DVD() {
-       int Id = 0;
-        id = Id;
-    }
+ 
+    public DVD(int id) {
+        this.id = id;
+    } 
 
+    public DVD() {
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+//    public DVD(String note) {
+//       this.note = note;
+//    }
 
     public String getNote() {
         return note;
@@ -48,10 +54,6 @@ public class DVD {//stores Variables and Getters n' Setters
         this.releaseDate = releaseDate;
     }
     
-    public DVD(String title) {
-        this.title = title;
-    }
-
     public String getTitle() {
         return title;
     }

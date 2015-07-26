@@ -225,7 +225,7 @@ $('#search-button').click(function (event) {
 
         $('#search-first-name').val('');
         $('#search-last-name').val('');
-        $('#search-number-and-street').val();
+        $('#search-number-and-street').val('');
         $('#search-city').val('');
         $('#search-state').val('');
         $('#search-zip').val('');
