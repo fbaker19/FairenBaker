@@ -7,36 +7,57 @@ package com.swcguild.dvdlibraryweb.model;
 
 import java.time.LocalDate;
 import java.util.Objects;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  *
  * @author apprentice
  */
 public class DVD {//stores Variables and Getters n' Setters
-    
+
     private int id; //= 0;//initilized
+    
+    @NotEmpty(message = "You must supply a value for Title.")
+    @Length(max = 50, message = "Title name must not be more than 50 characters in length")
     private String title;
+
+    @NotEmpty(message = "You must supply a value for the Release date.")
+    @Length(max = 10, message = "Release Date must not be more than 10 characters in length - MM/DD/YYYY(with slashes) or you may enter just the year of release")
     private String releaseDate;
+
+    
     private String year;
+
+    @NotEmpty(message = "You must supply a value for Director.")
+    @Length(max = 30, message = "Director name must not be more than 30 characters in length")
     private String director;
+
+    @NotEmpty(message = "You must supply a value for the MPAA.")
+    @Length(max = 4, message = "MPAA name must not be more than 4 characters in length")
     private String mpaa;
+
+    @NotEmpty(message = "You must supply a value for rating.")
+    @Length(max = 3, message = "Rating  must not be more than 3 characters in length. ie 1-100 scale or 1-10 scale with decimals - 7.6")
     private String rating;
+
+    @NotEmpty(message = "You must supply a value for Studio.")
+    @Length(max = 30, message = "Studio name must not be more than 30 characters in length")
     private String studio;
+
     private String note;
 
- 
     public DVD(int id) {
         this.id = id;
-    } 
+    }
 
     public DVD() {
-       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 //    public DVD(String note) {
 //       this.note = note;
 //    }
-
     public String getNote() {
         return note;
     }
@@ -44,16 +65,15 @@ public class DVD {//stores Variables and Getters n' Setters
     public void setNote(String note) {
         this.note = note;
     }
-    
 
     public String getReleaseDate() {
         return releaseDate;
     }
 
-     public void setReleaseDate(String releaseDate)  {
+    public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
     }
-    
+
     public String getTitle() {
         return title;
     }
@@ -66,7 +86,7 @@ public class DVD {//stores Variables and Getters n' Setters
         return year;
     }
 
-    public void setYear(String  year) {
+    public void setYear(String year) {
         this.year = year;
     }
 
@@ -113,7 +133,6 @@ public class DVD {//stores Variables and Getters n' Setters
 //    DVD(String Id) {
 //        id = Id; //To change body of generated methods, choose Tools | Templates.
 //    }
-
     @Override
     public int hashCode() {
         int hash = 7;
@@ -167,9 +186,5 @@ public class DVD {//stores Variables and Getters n' Setters
         }
         return true;
     }
-   
 
-  
-   
-    
 }
