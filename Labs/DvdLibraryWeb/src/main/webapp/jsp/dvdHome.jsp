@@ -28,7 +28,7 @@
 
             <div class="row">
                 <div class="col-md-6">
-                    <h2>DVD's</h2>
+                    <h2>DVDs</h2>
                     <table id="dvdTable" class="table table-hover">
                         <tr>
                             <th width="40%">DVD Title</th>
@@ -116,7 +116,7 @@
 
                     <!-- Modal Header --> <!--X/close button -->
                     <div class = "modal-header">
-                        <button type =" button" class="close" data-dismiss ="modal">
+                        <button type ="button" class="close" data-dismiss ="modal">
                             <span aria-hidden = "true">&times;</span>
                             <span class ="sr-only">Close</span>
                         </button>

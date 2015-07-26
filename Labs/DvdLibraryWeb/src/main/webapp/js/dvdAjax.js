@@ -104,9 +104,11 @@ function clearDvdTable()
 $('#detailsModal').on('show.bs.modal', function (event) {//bs.modal=bootstrap->click button/show
     //event is part of bootstrap
     var element = $(event.relatedTarget);
+   
     var id = element.data('dvd-id'); //!!!!!!!!!!!!!!!!!!! var anything or match DTO 
 
     var modal = $(this);
+    
     $.ajax({
         type: 'GET',
         url: 'dvdLibrary/' + id///!!var set above, can be donkeyLobster
@@ -138,12 +140,12 @@ $('#editModal').on('show.bs.modal', function (event) {
         
 //INPUTS ==.val & labels==.text(see <h3> element on home.jsp)
         modal.find('#edit-dvd-id').val(dvd.id); //( in the ().DTO) ex - .text(donkeyLobster.id)// HIDDEN FILED  within HTML (ATTIBUTE) within Input element - see button by form tag
-        modal.find('#edit-dvd-title').val(dvd.title);
-        modal.find('#edit-dvd-director').val(dvd.director);
-        modal.find('#edit-dvd-release-date').val(dvd.releaseDate);
-        modal.find('#edit-dvd-mpaa').val(dvd.mpaa);
-        modal.find('#edit-dvd-rating').val(dvd.rating);
-        modal.find('#edit-dvd-studio').val(dvd.studio);
+        modal.find('#edit-title').val(dvd.title);
+        modal.find('#edit-director').val(dvd.director);
+        modal.find('#edit-release-date').val(dvd.releaseDate);
+        modal.find('#edit-mpaa').val(dvd.mpaa);
+        modal.find('#edit-rating').val(dvd.rating);
+        modal.find('#edit-studio').val(dvd.studio);
     });
 });
 $('#edit-button').click(function (event) {

@@ -15,7 +15,7 @@
     </head>
     <body>
         <div class="container">
-            <h1>Dvd Library</h1> <!--Spring MVC Application from Archetype-->
+            <h1>DVD Library</h1> <!--Spring MVC Application from Archetype-->
             <hr/>
             <div class="navbar">
                  <ul class="nav nav-tabs">
