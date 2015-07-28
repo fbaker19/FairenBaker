@@ -52,7 +52,7 @@
                 <div class="form-group">
                     <label for="add-release-date" class="col-md-4 control-label">Release Date:</label>
                     <div class="col-md-8">
-                        <input type="text"
+                        <input type="date"
                                class="form-control"
                                id="add-release-date"
                                name="releaseDate"

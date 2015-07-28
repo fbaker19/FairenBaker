@@ -113,6 +113,7 @@ public class DvdLibraryMVCtest {
         dao.addDvd(dvd);
 
         DVD dvd2 = new DVD();
+        
         dvd2.setTitle("Death Proof");
         dvd2.setReleaseDate("9/18/2007");
         dvd2.setMpaa("R");
@@ -184,8 +185,8 @@ public class DvdLibraryMVCtest {
         criteria.put(DvdSearchTerms.MPAA, "R");
         dList = dao.searchDvd(criteria);
         assertEquals(2, dList.size());
-        assertEquals(dvd, dList.get(0));
-        assertEquals(dvd2, dList.get(1));
+        assertEquals(dvd, dList.add(dvd));
+        assertEquals(dvd2, dList.add(dvd2));
         
         
         criteria.put(DvdSearchTerms.MPAA, "PG13");

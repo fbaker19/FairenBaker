@@ -42,7 +42,7 @@
                 <div class="form-group">
                     <label for="add-release-date" class="col-md-4 control-label">Release Date:</label>
                     <div class="col-md-8">
-                        <sf:input type="text" class="form-control" id="add-release-date" path="releaseDate" placeholder="Release Date" />
+                        <sf:input type="date" class="form-control" id="add-release-date" path="releaseDate" placeholder="Release Date" />
                         <sf:errors path="releaseDate" cssclass="error"></sf:errors>
                     </div>
                 </div>

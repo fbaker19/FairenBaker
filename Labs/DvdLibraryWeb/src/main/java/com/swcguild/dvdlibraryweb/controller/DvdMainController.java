@@ -40,7 +40,7 @@ public class DvdMainController {
     }
     
     @RequestMapping(value="/addNewDvd", method=RequestMethod.POST)
-    public String addNewDvd(HttpServletRequest request) {
+    public String addNewDvd(@Valid BindingResult result, HttpServletRequest request) {
        
         String title = request.getParameter("title");
         String director = request.getParameter("director");
@@ -59,9 +59,13 @@ public class DvdMainController {
         ll.setStudio(studio);
        
             dao.addDvd(ll);//lookat impl
-       
         
         return "redirect:displayDvdList";
+        
+//        if(result.hasErrors())
+//        {
+//           
+//        }
     }
     
     @RequestMapping(value="/deleteDvd", method=RequestMethod.GET)

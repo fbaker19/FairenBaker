@@ -38,7 +38,7 @@
                         </table>
                     </div>
                     <div class="col-md-6">
-                        <h2> Search DVD's</h2>
+                        <h2> Search DVDs</h2>
                         <form class="form-horizontal" role="form">
                             <div class="form-group">
                                 <label for="search-title" class="col-md-4 control-label">
@@ -63,7 +63,7 @@
                                     Release Date:
                                 </label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="search-release-date" placeholder="Release Date" />
+                                    <input type="date" class="form-control" id="search-release-date" placeholder="Release Date" />
                                 </div>
                             </div>
                            
@@ -195,7 +195,7 @@
                             <div class="form-group">
                                 <label for ="edit-released-date" class="col-md-4 control-label">Release Date:</label>
                                 <div class="col-md-8">
-                                    <input type ="text" class="form-control" id="edit-release-date" placeholder="Release Date"/>
+                                    <input type ="date" class="form-control" id="edit-release-date" placeholder="Release Date"/>
                                 </div>
                             </div>
                             <div class="form-group">

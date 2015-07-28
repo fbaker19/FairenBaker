@@ -65,7 +65,7 @@
                                 Release Date:
                             </label>
                             <div class="col-md-8">
-                                <input type="text" class="form-control" id="add-release-date" placeholder="Release Date" />
+                                <input type="date" class="form-control" id="add-release-date" placeholder="Release Date" />
                             </div>
                         </div>
 
@@ -198,7 +198,7 @@
                             <div class="form-group">
                                 <label for ="edit-released-date" class="col-md-4 control-label">Release Date:</label>
                                 <div class="col-md-8">
-                                    <input type ="text" class="form-control" id="edit-release-date" placeholder="Release Date"/>
+                                    <input type ="date" class="form-control" id="edit-release-date" placeholder="Release Date"/>
                                 </div>
                             </div>
                             
