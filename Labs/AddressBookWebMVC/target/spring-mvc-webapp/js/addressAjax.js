@@ -47,7 +47,7 @@ $(document).ready(function () {
             loadAddress();
 
         }).error(function (data, status) {//data = jsp package, status = number& bound to error
-            var errors = data.responseJSON.fieldErrors;
+            var errors = data.responseJSON.fieldErrors;//restValidationHandler
             $.each(errors, function (index, validationError) {
                 var errorDiv = $('#validationErrors ');
                 errorDiv.append(validationError.message)///html pg/jsp -- diplays to the user

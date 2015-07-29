@@ -21,17 +21,19 @@ import java.util.Map;
  */
 public interface AddressInterface {//interface  = todo lists - cover the bases
   
-    public List<Address> searchByCity( String cityName);
-
-    public List<Address> searchByState( String stateName);
-
-    public List<Address> searchByZip(Integer zip);
-
-    public List<Address> searchNumberAndStreet( String numberAndStreet);
-
-    public List<Address> searchByFirstName( String firstName);
-
-    public List<Address> searchByLastName( String lastName);
+    
+    //FOR LAMBDAS FOR LAMBDAS FOR LAMBDAS FOR LAMBDAS FOR LAMBDAS FOR LAMBDAS FOR LAMBDAS FOR LAMBDAS FOR LAMBDAS FOR LAMBDAS FOR LAMBDAS FOR LAMBDAS FOR LAMBDAS 
+//    public List<Address> searchByCity( String cityName);
+//
+//    public List<Address> searchByState( String stateName);
+//
+//    public List<Address> searchByZip(Integer zip);
+//
+//    public List<Address> searchNumberAndStreet( String numberAndStreet);
+//
+//    public List<Address> searchByFirstName( String firstName);
+//
+//    public List<Address> searchByLastName( String lastName);
     
     
     /**

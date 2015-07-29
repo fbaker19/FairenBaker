@@ -16,6 +16,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 /**
  *
@@ -34,6 +35,8 @@ public class ContactListDaoTest {
                 = new ClassPathXmlApplicationContext("test-applicationContext.xml");
         
         dao = ctx.getBean("contactListDao", ContactListDao.class);
+        JdbcTemplate jdbcTemplate = (JdbcTemplate) ctx.getBean("jdbcTemplate");
+        jdbcTemplate.execute("DELETE FROM contacts");//clears slate before each run()
     }
     
     @After

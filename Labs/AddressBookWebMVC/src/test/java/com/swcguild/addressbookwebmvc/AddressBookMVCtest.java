@@ -98,9 +98,9 @@ public class AddressBookMVCtest {
         dao.addAddress(add2);
         
         add2.setFirstName("Rick");
-        dao.updateAddress(add1);
-        Address result =dao.getAddressId(add1.getId());
-        assertEquals(add1, result);
+        dao.updateAddress(add2);
+        Address result = dao.getAddressId(add2.getId());
+        assertEquals(add2, result);
     }
 
     @Test

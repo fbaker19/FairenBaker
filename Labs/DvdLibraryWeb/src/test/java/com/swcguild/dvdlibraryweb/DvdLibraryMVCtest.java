@@ -91,6 +91,8 @@ public class DvdLibraryMVCtest {
         dvd.setRating("8.2");
         
         dao.addDvd(dvd);
+        
+        
         dvd.setStudio("Disney Studios");
         
         dao.updateLibrary(dvd);
@@ -103,12 +105,12 @@ public class DvdLibraryMVCtest {
 
         DVD dvd = new DVD();
         
-        dvd.setTitle("MadMax:Furry Road");
-        dvd.setReleaseDate("5/7/2015");
-        dvd.setMpaa("PG13");
-        dvd.setRating("9.2");
-        dvd.setDirector("George Miller");
-        dvd.setStudio("Warner Bros");
+        dvd.setTitle("Pinapple Express");
+        dvd.setReleaseDate("8/6/2008");
+        dvd.setMpaa("R");
+        dvd.setRating("7.7");
+        dvd.setDirector(" David Gordon Green");
+        dvd.setStudio("Columbia Pictures");
 
         dao.addDvd(dvd);
 
@@ -141,7 +143,6 @@ public class DvdLibraryMVCtest {
         dvd.setRating("7.7");
         dvd.setDirector(" David Gordon Green");
         dvd.setStudio("Columbia Pictures");
-        
 
         dao.addDvd(dvd);
 
@@ -168,28 +169,37 @@ public class DvdLibraryMVCtest {
   
         Map<DvdSearchTerms,String> criteria = new HashMap<>();
         
-        
         criteria.put(DvdSearchTerms.TITLE, "Death Proof");
         List<DVD> dList = dao.searchDvd(criteria);
         
         assertEquals(1, dList.size());
         assertEquals(dvd2, dList.get(0));
         
-        criteria.put(DvdSearchTerms.TITLE, "Star Wars:The Force Awakens");
+        criteria = new HashMap<>();
+        criteria.put(DvdSearchTerms.TITLE, "Star Wars: The Force Awakens");
         dList = dao.searchDvd(criteria);
-        assertEquals(2, dList.size());
-        assertTrue(dList.contains(dvd2));
+        
+        assertEquals(1, dList.size());
+       
         assertTrue(dList.contains(dvd3));
-                
+          
+          
+        criteria = new HashMap<>();
        //???????????????????????????????
         criteria.put(DvdSearchTerms.MPAA, "R");
         dList = dao.searchDvd(criteria);
+       
         assertEquals(2, dList.size());
-        assertEquals(dvd, dList.add(dvd));
-        assertEquals(dvd2, dList.add(dvd2));
+         assertTrue(dList.contains(dvd));
+        assertTrue(dList.contains(dvd2));
         
-        
+        criteria = new HashMap<>();
         criteria.put(DvdSearchTerms.MPAA, "PG13");
+        dList = dao.searchDvd(criteria);
+        assertEquals(1, dList.size());
+        
+        criteria = new HashMap<>();
+        criteria.put(DvdSearchTerms.MPAA, "G");
         dList = dao.searchDvd(criteria);
         assertEquals(0, dList.size());
           

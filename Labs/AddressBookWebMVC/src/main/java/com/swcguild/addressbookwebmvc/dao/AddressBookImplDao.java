@@ -31,67 +31,67 @@ import java.util.stream.Collectors;
  */
 public class AddressBookImplDao implements AddressInterface {//after interface (not a class) is implemented -
     // import all abstract methods(@Overrides)
-
-    public static final String ADBOOK_FILE = "LambdaAddress.txt";
-    public static final String DELIMITER = "::";
-
-    private Map<Integer, Address> addressMap = new HashMap<>();
-
-    List<Address> address = new ArrayList<>();// create array list of getters and setters
-
-    @Override
-    public List<Address> searchByCity(String cityName) {
-        return addressMap.values()
-                .stream()
-                .filter(a -> a.getCity().equalsIgnoreCase(cityName))
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public List<Address> searchByState(String stateName) {
-        return addressMap.values()
-                .stream()
-                .filter(a -> a.getState().equalsIgnoreCase(stateName))
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public List<Address> searchByZip(Integer zip) {
-        return addressMap.values()
-                .stream()
-                .filter(a -> a.getZip().equals(zip))
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public List<Address> searchNumberAndStreet(String numberAndStreet) {
-        return addressMap.values()
-                .stream()
-                .filter(a -> a.getNumberAndStreet().equalsIgnoreCase(numberAndStreet))
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public List<Address> searchByFirstName(String firstName) {
-        return addressMap.values()
-                .stream()
-                .filter(a -> a.getFirstName().equalsIgnoreCase(firstName))
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public List<Address> searchByLastName(String lastName) {
-        return addressMap.values()
-                .stream()
-                .filter(a -> a.getLastName().equalsIgnoreCase(lastName))
-                /**
-                 * creates new list of filtered objects (whats left
-                 * over/bottleneck effect)
-                 */
-                .collect(Collectors.toList());
-        //.forEach(e -> System.out.println(e.getLastName()));
-
-    }
+//
+//    public static final String ADBOOK_FILE = "LambdaAddress.txt";
+//    public static final String DELIMITER = "::";
+//
+   private Map<Integer, Address> addressMap = new HashMap<>();
+//
+   List<Address> address = new ArrayList<>();// create array list of getters and setters
+//
+//    @Override
+//    public List<Address> searchByCity(String cityName) {
+//        return addressMap.values()
+//                .stream()
+//                .filter(a -> a.getCity().equalsIgnoreCase(cityName))
+//                .collect(Collectors.toList());
+//    }
+//
+//    @Override
+//    public List<Address> searchByState(String stateName) {
+//        return addressMap.values()
+//                .stream()
+//                .filter(a -> a.getState().equalsIgnoreCase(stateName))
+//                .collect(Collectors.toList());
+//    }
+//
+//    @Override
+//    public List<Address> searchByZip(Integer zip) {
+//        return addressMap.values()
+//                .stream()
+//                .filter(a -> a.getZip().equals(zip))
+//                .collect(Collectors.toList());
+//    }
+//
+//    @Override
+//    public List<Address> searchNumberAndStreet(String numberAndStreet) {
+//        return addressMap.values()
+//                .stream()
+//                .filter(a -> a.getNumberAndStreet().equalsIgnoreCase(numberAndStreet))
+//                .collect(Collectors.toList());
+//    }
+//
+//    @Override
+//    public List<Address> searchByFirstName(String firstName) {
+//        return addressMap.values()
+//                .stream()
+//                .filter(a -> a.getFirstName().equalsIgnoreCase(firstName))
+//                .collect(Collectors.toList());
+//    }
+//
+//    @Override
+//    public List<Address> searchByLastName(String lastName) {
+//        return addressMap.values()
+//                .stream()
+//                .filter(a -> a.getLastName().equalsIgnoreCase(lastName))
+//                /**
+//                 * creates new list of filtered objects (whats left
+//                 * over/bottleneck effect)
+//                 */
+//                .collect(Collectors.toList());
+//        //.forEach(e -> System.out.println(e.getLastName()));
+//
+//    }
 
     @Override
     public Integer addAddress(Address address) {
