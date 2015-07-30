@@ -35,7 +35,7 @@ public class ContactListDaoDbImpl implements ContactListDao {
     //prevents sql injection 
     private static final String SQL_INSERT_CONTACT = "INSERT INTO contacts(first_name, last_name, company, phone, email) VALUES(?,?,?,?,?)";
     private static final String SQL_DELETE_CONTACT = "DELETE FROM contacts WHERE contact_id =?";
-    private static final String SQL_UPDATE_CONTACT = "UPDATE contacts set first_name = ?, last_name = ?, company =?, phone = ?, email = ?  WHERE contact_id =?";
+    private static final String SQL_UPDATE_CONTACT = "UPDATE contacts SET first_name = ?, last_name = ?, company =?, phone = ?, email = ?  WHERE contact_id =?";
     private static final String SQL_SELECT_ALL_CONTACTS = "SELECT * FROM contacts";
     private static final String SQL_SELECT_CONTACT = "SELECT * FROM contacts WHERE contact_id = ?";
 

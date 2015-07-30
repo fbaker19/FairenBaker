@@ -5,20 +5,43 @@
  */
 package com.swcguild.librarymvc.model;
 
+import java.util.Objects;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  *
  * @author apprentice
  */
+@Entity///hibernate controller
+@Table(name = "publishers")//database table
+
 public class Publisher {
-    
+
+    @Id
+    @GeneratedValue
+    @Column(name = "publisher_id")
     private int publisherId;
-    
-   
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "street")
     private String street;
+
+    @Column(name = "city")
     private String city;
+
+    @Column(name = "state")
     private String state;
+
+    @Column(name = "zip")
     private String zip;
+
+    @Column(name = "phone")
     private String phone;
 
     public int getPublisherId() {
@@ -76,5 +99,52 @@ public class Publisher {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 17 * hash + this.publisherId;
+        hash = 17 * hash + Objects.hashCode(this.name);
+        hash = 17 * hash + Objects.hashCode(this.street);
+        hash = 17 * hash + Objects.hashCode(this.city);
+        hash = 17 * hash + Objects.hashCode(this.state);
+        hash = 17 * hash + Objects.hashCode(this.zip);
+        hash = 17 * hash + Objects.hashCode(this.phone);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Publisher other = (Publisher) obj;
+        if (this.publisherId != other.publisherId) {
+            return false;
+        }
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        if (!Objects.equals(this.street, other.street)) {
+            return false;
+        }
+        if (!Objects.equals(this.city, other.city)) {
+            return false;
+        }
+        if (!Objects.equals(this.state, other.state)) {
+            return false;
+        }
+        if (!Objects.equals(this.zip, other.zip)) {
+            return false;
+        }
+        if (!Objects.equals(this.phone, other.phone)) {
+            return false;
+        }
+        return true;
+    }
+
     
 }

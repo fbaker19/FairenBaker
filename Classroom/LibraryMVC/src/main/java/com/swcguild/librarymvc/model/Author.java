@@ -5,20 +5,54 @@
  */
 package com.swcguild.librarymvc.model;
 
+import java.util.Set;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+
 /**
  *
  * @author apprentice
  */
+@Entity
+@Table (name = "authors")
 public class Author {//DTO
+
+    @Id//marks primary key field
+    @GeneratedValue //auto-increment in database
+    @Column(name = "author_id")
     private int authorId;
+
+    @Column(name = "first_name")
     private String firstName;
+
+    @Column(name = "last_name")
     private String lastName;
+    
+    @Column(name = "street")
     private String street;
+    
+    @Column(name = "city")
     private String city;
+    
+    @Column(name = "state")
     private String state;
+    
+    @Column(name = "zip")
     private String zip;
+    
+    @Column(name = "phone")
     private String phone;
 
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "authors")
+    private Set<HBook> books;
+
+    
+    
     public int getAuthorId() {
         return authorId;
     }
@@ -82,5 +116,5 @@ public class Author {//DTO
     public void setPhone(String phone) {
         this.phone = phone;
     }
-    
+
 }
