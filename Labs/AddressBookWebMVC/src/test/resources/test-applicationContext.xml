@@ -36,6 +36,7 @@
     <!-- Bean definitions go here -->
     
     <!-- new bean injection / DB Dao -->
-    <bean id="addressBookDao" class="com.swcguild.addressbookwebmvc.dao.AddressBookDbImpl" />
-</beans>
+    <bean id="addressBookDao" class="com.swcguild.addressbookwebmvc.dao.AddressBookDbImpl" >
+         <property name="jdbcTemplate" ref="jdbcTemplate"/> 
+    </bean>
 </beans>

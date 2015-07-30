@@ -161,20 +161,18 @@ $('#editModal').on('show.bs.modal', function (event) {
 $('#edit-button').click(function (event) {
 
     event.preventDefault();
-
-    $.ajax({
-        type: 'PUT',
-        url: 'address/' + $('#edit-address-id').val(),
-        data: JSON.stringify(
-                {
-                    id: $('#edit-address-id').val(),
+var Data = {id: $('#edit-address-id').val(),
                     firstName: $('#edit-first-name').val(),
                     lastName: $('#edit-last-name').val(),
                     numberAndStreet: $('#edit-number-and-street').val(),
                     city: $('#edit-city').val(),
                     state: $('#edit-state').val(),
-                    zip: $('#edit-zip').val
-                }),
+                    zip: $('#edit-zip').val()};
+    $.ajax({
+        type: 'PUT',
+        url: 'address/' + $('#edit-address-id').val(),
+        data: JSON.stringify(
+                Data),
         headers: {//Server
             'Accept': 'application/json',
             'Content-Type': 'application/json'

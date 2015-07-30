@@ -20,11 +20,12 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- *  Manual add in for mySQL in POM file(SHOULD  NOT HAVE TO DO THIS DUE TO SPRING-ARCHETYPE)
+ *  Manual add in for mySQL in POM file(SHOULD NOT HAVE TO DO THIS DUE TO SPRING-ARCHETYPE)
+ * 
  * <dependency>
- * <groupId>mysql</groupId>
- * <artifactId>mysql-connector-java</artifactId>
- * <version>5.1.5</version>
+ *      <groupId>mysql</groupId>
+ *      <artifactId>mysql-connector-java</artifactId>
+ *      <version>5.1.5</version>
  * </dependency>
  *
  * @author apprentice
@@ -38,7 +39,7 @@ public class ContactListDaoDbImpl implements ContactListDao {
     private static final String SQL_SELECT_ALL_CONTACTS = "SELECT * FROM contacts";
     private static final String SQL_SELECT_CONTACT = "SELECT * FROM contacts WHERE contact_id = ?";
 
-    private JdbcTemplate jdbcTemplate; //imported from sprin JdbC-Template
+    private JdbcTemplate jdbcTemplate; //imported from spring JdbC-Template
 /// <property name="jdbcTemplate" ref="jdbcTemplate"/> DO NOT FORGET Place between impl bean//DEAR. GOD.
     public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
@@ -49,7 +50,7 @@ public class ContactListDaoDbImpl implements ContactListDao {
     //locks table until transaction is completed
     public Contact addContact(Contact contact) {
         jdbcTemplate.update(SQL_INSERT_CONTACT,
-                //must be in order, otherwise you' get 'wrong data'
+                //must be in order, otherwise you'll get 'wrong data'
                 contact.getFirstName(),
                 contact.getLastName(),
                 contact.getCompany(),

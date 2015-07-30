@@ -26,15 +26,17 @@ import org.springframework.transaction.annotation.Transactional;
 public class AddressBookDbImpl implements AddressInterface {
 
     ///injects into database :"INSERT INTO dataBaseName(fields of Database) VALUES(?,?,?.....)
-    public static final String SQL_INSERT_ADDRESS = "INSERT INTO address(first_name, last_name, number_and_street, city, state, zip) VALUES(?,?,?,?,?,?)" ;
+    public static final String SQL_INSERT_ADDRESS = "INSERT INTO address (first_name, last_name, number_and_street, city, state, zip) VALUES (?, ?, ?, ?, ?, ?)" ;
     public static final String SQL_DELETE_ADDRESS ="DELETE FROM address WHERE id = ?";
-    public static final String SQL_UPDATE_ADDRESS ="UPDATE address set first_name = ?, last_name =?, number_and_street =?, city =?, state=?, zip=?";
+    public static final String SQL_UPDATE_ADDRESS ="UPDATE address SET first_name = ?, last_name =?, number_and_street =?, city =?, state=?, zip = ? WHERE id = ?";
     public static final String SQL_SELECT_ALL_ADDRESSES="SELECT * FROM address";
-    public static final String SQL_SELECT_ADDRESS ="SELECT * FROM address WHERE is = ?";
+    public static final String SQL_SELECT_ADDRESS ="SELECT * FROM address WHERE id = ?";
    
-    private JdbcTemplate jdbcTemplate; //imported from spring JdbC-Template
+    private JdbcTemplate jdbcTemplate; //imported from spring JdbC-Template(underneth the implDao)
    
-    //sets imports into the parameter
+    /// <property name="jdbcTemplate" ref="jdbcTemplate"/> DO NOT FORGET Place between impl bean (DEAR. GOD.)
+    
+    //sets imported Template into the parameter
     public void setJdbcTemplate (JdbcTemplate jdbcTemplate)
     {
         this.jdbcTemplate = jdbcTemplate;
@@ -43,9 +45,9 @@ public class AddressBookDbImpl implements AddressInterface {
     //Method step 1
     @Override
     @Transactional(propagation = Propagation.REQUIRED, readOnly = false) //locks table until transaction is completed
-    public Integer addAddress(Address address) {
+    public Integer addAddress(Address address) {//also in <bean/property = TransactionalManager.../>
         jdbcTemplate.update(SQL_INSERT_ADDRESS,//"get" the address as an input from user
-                //must be in order, otherwise you' get 'wrong data'
+                //must be in order, otherwise you'll get 'wrong data'
                 address.getFirstName(),
                 address.getLastName(),
                 address.getNumberAndStreet(),
@@ -53,7 +55,7 @@ public class AddressBookDbImpl implements AddressInterface {
                 address.getState(),
                 address.getZip());
        
-        //how to set 'last insert ID' - found in database when 'ai ' box is checked
+        //how to set 'last insert ID' - found in database when 'ai' box is checked
         address.setId(jdbcTemplate.queryForObject("SELECT LAST_INSERT_ID()",Integer.class));
       
         return address.getId();
@@ -73,12 +75,9 @@ public class AddressBookDbImpl implements AddressInterface {
     //Method step 6
     @Override //queryForObject selects only ONE object ie 1 entry/contact 
     public Address getAddressId(int id) {
-        try
-        {
+        try{
             return jdbcTemplate.queryForObject(SQL_SELECT_ADDRESS, new AddressMapper(), id);
-        } catch(EmptyResultDataAccessException ex)
-        
-        {
+        } catch(EmptyResultDataAccessException ex){
             return null;
         }
     }
@@ -95,29 +94,33 @@ public class AddressBookDbImpl implements AddressInterface {
                 addressVar.getState(),
                 addressVar.getZip(),
                
-                addressVar.getId()///WHERE CLAUSE -updating an EXISTING ID 
-        );
+                addressVar.getId());
+       
     }
 
     //Method  step 7[final]
     @Override
     public List<Address> searchAddress(Map<AddressSearchTerm, String> criteriaMap) {
             if (criteriaMap == null || criteriaMap.size() == 0) {
-            return getAllAddresses();
+            return getAllAddresses();//show a complete list of addresses
         }
+        
         StringBuilder query = new StringBuilder("SELECT * FROM contacts WHERE ");
-
+        
+        //String builder allows for things to be turned into a string(doesn't turn into a String directly)
+        //StringBuilder -turns appends into one big string
+    
         int numParams = criteriaMap.size();
 
         String[] paramVals = new String[numParams];
 
         Set<AddressSearchTerm> keyset = criteriaMap.keySet();
-        Iterator<AddressSearchTerm> iter = keyset.iterator();//iterarot is for looping an array
+        Iterator<AddressSearchTerm> iter = keyset.iterator();//iterator is for looping an array
         
         int paramPosition = 0;// starting postiion
        
         while (iter.hasNext()) {
-            AddressSearchTerm currentKey = iter.next();// looping to thr new value on the list
+            AddressSearchTerm currentKey = iter.next();// looping to the new value on the list
             String currentValue = criteriaMap.get(currentKey);// gets value by key(fields)
 
 
@@ -129,7 +132,7 @@ public class AddressBookDbImpl implements AddressInterface {
             query.append(" =? ");  //space sensative
 
             paramVals[paramPosition] = currentValue;//String paramerter/value
-            paramPosition++; //moves down the list and reads  variables doen
+            paramPosition++; //moves down the list and reads  variables in database(AND/append)
         }
 
         return jdbcTemplate.query(query.toString(), new AddressMapper(), paramVals);
@@ -144,7 +147,8 @@ public class AddressBookDbImpl implements AddressInterface {
             
             Address address = new Address();
             
-            address.setId(rs.getInt("id"));
+            address.setId(rs.getInt("id"));//Id = int(the rest are strings)
+            
             address.setFirstName(rs.getString("first_name"));
             address.setLastName(rs.getString("last_name"));
             address.setNumberAndStreet(rs.getString("number_and_street"));

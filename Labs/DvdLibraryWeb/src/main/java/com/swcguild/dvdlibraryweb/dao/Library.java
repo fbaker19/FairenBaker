@@ -18,19 +18,19 @@ import java.util.Map;
  */
 public interface Library {
 
-    public List<DVD> searchByTitle(String title);
-
-    public List<DVD> searchByYear(String year);
-
-    public List<DVD> searchByDirector(String director);
-
-    public List<DVD> searchByMpaa(String mpaa);
-
-    public List<DVD> searchByRating(String rating);
-
-    public List<DVD> searchByStudio(String studio);
-
-    public List<DVD> searchById(Integer Id);
+//    public List<DVD> searchByTitle(String title);
+//
+//    public List<DVD> searchByYear(String year);
+//
+//    public List<DVD> searchByDirector(String director);
+//
+//    public List<DVD> searchByMpaa(String mpaa);
+//
+//    public List<DVD> searchByRating(String rating);
+//
+//    public List<DVD> searchByStudio(String studio);
+//
+//    public List<DVD> searchById(Integer Id);
 
     
 //    public void loadLibraryLambda() throws FileNotFoundException;

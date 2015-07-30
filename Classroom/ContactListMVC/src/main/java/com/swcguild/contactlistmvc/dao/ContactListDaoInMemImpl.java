@@ -55,13 +55,14 @@ public class ContactListDaoInMemImpl implements ContactListDao {
 
     @Override
     public List<Contact> searchContacts(Map<SearchTerm, String> criteria) {
-        
+       
         String firstNameCriteria = criteria.get(SearchTerm.FIRST_NAME);
         String lastNameCriteria = criteria.get(SearchTerm.LAST_NAME);
         String companyCriteria = criteria.get(SearchTerm.COMPANY);
         String phoneCriteria = criteria.get(SearchTerm.PHONE);
         String emailCriteria = criteria.get(SearchTerm.EMAIL);
-        
+       
+         //Predicate is a boolean- is this name in the <DTO>? if matches/yes = true/ in the <DTO>
         Predicate<Contact> firstNameMatches;
         Predicate<Contact> lastNameMatches;
         Predicate<Contact> companyMatches;

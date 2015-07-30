@@ -45,64 +45,64 @@ public class DVDLibraryImpl implements Library {
         return lList;
 
     }
-
-    @Override
-    public List<DVD> searchByTitle(String title) {
-        return (List<DVD>) libraryMap.values()
-                .stream()
-                .filter(d -> d.getTitle().equalsIgnoreCase(title))
-                .collect(Collectors.toList());
-
-    }
-
-    @Override
-    public List<DVD> searchByYear(String year) {
-        return (List<DVD>) libraryMap.values()
-                .stream()
-                .filter((DVD d) -> year.equals(d.getYear()))
-                .collect(Collectors.toList());
-
-    }
-
-    @Override
-    public List<DVD> searchByDirector(String director) {
-        return libraryMap.values()
-                .stream()
-                .filter(d -> d.getDirector().equalsIgnoreCase(director))
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public List<DVD> searchByMpaa(String mpaa) {
-        return libraryMap.values()
-                .stream()
-                .filter(d -> d.getMpaa().equalsIgnoreCase(mpaa))
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public List<DVD> searchByRating(String rating) {
-        return libraryMap.values()
-                .stream()
-                .filter((DVD d) -> d.getRating().equals(rating))
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public List<DVD> searchByStudio(String studio) {
-        return libraryMap.values()
-                .stream()
-                .filter(d -> d.getStudio().equalsIgnoreCase(studio))
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public List<DVD> searchById(Integer Id) {
-        return libraryMap.values()
-                .stream()
-                .filter(d -> d.getId().equals(Id))
-                .collect(Collectors.toList());
-    }
+//
+//    @Override
+//    public List<DVD> searchByTitle(String title) {
+//        return (List<DVD>) libraryMap.values()
+//                .stream()
+//                .filter(d -> d.getTitle().equalsIgnoreCase(title))
+//                .collect(Collectors.toList());
+//
+//    }
+//
+//    @Override
+//    public List<DVD> searchByYear(String year) {
+//        return (List<DVD>) libraryMap.values()
+//                .stream()
+//                .filter((DVD d) -> year.equals(d.getYear()))
+//                .collect(Collectors.toList());
+//
+//    }
+//
+//    @Override
+//    public List<DVD> searchByDirector(String director) {
+//        return libraryMap.values()
+//                .stream()
+//                .filter(d -> d.getDirector().equalsIgnoreCase(director))
+//                .collect(Collectors.toList());
+//    }
+//
+//    @Override
+//    public List<DVD> searchByMpaa(String mpaa) {
+//        return libraryMap.values()
+//                .stream()
+//                .filter(d -> d.getMpaa().equalsIgnoreCase(mpaa))
+//                .collect(Collectors.toList());
+//    }
+//
+//    @Override
+//    public List<DVD> searchByRating(String rating) {
+//        return libraryMap.values()
+//                .stream()
+//                .filter((DVD d) -> d.getRating().equals(rating))
+//                .collect(Collectors.toList());
+//    }
+//
+//    @Override
+//    public List<DVD> searchByStudio(String studio) {
+//        return libraryMap.values()
+//                .stream()
+//                .filter(d -> d.getStudio().equalsIgnoreCase(studio))
+//                .collect(Collectors.toList());
+//    }
+//
+//    @Override
+//    public List<DVD> searchById(Integer Id) {
+//        return libraryMap.values()
+//                .stream()
+//                .filter(d -> d.getId().equals(Id))
+//                .collect(Collectors.toList());
+//    }
 
     /**
      * Comparator for Lambda
